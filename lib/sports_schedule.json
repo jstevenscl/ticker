@@ -1,19 +1,6 @@
 {
-  "generated_at": "2026-09-05T17:50:55Z",
+  "generated_at": "2026-09-05T21:50:11Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Hull City @ Aston Villa",
-      "description": "SOCCER · Hull City @ Aston Villa",
-      "start_utc": "2026-09-05T16:30:00Z",
-      "end_utc": "2026-09-05T18:30:00Z",
-      "channels": [
-        "Aston Villa",
-        "Hull City",
-        "MLB Play-by-Play 188",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "nascar",
       "title": "NCS Pole Qualifying",
