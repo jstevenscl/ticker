@@ -1,17 +1,149 @@
 {
-  "generated_at": "2026-09-07T02:19:35Z",
+  "generated_at": "2026-09-07T08:48:56Z",
   "events": [
     {
       "slug": "mlb",
-      "title": "Los Angeles Dodgers @ Washington Nationals",
-      "description": "MLB · Los Angeles Dodgers @ Washington Nationals",
-      "start_utc": "2026-09-07T02:10:00Z",
-      "end_utc": "2026-09-07T05:10:00Z",
+      "title": "Philadelphia Phillies @ Atlanta Braves",
+      "description": "MLB · Philadelphia Phillies @ Atlanta Braves",
+      "start_utc": "2026-09-07T17:05:00Z",
+      "end_utc": "2026-09-07T20:05:00Z",
+      "channels": [
+        "Atlanta Braves",
+        "Philadelphia Phillies",
+        "Satellite Radio Channel 202",
+        "Satellite Radio Channel 204",
+        "Sports 963",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Miami Marlins @ New York Mets",
+      "description": "MLB · Miami Marlins @ New York Mets",
+      "start_utc": "2026-09-07T17:10:00Z",
+      "end_utc": "2026-09-07T20:10:00Z",
+      "channels": [
+        "New York Mets",
+        "Miami Marlins",
+        "Satellite Radio Channel 203",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Boston Red Sox @ Los Angeles Angels",
+      "description": "MLB · Boston Red Sox @ Los Angeles Angels",
+      "start_utc": "2026-09-07T17:35:00Z",
+      "end_utc": "2026-09-07T20:35:00Z",
+      "channels": [
+        "Los Angeles Angels",
+        "Boston Red Sox",
+        "MLB Network Radio",
+        "Comedy Central Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Baltimore Orioles @ Cleveland Guardians",
+      "description": "MLB · Baltimore Orioles @ Cleveland Guardians",
+      "start_utc": "2026-09-07T17:35:00Z",
+      "end_utc": "2026-09-07T20:35:00Z",
+      "channels": [
+        "Cleveland Guardians",
+        "Baltimore Orioles",
+        "Satellite Radio Channel 205",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Milwaukee Brewers @ Chicago Cubs",
+      "description": "MLB · Milwaukee Brewers @ Chicago Cubs",
+      "start_utc": "2026-09-07T18:10:00Z",
+      "end_utc": "2026-09-07T21:10:00Z",
+      "channels": [
+        "Chicago Cubs",
+        "Milwaukee Brewers",
+        "Kevin Hart's LOL Radio",
+        "Satellite Radio Channel 207",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Kansas City Royals @ Arizona Diamondbacks",
+      "description": "MLB · Kansas City Royals @ Arizona Diamondbacks",
+      "start_utc": "2026-09-07T18:10:00Z",
+      "end_utc": "2026-09-07T21:10:00Z",
+      "channels": [
+        "Arizona Diamondbacks",
+        "Kansas City Royals",
+        "Satellite Radio Channel 206",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Detroit Tigers @ Minnesota Twins",
+      "description": "MLB · Detroit Tigers @ Minnesota Twins",
+      "start_utc": "2026-09-07T19:10:00Z",
+      "end_utc": "2026-09-07T22:10:00Z",
+      "channels": [
+        "Minnesota Twins",
+        "Detroit Tigers",
+        "Satellite Radio Channel 208",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "San Diego Padres @ Washington Nationals",
+      "description": "MLB · San Diego Padres @ Washington Nationals",
+      "start_utc": "2026-09-07T21:10:00Z",
+      "end_utc": "2026-09-08T00:10:00Z",
       "channels": [
         "Washington Nationals",
+        "San Diego Padres",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "San Francisco Giants @ St. Louis Cardinals",
+      "description": "MLB · San Francisco Giants @ St. Louis Cardinals",
+      "start_utc": "2026-09-08T00:10:00Z",
+      "end_utc": "2026-09-08T03:10:00Z",
+      "channels": [
+        "St. Louis Cardinals",
+        "San Francisco Giants",
+        "Satellite Radio Channel 202",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Los Angeles Dodgers @ Cincinnati Reds",
+      "description": "MLB · Los Angeles Dodgers @ Cincinnati Reds",
+      "start_utc": "2026-09-08T01:10:00Z",
+      "end_utc": "2026-09-08T04:10:00Z",
+      "channels": [
+        "Cincinnati Reds",
         "Los Angeles Dodgers",
         "MLB Network Radio",
-        "MLB en Español 871"
+        "MLB en Español 870"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Athletics @ Toronto Blue Jays",
+      "description": "MLB · Athletics @ Toronto Blue Jays",
+      "start_utc": "2026-09-08T02:05:00Z",
+      "end_utc": "2026-09-08T05:05:00Z",
+      "channels": [
+        "Toronto Blue Jays",
+        "Athletics",
+        "Satellite Radio Channel 204",
+        "MLB Network Radio"
       ]
     },
     {
