@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T08:48:56Z",
+  "generated_at": "2026-09-07T17:01:10Z",
   "events": [
     {
       "slug": "mlb",
@@ -39,7 +39,7 @@
         "Los Angeles Angels",
         "Boston Red Sox",
         "MLB Network Radio",
-        "Comedy Central Radio"
+        "KSPN Los Angeles"
       ]
     },
     {
@@ -64,7 +64,7 @@
       "channels": [
         "Chicago Cubs",
         "Milwaukee Brewers",
-        "Kevin Hart's LOL Radio",
+        "WSCR Chicago",
         "Satellite Radio Channel 207",
         "MLB Network Radio"
       ]
@@ -218,7 +218,6 @@
       "channels": [
         "Orlando Pride",
         "Kansas City Current",
-        "MLB Play-by-Play 188",
         "SiriusXM FC"
       ]
     },
@@ -266,7 +265,6 @@
       "channels": [
         "Fulham",
         "Liverpool",
-        "MLB Play-by-Play 188",
         "SiriusXM FC"
       ]
     },
@@ -279,7 +277,6 @@
       "channels": [
         "Everton",
         "Tottenham",
-        "MLB Play-by-Play 188",
         "SiriusXM FC"
       ]
     },
@@ -292,7 +289,6 @@
       "channels": [
         "Arsenal",
         "Sunderland",
-        "MLB Play-by-Play 188",
         "SiriusXM FC"
       ]
     },
@@ -350,7 +346,6 @@
       "channels": [
         "Brighton",
         "Coventry City",
-        "MLB Play-by-Play 188",
         "SiriusXM FC"
       ]
     },
@@ -374,7 +369,6 @@
       "channels": [
         "Manchester City",
         "Manchester United",
-        "MLB Play-by-Play 188",
         "SiriusXM FC"
       ]
     },
@@ -421,7 +415,6 @@
       "channels": [
         "Newcastle",
         "Leeds",
-        "MLB Play-by-Play 188",
         "SiriusXM FC"
       ]
     },
