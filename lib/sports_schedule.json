@@ -1,31 +1,6 @@
 {
-  "generated_at": "2026-09-07T22:26:15Z",
+  "generated_at": "2026-09-08T02:32:03Z",
   "events": [
-    {
-      "slug": "mlb",
-      "title": "Detroit Tigers @ Minnesota Twins",
-      "description": "MLB · Detroit Tigers @ Minnesota Twins",
-      "start_utc": "2026-09-07T19:10:00Z",
-      "end_utc": "2026-09-07T22:10:00Z",
-      "channels": [
-        "Minnesota Twins",
-        "Detroit Tigers",
-        "Satellite Radio Channel 208",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "San Diego Padres @ Washington Nationals",
-      "description": "MLB · San Diego Padres @ Washington Nationals",
-      "start_utc": "2026-09-07T21:10:00Z",
-      "end_utc": "2026-09-08T00:10:00Z",
-      "channels": [
-        "Washington Nationals",
-        "San Diego Padres",
-        "MLB Network Radio"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "San Francisco Giants @ St. Louis Cardinals",
