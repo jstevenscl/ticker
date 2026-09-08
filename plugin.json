@@ -1,6 +1,6 @@
 {
   "name": "Ticker",
-  "version": "0.5.01",
+  "version": "0.5.02",
   "logo": "logo.png",
   "description": "Dynamic text overlays for IPTV channels — Satellite Radio Now Playing, Sports Ticker, Custom Text, EAS Weather Alerts",
   "author": "jstevenscl",
@@ -268,7 +268,7 @@
     {
       "id": "refresh_channels",
       "label": "Refresh Channel Data",
-      "description": "Reloads the channel and group list from Dispatcharr. Run this if a channel or group is missing from a dropdown in Settings.",
+      "description": "Re-fetches the live satellite radio channel/station catalog and repairs already-enabled channels that have no ticker.com match (no now-playing data ever appears for them). Also reloads the channel/group list for dropdowns in Settings.",
       "button_label": "Refresh",
       "button_variant": "outline",
       "button_color": "violet"
@@ -283,6 +283,14 @@
       "confirm": {
         "message": "This will restore original stream profiles and remove ticker data for ALL enabled channels. Continue?"
       }
+    },
+    {
+      "id": "save_settings",
+      "label": "Save Settings",
+      "description": "Forces Dispatcharr to persist whatever is currently in the Settings tab. Run this after changing any Settings field if you're not about to click another action — Dispatcharr doesn't save the form on its own until an action runs.",
+      "button_label": "Save",
+      "button_variant": "outline",
+      "button_color": "gray"
     },
     {
       "id": "clean_orphans",

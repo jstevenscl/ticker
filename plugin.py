@@ -1481,15 +1481,28 @@ def _get_channel_data(force=False):
 
 def _match_channel(dispatcharr_name, channels, aliases):
     normalized = _normalize(dispatcharr_name)
-    lookup_lower = dispatcharr_name.lower()
+    lookup_lower = dispatcharr_name.strip().lower()
     for alias, canonical in (aliases.items() if isinstance(aliases, dict) else []):
         if _normalize(alias) == normalized:
             normalized = _normalize(canonical)
-            lookup_lower = canonical.lower()
+            lookup_lower = canonical.strip().lower()
             break
     if isinstance(channels, dict):
-        # channels.json keyed by name.lower() (e.g. "1st wave"), not fully normalized
-        return channels.get(normalized) or channels.get(lookup_lower)
+        # channels.json keyed by name.lower() (e.g. "1st wave"), not fully normalized.
+        # Dispatcharr channel names commonly carry stray leading/trailing whitespace
+        # (M3U source formatting, or a previous un-prefixed Sort run) -- lookup_lower
+        # above handles that via strip(). normalized strips ALL non-alnum chars
+        # (including internal spaces), so it can only ever hit the dict's space-
+        # preserving keys for single-word names; for multi-word names ("1st Wave",
+        # "Yacht Rock Radio") fall back to a normalized scan so those match too.
+        if lookup_lower in channels:
+            return channels[lookup_lower]
+        if normalized in channels:
+            return channels[normalized]
+        for name_key, entry in channels.items():
+            if _normalize(name_key) == normalized:
+                return entry
+        return None
     for ch in channels:
         if _normalize(ch.get("name", "")) == normalized:
             return ch
@@ -2803,6 +2816,7 @@ class Plugin:
         active_label = (f"{len(mappings)} active ticker(s):\n" + "\n".join(ticker_lines)) if mappings else "No active tickers."
 
         return [
+            {"id": "_settings_save_warn", "type": "info", "label": "⚠ SAVING SETTINGS: Dispatcharr only writes this form to disk when you run an Action, not when you change a field and just close this dialog. After changing anything on this Settings tab, go to Actions and click Save Settings (or any other action) to be sure the change actually took effect — otherwise it silently reverts next time this loads."},
             # ── Now Playing ───────────────────────────────────────────────
             {"id": "_np_section",       "type": "info",   "label": "==========  NOW PLAYING  =========="},
             {"id": "np_target_type",    "type": "select", "label": "Apply To",
@@ -3106,6 +3120,7 @@ class Plugin:
             "disable_eas_ca":       self._disable_eas_ca,
             "test_eas_ca":          self._test_eas_ca,
             "disable_all":          self._disable_all,
+            "save_settings":        self._save_settings,
             "view_active":          self._view_active,
             "refresh_channels":     self._refresh_channels,
             "fill_sxm_epg":         self._fill_sxm_epg,
@@ -4374,6 +4389,15 @@ class Plugin:
         if failed:
             parts.append("Failed:\n" + "\n".join(f"  - {f}" for f in failed))
         return {"success": not failed, "message": "\n\n".join(parts) or "Nothing to do."}
+
+    def _save_settings(self, params):
+        """No-op action whose only purpose is to give Dispatcharr's plugin UI a
+        reason to persist the current Settings form -- Dispatcharr only POSTs the
+        settings form alongside an action run, not on field blur/change, so a
+        setting toggled and left alone (dialog closed without running anything
+        else) silently reverts to its old saved value next session. Click this
+        after changing Settings to be sure the change actually stuck."""
+        return {"success": True, "message": "Settings saved."}
 
     def _view_active(self, params):
         mappings = _get_mappings()

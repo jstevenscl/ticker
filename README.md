@@ -1,6 +1,6 @@
 # Ticker
 
-![Version](https://img.shields.io/badge/version-0.5.01-blue)
+![Version](https://img.shields.io/badge/version-0.5.02-blue)
 
 A [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr) plugin that injects dynamic text overlays into IPTV channels via FFmpeg. Ticker clones the channel's existing stream profile, injects overlay parameters, and restores the original profile on disable — the source profile is never modified.
 

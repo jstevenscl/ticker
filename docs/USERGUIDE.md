@@ -717,7 +717,8 @@ Each section has its own button color so you can identify which overlay type an 
 | Action | Description |
 |---|---|
 | View Active Tickers | Lists all channels that have a Ticker overlay registered, grouped by type. Shows which channels have active overlay profiles vs. passthrough. |
-| Refresh Channel Data | Reloads the channel and group list from Dispatcharr. Run this if a channel or group is missing from a dropdown. |
+| Refresh Channel Data | Re-fetches the live satellite radio channel/station catalog and repairs already-enabled channels that have no ticker.com match (no now-playing data ever appears for them). Also reloads the channel/group list for dropdowns in Settings. |
+| Save Settings | No-op action that exists purely to force Dispatcharr to persist the Settings tab. Dispatcharr only writes the Settings form to disk alongside an action run, not when a field is changed — if you're not about to click another action after changing a setting, click this one so the change actually sticks. See [Settings changes not saving](#settings-changes-not-saving). |
 | Disable All Tickers | Disables every active Ticker overlay across all channels. |
 | Clean Orphaned Profiles | Removes cloned stream profiles left behind when channels were deleted while a Ticker overlay was active. Also reaps shared profiles once no channel references them anymore. |
 | Migrate to Shared Profiles | On Dispatcharr v0.29.0+, moves already-enabled channels off their old per-channel cloned profile onto a shared one. Safe to run repeatedly. See [Upgrading an existing install to shared profiles](#upgrading-an-existing-install-to-shared-profiles). |
@@ -787,3 +788,7 @@ Run **Actions → Redis Diagnostics**. If Redis is unreachable, On-Demand and sm
 ### Plugin changes not taking effect after an update
 
 Run **Actions → Restart Dispatcharr**. Plugin code is cached at startup — a restart is always required after any update.
+
+### Settings changes not saving
+
+Dispatcharr only writes the Settings tab to disk when you run an Action — not when you change a field and close the dialog. A toggle or dropdown you changed and then walked away from will silently revert to its previous saved value. After changing anything in Settings, run **Actions → Save Settings** (or any other action) to confirm the change actually persisted.
