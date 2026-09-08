@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T15:48:33Z",
+  "generated_at": "2026-09-08T19:11:09Z",
   "events": [
     {
       "slug": "mlb",
@@ -433,7 +433,10 @@
       "start_utc": "2026-09-13T18:00:00Z",
       "end_utc": "2026-09-13T21:30:00Z",
       "channels": [
-        "SiriusXM NASCAR Radio"
+        "SiriusXM NASCAR Radio",
+        "Sports 997",
+        "Sports 998",
+        "Sports 999"
       ]
     },
     {
