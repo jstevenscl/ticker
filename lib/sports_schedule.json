@@ -1,4 +1,888 @@
 {
-  "generated_at": "2026-09-11T15:40:52Z",
-  "events": []
+  "generated_at": "2026-09-11T18:54:52Z",
+  "events": [
+    {
+      "slug": "mlb",
+      "title": "Chicago Cubs @ Pittsburgh Pirates",
+      "description": "MLB · Chicago Cubs @ Pittsburgh Pirates",
+      "start_utc": "2026-09-11T18:20:00Z",
+      "end_utc": "2026-09-11T21:20:00Z",
+      "channels": [
+        "Pittsburgh Pirates",
+        "Chicago Cubs",
+        "MLB Network Radio",
+        "Satellite Radio Channel 202"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Detroit Tigers @ Colorado Rockies",
+      "description": "MLB · Detroit Tigers @ Colorado Rockies",
+      "start_utc": "2026-09-11T22:40:00Z",
+      "end_utc": "2026-09-12T01:40:00Z",
+      "channels": [
+        "Colorado Rockies",
+        "Detroit Tigers",
+        "Satellite Radio Channel 203",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Washington Nationals @ Los Angeles Angels",
+      "description": "MLB · Washington Nationals @ Los Angeles Angels",
+      "start_utc": "2026-09-11T22:45:00Z",
+      "end_utc": "2026-09-12T01:45:00Z",
+      "channels": [
+        "Los Angeles Angels",
+        "Washington Nationals",
+        "Satellite Radio Channel 204",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "New York Yankees @ New York Mets",
+      "description": "MLB · New York Yankees @ New York Mets",
+      "start_utc": "2026-09-11T23:05:00Z",
+      "end_utc": "2026-09-12T02:05:00Z",
+      "channels": [
+        "New York Mets",
+        "New York Yankees",
+        "Satellite Radio Channel 205",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Toronto Blue Jays @ Baltimore Orioles",
+      "description": "MLB · Toronto Blue Jays @ Baltimore Orioles",
+      "start_utc": "2026-09-11T23:07:00Z",
+      "end_utc": "2026-09-12T02:07:00Z",
+      "channels": [
+        "Baltimore Orioles",
+        "Toronto Blue Jays",
+        "Satellite Radio Channel 206",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Boston Red Sox @ Kansas City Royals",
+      "description": "MLB · Boston Red Sox @ Kansas City Royals",
+      "start_utc": "2026-09-11T23:10:00Z",
+      "end_utc": "2026-09-12T02:10:00Z",
+      "channels": [
+        "Kansas City Royals",
+        "Boston Red Sox",
+        "Satellite Radio Channel 208",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Miami Marlins @ Los Angeles Dodgers",
+      "description": "MLB · Miami Marlins @ Los Angeles Dodgers",
+      "start_utc": "2026-09-11T23:10:00Z",
+      "end_utc": "2026-09-12T02:10:00Z",
+      "channels": [
+        "Los Angeles Dodgers",
+        "Miami Marlins",
+        "Satellite Radio Channel 209",
+        "MLB en Español 870",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Tampa Bay Rays @ Houston Astros",
+      "description": "MLB · Tampa Bay Rays @ Houston Astros",
+      "start_utc": "2026-09-11T23:10:00Z",
+      "end_utc": "2026-09-12T02:10:00Z",
+      "channels": [
+        "Houston Astros",
+        "Tampa Bay Rays",
+        "Satellite Radio Channel 207",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Atlanta Braves @ Philadelphia Phillies",
+      "description": "MLB · Atlanta Braves @ Philadelphia Phillies",
+      "start_utc": "2026-09-11T23:15:00Z",
+      "end_utc": "2026-09-12T02:15:00Z",
+      "channels": [
+        "Philadelphia Phillies",
+        "Atlanta Braves",
+        "MLB Network Radio",
+        "WIP Philadelphia"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Milwaukee Brewers @ Cincinnati Reds",
+      "description": "MLB · Milwaukee Brewers @ Cincinnati Reds",
+      "start_utc": "2026-09-11T23:45:00Z",
+      "end_utc": "2026-09-12T02:45:00Z",
+      "channels": [
+        "Cincinnati Reds",
+        "Milwaukee Brewers",
+        "Satellite Radio Channel 210",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Kansas City Current @ Orlando Pride",
+      "description": "SOCCER · Kansas City Current @ Orlando Pride",
+      "start_utc": "2026-09-12T00:00:00Z",
+      "end_utc": "2026-09-12T02:00:00Z",
+      "channels": [
+        "Orlando Pride",
+        "Kansas City Current",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Minnesota Twins @ Cleveland Guardians",
+      "description": "MLB · Minnesota Twins @ Cleveland Guardians",
+      "start_utc": "2026-09-12T00:10:00Z",
+      "end_utc": "2026-09-12T03:10:00Z",
+      "channels": [
+        "Cleveland Guardians",
+        "Minnesota Twins",
+        "Satellite Radio Channel 212",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "St. Louis Cardinals @ Chicago White Sox",
+      "description": "MLB · St. Louis Cardinals @ Chicago White Sox",
+      "start_utc": "2026-09-12T00:15:00Z",
+      "end_utc": "2026-09-12T03:15:00Z",
+      "channels": [
+        "Chicago White Sox",
+        "St. Louis Cardinals",
+        "Satellite Radio Channel 211",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Arizona Diamondbacks @ Texas Rangers",
+      "description": "MLB · Arizona Diamondbacks @ Texas Rangers",
+      "start_utc": "2026-09-12T01:40:00Z",
+      "end_utc": "2026-09-12T04:40:00Z",
+      "channels": [
+        "Texas Rangers",
+        "Arizona Diamondbacks",
+        "KRLD Dallas",
+        "Satellite Radio Channel 213",
+        "MLB en Español 871",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Athletics @ Seattle Mariners",
+      "description": "MLB · Athletics @ Seattle Mariners",
+      "start_utc": "2026-09-12T01:40:00Z",
+      "end_utc": "2026-09-12T04:40:00Z",
+      "channels": [
+        "Seattle Mariners",
+        "Athletics",
+        "Satellite Radio Channel 202",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "San Francisco Giants @ San Diego Padres",
+      "description": "MLB · San Francisco Giants @ San Diego Padres",
+      "start_utc": "2026-09-12T02:15:00Z",
+      "end_utc": "2026-09-12T05:15:00Z",
+      "channels": [
+        "San Diego Padres",
+        "San Francisco Giants",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 3",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 3 · Circuito de Madring",
+      "start_utc": "2026-09-12T10:25:00Z",
+      "end_utc": "2026-09-12T12:25:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Qualifying",
+      "description": "Formula 1 Racing and Analysis · F-1 Qualifying · Circuito de Madring",
+      "start_utc": "2026-09-12T13:55:00Z",
+      "end_utc": "2026-09-12T15:55:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Chelsea @ Hull City",
+      "description": "SOCCER · Chelsea @ Hull City",
+      "start_utc": "2026-09-12T14:00:00Z",
+      "end_utc": "2026-09-12T16:00:00Z",
+      "channels": [
+        "Hull City",
+        "Chelsea",
+        "Sports 964",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Liverpool @ Fulham",
+      "description": "SOCCER · Liverpool @ Fulham",
+      "start_utc": "2026-09-12T14:00:00Z",
+      "end_utc": "2026-09-12T16:00:00Z",
+      "channels": [
+        "Fulham",
+        "Liverpool",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Tottenham @ Everton",
+      "description": "SOCCER · Tottenham @ Everton",
+      "start_utc": "2026-09-12T16:30:00Z",
+      "end_utc": "2026-09-12T18:30:00Z",
+      "channels": [
+        "Everton",
+        "Tottenham",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Sunderland @ Arsenal",
+      "description": "SOCCER · Sunderland @ Arsenal",
+      "start_utc": "2026-09-12T19:00:00Z",
+      "end_utc": "2026-09-12T21:00:00Z",
+      "channels": [
+        "Arsenal",
+        "Sunderland",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NCS Pole Qualifying",
+      "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · World Wide Technology Raceway",
+      "start_utc": "2026-09-12T19:30:00Z",
+      "end_utc": "2026-09-12T23:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Nu Way 225 Sauced by Blues Hog",
+      "description": "SiriusXM NASCAR Radio · Nu Way 225 Sauced by Blues Hog · World Wide Technology Raceway",
+      "start_utc": "2026-09-12T23:00:00Z",
+      "end_utc": "2026-09-13T02:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "DC United @ Atlanta United",
+      "description": "SOCCER · DC United @ Atlanta United",
+      "start_utc": "2026-09-12T23:30:00Z",
+      "end_utc": "2026-09-13T01:30:00Z",
+      "channels": [
+        "Atlanta United",
+        "DC United",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Inter Miami CF @ Nashville SC",
+      "description": "SOCCER · Inter Miami CF @ Nashville SC",
+      "start_utc": "2026-09-12T23:30:00Z",
+      "end_utc": "2026-09-13T01:30:00Z",
+      "channels": [
+        "Nashville SC",
+        "Inter Miami CF",
+        "Soccer en Español",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "FC Dallas @ Portland Timbers",
+      "description": "SOCCER · FC Dallas @ Portland Timbers",
+      "start_utc": "2026-09-13T00:30:00Z",
+      "end_utc": "2026-09-13T02:30:00Z",
+      "channels": [
+        "Portland Timbers",
+        "FC Dallas",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Sporting KC @ LAFC",
+      "description": "SOCCER · Sporting KC @ LAFC",
+      "start_utc": "2026-09-13T00:30:00Z",
+      "end_utc": "2026-09-13T02:30:00Z",
+      "channels": [
+        "LAFC",
+        "Sporting KC",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "San Jose Earthquakes @ Houston Dynamo",
+      "description": "SOCCER · San Jose Earthquakes @ Houston Dynamo",
+      "start_utc": "2026-09-13T02:30:00Z",
+      "end_utc": "2026-09-13T04:30:00Z",
+      "channels": [
+        "Houston Dynamo",
+        "San Jose Earthquakes",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Coventry City @ Brighton",
+      "description": "SOCCER · Coventry City @ Brighton",
+      "start_utc": "2026-09-13T13:00:00Z",
+      "end_utc": "2026-09-13T15:00:00Z",
+      "channels": [
+        "Brighton",
+        "Coventry City",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "Grand Prix of Spain",
+      "description": "Formula 1 Racing and Analysis · Grand Prix of Spain · Circuito de Madring",
+      "start_utc": "2026-09-13T13:00:00Z",
+      "end_utc": "2026-09-13T15:00:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Manchester United @ Manchester City",
+      "description": "SOCCER · Manchester United @ Manchester City",
+      "start_utc": "2026-09-13T15:30:00Z",
+      "end_utc": "2026-09-13T17:30:00Z",
+      "channels": [
+        "Manchester City",
+        "Manchester United",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Jacksonville Jaguars @ Cleveland Browns",
+      "description": "NFL · Jacksonville Jaguars @ Cleveland Browns",
+      "start_utc": "2026-09-13T17:00:00Z",
+      "end_utc": "2026-09-13T20:00:00Z",
+      "channels": [
+        "Cleveland Browns",
+        "Jacksonville Jaguars",
+        "NCAA Play-by-Play 197",
+        "Satellite Radio Channel 266",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Houston Texans @ Buffalo Bills",
+      "description": "NFL · Houston Texans @ Buffalo Bills",
+      "start_utc": "2026-09-13T17:00:00Z",
+      "end_utc": "2026-09-13T20:00:00Z",
+      "channels": [
+        "Buffalo Bills",
+        "Houston Texans",
+        "NCAA Play-by-Play 195",
+        "Satellite Radio Channel 264",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Detroit Lions @ New Orleans Saints",
+      "description": "NFL · Detroit Lions @ New Orleans Saints",
+      "start_utc": "2026-09-13T17:00:00Z",
+      "end_utc": "2026-09-13T20:00:00Z",
+      "channels": [
+        "New Orleans Saints",
+        "Detroit Lions",
+        "NCAA Play-by-Play 194",
+        "Satellite Radio Channel 263",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Indianapolis Colts @ Baltimore Ravens",
+      "description": "NFL · Indianapolis Colts @ Baltimore Ravens",
+      "start_utc": "2026-09-13T17:00:00Z",
+      "end_utc": "2026-09-13T20:00:00Z",
+      "channels": [
+        "Baltimore Ravens",
+        "Indianapolis Colts",
+        "NCAA Play-by-Play 196",
+        "Satellite Radio Channel 265",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Pittsburgh Steelers @ Atlanta Falcons",
+      "description": "NFL · Pittsburgh Steelers @ Atlanta Falcons",
+      "start_utc": "2026-09-13T17:00:00Z",
+      "end_utc": "2026-09-13T20:00:00Z",
+      "channels": [
+        "Atlanta Falcons",
+        "Pittsburgh Steelers",
+        "NCAA Play-by-Play 198",
+        "Satellite Radio Channel 267",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Cincinnati Bengals @ Tampa Bay Buccaneers",
+      "description": "NFL · Cincinnati Bengals @ Tampa Bay Buccaneers",
+      "start_utc": "2026-09-13T17:00:00Z",
+      "end_utc": "2026-09-13T20:00:00Z",
+      "channels": [
+        "Tampa Bay Buccaneers",
+        "Cincinnati Bengals",
+        "KRSK Portland",
+        "NCAA Play-by-Play 193",
+        "Satellite Radio Channel 262",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Carolina Panthers @ Chicago Bears",
+      "description": "NFL · Carolina Panthers @ Chicago Bears",
+      "start_utc": "2026-09-13T17:00:00Z",
+      "end_utc": "2026-09-13T20:00:00Z",
+      "channels": [
+        "Chicago Bears",
+        "Carolina Panthers",
+        "WMFS Memphis",
+        "NCAA Play-by-Play 192",
+        "Satellite Radio Channel 261",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Tennessee Titans @ New York Jets",
+      "description": "NFL · Tennessee Titans @ New York Jets",
+      "start_utc": "2026-09-13T17:00:00Z",
+      "end_utc": "2026-09-13T20:00:00Z",
+      "channels": [
+        "New York Jets",
+        "Tennessee Titans",
+        "NCAA Play-by-Play 199",
+        "Satellite Radio Channel 268",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Enjoy Illinois 300",
+      "description": "SiriusXM NASCAR Radio · Enjoy Illinois 300 · World Wide Technology Raceway",
+      "start_utc": "2026-09-13T18:00:00Z",
+      "end_utc": "2026-09-13T21:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio",
+        "Sports 997",
+        "Sports 998",
+        "Sports 999"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Las Vegas Raiders @ Miami Dolphins",
+      "description": "NFL · Las Vegas Raiders @ Miami Dolphins",
+      "start_utc": "2026-09-13T20:25:00Z",
+      "end_utc": "2026-09-13T23:25:00Z",
+      "channels": [
+        "Miami Dolphins",
+        "Las Vegas Raiders",
+        "WMFS Memphis",
+        "NCAA Play-by-Play 192",
+        "Satellite Radio Channel 261",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Los Angeles Chargers @ Arizona Cardinals",
+      "description": "NFL · Los Angeles Chargers @ Arizona Cardinals",
+      "start_utc": "2026-09-13T20:25:00Z",
+      "end_utc": "2026-09-13T23:25:00Z",
+      "channels": [
+        "Arizona Cardinals",
+        "Los Angeles Chargers",
+        "NCAA Play-by-Play 193",
+        "Satellite Radio Channel 262",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Minnesota Vikings @ Green Bay Packers",
+      "description": "NFL · Minnesota Vikings @ Green Bay Packers",
+      "start_utc": "2026-09-13T20:25:00Z",
+      "end_utc": "2026-09-13T23:25:00Z",
+      "channels": [
+        "Green Bay Packers",
+        "Minnesota Vikings",
+        "KRSK Portland",
+        "NCAA Play-by-Play 195",
+        "Satellite Radio Channel 264",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Philadelphia Eagles @ Washington Commanders",
+      "description": "NFL · Philadelphia Eagles @ Washington Commanders",
+      "start_utc": "2026-09-13T20:25:00Z",
+      "end_utc": "2026-09-13T23:25:00Z",
+      "channels": [
+        "Washington Commanders",
+        "Philadelphia Eagles",
+        "KIFM Sacramento",
+        "NCAA Play-by-Play 194",
+        "Satellite Radio Channel 263",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Chicago Fire @ New England Revolution",
+      "description": "SOCCER · Chicago Fire @ New England Revolution",
+      "start_utc": "2026-09-13T21:30:00Z",
+      "end_utc": "2026-09-13T23:30:00Z",
+      "channels": [
+        "New England Revolution",
+        "Chicago Fire",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "New York Giants @ Dallas Cowboys",
+      "description": "NFL · New York Giants @ Dallas Cowboys",
+      "start_utc": "2026-09-14T00:20:00Z",
+      "end_utc": "2026-09-14T03:20:00Z",
+      "channels": [
+        "Dallas Cowboys",
+        "New York Giants",
+        "SiriusXM NFL Radio",
+        "NCAA Play-by-Play 192",
+        "NCAA Play-by-Play 193",
+        "NFL en Español 832"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "San Diego FC @ Philadelphia Union",
+      "description": "SOCCER · San Diego FC @ Philadelphia Union",
+      "start_utc": "2026-09-14T01:00:00Z",
+      "end_utc": "2026-09-14T03:00:00Z",
+      "channels": [
+        "Philadelphia Union",
+        "San Diego FC",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Leeds @ Newcastle",
+      "description": "SOCCER · Leeds @ Newcastle",
+      "start_utc": "2026-09-14T19:00:00Z",
+      "end_utc": "2026-09-14T21:00:00Z",
+      "channels": [
+        "Newcastle",
+        "Leeds",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Kansas City Chiefs @ Denver Broncos",
+      "description": "NFL · Kansas City Chiefs @ Denver Broncos",
+      "start_utc": "2026-09-15T00:15:00Z",
+      "end_utc": "2026-09-15T03:15:00Z",
+      "channels": [
+        "Denver Broncos",
+        "Kansas City Chiefs",
+        "SiriusXM NFL Radio",
+        "NCAA Play-by-Play 192",
+        "NCAA Play-by-Play 193",
+        "NFL en Español 832"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Indy Eleven @ Brooklyn FC",
+      "description": "SOCCER · Indy Eleven @ Brooklyn FC",
+      "start_utc": "2026-09-15T23:00:00Z",
+      "end_utc": "2026-09-16T01:00:00Z",
+      "channels": [
+        "Brooklyn FC",
+        "Indy Eleven",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Hartford Athletic @ Sporting JAX",
+      "description": "SOCCER · Hartford Athletic @ Sporting JAX",
+      "start_utc": "2026-09-16T22:00:00Z",
+      "end_utc": "2026-09-17T00:00:00Z",
+      "channels": [
+        "Sporting JAX",
+        "Hartford Athletic",
+        "Sports 970",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "UNOH 250 Presented by Ohio Logistics",
+      "description": "SiriusXM NASCAR Radio · UNOH 250 Presented by Ohio Logistics · Bristol Motor Speedway",
+      "start_utc": "2026-09-17T23:30:00Z",
+      "end_utc": "2026-09-18T03:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Brentford @ Chelsea",
+      "description": "SOCCER · Brentford @ Chelsea",
+      "start_utc": "2026-09-18T19:00:00Z",
+      "end_utc": "2026-09-18T21:00:00Z",
+      "channels": [
+        "Chelsea",
+        "Brentford",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NCS Pole Qualifying",
+      "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · Bristol Motor Speedway",
+      "start_utc": "2026-09-18T20:30:00Z",
+      "end_utc": "2026-09-19T00:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Food City 300",
+      "description": "SiriusXM NASCAR Radio · Food City 300 · Bristol Motor Speedway",
+      "start_utc": "2026-09-18T23:00:00Z",
+      "end_utc": "2026-09-19T02:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "New York City FC @ RB New York",
+      "description": "SOCCER · New York City FC @ RB New York",
+      "start_utc": "2026-09-18T23:30:00Z",
+      "end_utc": "2026-09-19T01:30:00Z",
+      "channels": [
+        "RB New York",
+        "New York City FC",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "San Diego Wave FC @ Kansas City Current",
+      "description": "SOCCER · San Diego Wave FC @ Kansas City Current",
+      "start_utc": "2026-09-19T02:00:00Z",
+      "end_utc": "2026-09-19T04:00:00Z",
+      "channels": [
+        "Kansas City Current",
+        "San Diego Wave FC",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Tottenham @ Aston Villa",
+      "description": "SOCCER · Tottenham @ Aston Villa",
+      "start_utc": "2026-09-19T11:30:00Z",
+      "end_utc": "2026-09-19T13:30:00Z",
+      "channels": [
+        "Aston Villa",
+        "Tottenham",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Bass Pro Shops Night Race",
+      "description": "SiriusXM NASCAR Radio · Bass Pro Shops Night Race · Bristol Motor Speedway",
+      "start_utc": "2026-09-19T22:30:00Z",
+      "end_utc": "2026-09-20T02:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "San Jose Earthquakes @ LAFC",
+      "description": "SOCCER · San Jose Earthquakes @ LAFC",
+      "start_utc": "2026-09-19T23:30:00Z",
+      "end_utc": "2026-09-20T01:30:00Z",
+      "channels": [
+        "LAFC",
+        "San Jose Earthquakes",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "nhl",
+      "title": "Los Angeles Kings @ Vegas Golden Knights",
+      "description": "NHL · Los Angeles Kings @ Vegas Golden Knights",
+      "start_utc": "2026-09-20T01:00:00Z",
+      "end_utc": "2026-09-20T03:30:00Z",
+      "channels": [
+        "Vegas Golden Knights",
+        "Los Angeles Kings",
+        "KSPN Los Angeles",
+        "SiriusXM NHL Network Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Portland Timbers @ Atlanta United",
+      "description": "SOCCER · Portland Timbers @ Atlanta United",
+      "start_utc": "2026-09-20T02:30:00Z",
+      "end_utc": "2026-09-20T04:30:00Z",
+      "channels": [
+        "Atlanta United",
+        "Portland Timbers",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 1",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 1 · Baku City Circuit",
+      "start_utc": "2026-09-24T08:25:00Z",
+      "end_utc": "2026-09-24T10:25:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 2",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 2 · Baku City Circuit",
+      "start_utc": "2026-09-24T11:55:00Z",
+      "end_utc": "2026-09-24T13:55:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 3",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 3 · Baku City Circuit",
+      "start_utc": "2026-09-25T08:25:00Z",
+      "end_utc": "2026-09-25T10:25:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Qualifying",
+      "description": "Formula 1 Racing and Analysis · F-1 Qualifying · Baku City Circuit",
+      "start_utc": "2026-09-25T11:55:00Z",
+      "end_utc": "2026-09-25T13:55:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NCS Pole Qualifying",
+      "description": "SiriusXM NASCAR Radio · NCS Pole Qualifying · Kansas Speedway",
+      "start_utc": "2026-09-25T14:00:00Z",
+      "end_utc": "2026-09-25T17:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "Azerbaijan Grand Prix",
+      "description": "Formula 1 Racing and Analysis · Azerbaijan Grand Prix · Baku City Circuit",
+      "start_utc": "2026-09-26T11:00:00Z",
+      "end_utc": "2026-09-26T13:00:00Z",
+      "channels": [
+        "F1 on SiriusXM",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "NASCAR CRAFTSMAN Truck Series Playoff Race at Kansas",
+      "description": "SiriusXM NASCAR Radio · NASCAR CRAFTSMAN Truck Series Playoff Race at Kansas · Kansas Speedway",
+      "start_utc": "2026-09-26T16:30:00Z",
+      "end_utc": "2026-09-26T20:00:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    },
+    {
+      "slug": "nascar",
+      "title": "Hollywood Casino 400",
+      "description": "SiriusXM NASCAR Radio · Hollywood Casino 400 · Kansas Speedway",
+      "start_utc": "2026-09-27T18:00:00Z",
+      "end_utc": "2026-09-27T21:30:00Z",
+      "channels": [
+        "SiriusXM NASCAR Radio"
+      ]
+    }
+  ]
 }
