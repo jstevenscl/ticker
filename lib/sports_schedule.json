@@ -1,19 +1,6 @@
 {
-  "generated_at": "2026-09-11T18:54:52Z",
+  "generated_at": "2026-09-11T22:08:35Z",
   "events": [
-    {
-      "slug": "mlb",
-      "title": "Chicago Cubs @ Pittsburgh Pirates",
-      "description": "MLB · Chicago Cubs @ Pittsburgh Pirates",
-      "start_utc": "2026-09-11T18:20:00Z",
-      "end_utc": "2026-09-11T21:20:00Z",
-      "channels": [
-        "Pittsburgh Pirates",
-        "Chicago Cubs",
-        "MLB Network Radio",
-        "Satellite Radio Channel 202"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Detroit Tigers @ Colorado Rockies",
@@ -81,6 +68,19 @@
     },
     {
       "slug": "mlb",
+      "title": "Tampa Bay Rays @ Houston Astros",
+      "description": "MLB · Tampa Bay Rays @ Houston Astros",
+      "start_utc": "2026-09-11T23:10:00Z",
+      "end_utc": "2026-09-12T02:10:00Z",
+      "channels": [
+        "Houston Astros",
+        "Tampa Bay Rays",
+        "Satellite Radio Channel 207",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
       "title": "Miami Marlins @ Los Angeles Dodgers",
       "description": "MLB · Miami Marlins @ Los Angeles Dodgers",
       "start_utc": "2026-09-11T23:10:00Z",
@@ -90,19 +90,6 @@
         "Miami Marlins",
         "Satellite Radio Channel 209",
         "MLB en Español 870",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Tampa Bay Rays @ Houston Astros",
-      "description": "MLB · Tampa Bay Rays @ Houston Astros",
-      "start_utc": "2026-09-11T23:10:00Z",
-      "end_utc": "2026-09-12T02:10:00Z",
-      "channels": [
-        "Houston Astros",
-        "Tampa Bay Rays",
-        "Satellite Radio Channel 207",
         "MLB Network Radio"
       ]
     },
@@ -172,6 +159,19 @@
     },
     {
       "slug": "mlb",
+      "title": "Athletics @ Seattle Mariners",
+      "description": "MLB · Athletics @ Seattle Mariners",
+      "start_utc": "2026-09-12T01:40:00Z",
+      "end_utc": "2026-09-12T04:40:00Z",
+      "channels": [
+        "Seattle Mariners",
+        "Athletics",
+        "Satellite Radio Channel 202",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
       "title": "Arizona Diamondbacks @ Texas Rangers",
       "description": "MLB · Arizona Diamondbacks @ Texas Rangers",
       "start_utc": "2026-09-12T01:40:00Z",
@@ -182,19 +182,6 @@
         "KRLD Dallas",
         "Satellite Radio Channel 213",
         "MLB en Español 871",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Athletics @ Seattle Mariners",
-      "description": "MLB · Athletics @ Seattle Mariners",
-      "start_utc": "2026-09-12T01:40:00Z",
-      "end_utc": "2026-09-12T04:40:00Z",
-      "channels": [
-        "Seattle Mariners",
-        "Athletics",
-        "Satellite Radio Channel 202",
         "MLB Network Radio"
       ]
     },
