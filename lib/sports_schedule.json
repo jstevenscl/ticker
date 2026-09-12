@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-09-12T08:16:49Z",
+  "generated_at": "2026-09-12T14:49:30Z",
   "events": [
-    {
-      "slug": "f1",
-      "title": "F-1 Practice 3",
-      "description": "Formula 1 Racing and Analysis · F-1 Practice 3 · Circuito de Madring",
-      "start_utc": "2026-09-12T10:25:00Z",
-      "end_utc": "2026-09-12T12:25:00Z",
-      "channels": [
-        "F1 on SiriusXM",
-        "Formula 1 Racing and Analysis"
-      ]
-    },
     {
       "slug": "f1",
       "title": "F-1 Qualifying",
