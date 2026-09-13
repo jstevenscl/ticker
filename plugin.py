@@ -878,6 +878,37 @@ def _eas_clear(channel_id):
     _atomic_write(f"eas_{channel_id}_area.txt",   "")
 
 
+def _eas_severity_tier(severity):
+    if severity == "Extreme":
+        return "extreme"
+    if severity == "Severe":
+        return "severe"
+    return "moderate"  # Moderate, Minor, Unknown
+
+
+def _eas_display_should_show(severity, settings):
+    """Duty-cycle gate for the on-screen banner, independent of the alert tone.
+
+    Each severity tier has its own Display Interval (seconds, 0 = always show).
+    When non-zero, the banner is only visible for Display Duration seconds out of
+    every interval — e.g. a Heat Advisory (Moderate) can flash briefly every hour
+    instead of scrolling for the alert's whole duration, while Extreme alerts can
+    stay constant. Only re-evaluated once per EAS sweep tick (eas_poll_interval).
+    """
+    tier = _eas_severity_tier(severity)
+    try:
+        interval = int(settings.get(f"eas_display_interval_{tier}") or 0)
+    except (TypeError, ValueError):
+        interval = 0
+    if interval <= 0:
+        return True
+    try:
+        duration = max(5, int(settings.get("eas_display_duration") or 30))
+    except (TypeError, ValueError):
+        duration = 30
+    return (time.time() % interval) < duration
+
+
 _RESTART_GRACE_SECONDS = 5.0
 _RESTART_ACTIVE_WAIT_SECONDS = 20.0
 
@@ -1202,10 +1233,14 @@ def _eas_sweep():
         now_active = bool(channel_worst)
 
         if was_active == now_active:
-            # No transition — refresh banner text on already-active channels
+            # No transition — refresh banner text on already-active channels,
+            # honoring each severity's on-screen display duty cycle
             if now_active:
                 try:
-                    _eas_write_alert(cid, _build_unique_alerts(channel_alerts), overlay_style)
+                    if _eas_display_should_show(channel_worst["severity"], settings):
+                        _eas_write_alert(cid, _build_unique_alerts(channel_alerts), overlay_style)
+                    else:
+                        _eas_clear(cid)
                 except Exception:
                     pass
             continue
@@ -2935,6 +2970,16 @@ class Plugin:
              ]},
             {"id": "eas_poll_interval",  "type": "number", "label": "Poll Interval (seconds)", "min": 15},
             {"id": "eas_tone_interval",  "type": "number", "label": "Siren Tone Interval (seconds) — how often the attention tone repeats during an active alert. Set to 0 to disable the tone entirely.", "min": 0},
+            {"id": "_eas_display_help", "type": "info",
+             "label": "On-Screen Display Interval — how often the overlay banner reappears for an active alert, by severity. Set to 0 for constant/always-visible (the old behavior). Non-zero values are only re-checked once per Poll Interval above, so an interval shorter than Poll Interval has no effect."},
+            {"id": "eas_display_interval_moderate", "type": "number",
+             "label": "Display Interval — Moderate / Watch / Yellow (seconds, 0 = constant)", "min": 0},
+            {"id": "eas_display_interval_severe", "type": "number",
+             "label": "Display Interval — Severe / Warning / Orange (seconds, 0 = constant)", "min": 0},
+            {"id": "eas_display_interval_extreme", "type": "number",
+             "label": "Display Interval — Extreme / Emergency / Red (seconds, 0 = constant)", "min": 0},
+            {"id": "eas_display_duration", "type": "number",
+             "label": "Display Duration (seconds) — how long the banner stays visible each time it reappears. Ignored for any severity set to constant (0) above.", "min": 5},
             {"id": "eas_test_duration",  "type": "number", "label": "Test Alert Duration (seconds) — how long Test Alert fires before auto-restoring (default 60)", "min": 10},
             {"id": "_eas_saved_help", "type": "info",
              "label": "Saved Codes (reference only — paste commonly-used codes here so you do not have to look them up each time; not monitored):"},
@@ -3693,9 +3738,9 @@ class Plugin:
         if not zones:
             return {"success": False, "message": "No NWS zone codes configured. Enter at least one zone code in EAS Weather Alerts > NWS Zone / County Codes above."}
 
-        channels = self._resolve_channels(params, prefix="eas_")
+        channels, reason = self._resolve_channels(params, prefix="eas_", with_reason=True)
         if not channels:
-            return {"success": False, "message": "No channels found. Set the EAS Weather Alerts > Apply To / Channel selector above."}
+            return {"success": False, "message": self._no_channels_message("EAS Weather Alerts", reason)}
 
         mappings = _get_mappings()
         enabled, skipped, failed = [], [], []
@@ -3705,6 +3750,11 @@ class Plugin:
             try:
                 if cid in mappings:
                     existing = mappings[cid]
+                    if not self._mapping_identity_ok(channel, existing):
+                        failed.append(f"{channel.name} (saved mapping for this channel id belongs to "
+                                       f"'{existing.get('channel_name')}' — stale id from a migration/reimport; "
+                                       "disable and re-enable from Channels to fix)")
+                        continue
                     if existing.get("type") == "eas" or existing.get("eas_armed"):
                         skipped.append(f"{channel.name} (EAS already armed — already enabled)")
                         continue
@@ -3753,9 +3803,9 @@ class Plugin:
         return {"success": not failed, "message": "\n\n".join(parts) or "Nothing to do."}
 
     def _disable_eas(self, params):
-        channels = self._resolve_channels(params, prefix="eas_")
+        channels, reason = self._resolve_channels(params, prefix="eas_", with_reason=True)
         if not channels:
-            return {"success": False, "message": "No channels found. Set the EAS Weather Alerts > Apply To / Channel selector above."}
+            return {"success": False, "message": self._no_channels_message("EAS Weather Alerts", reason)}
         mappings = _get_mappings()
         disabled, skipped, failed = [], [], []
         for channel in channels:
@@ -3765,6 +3815,11 @@ class Plugin:
             is_coarmed  = mapping and mapping.get("eas_armed")
             if not mapping or (not is_pure_eas and not is_coarmed):
                 skipped.append(f"{channel.name} (no EAS ticker active)")
+                continue
+            if not self._mapping_identity_ok(channel, mapping):
+                failed.append(f"{channel.name} (saved mapping for this channel id belongs to "
+                               f"'{mapping.get('channel_name')}' — stale id from a migration/reimport; "
+                               "leaving it untouched)")
                 continue
             try:
                 if mapping.get("eas_profile_id"):
@@ -3865,9 +3920,9 @@ class Plugin:
         if not ca_ids:
             return {"success": False, "message": "No Weather Canada city IDs configured. Enter at least one city ID in EAS Weather Alerts > Weather Canada City IDs above."}
 
-        channels = self._resolve_channels(params, prefix="eas_ca_")
+        channels, reason = self._resolve_channels(params, prefix="eas_ca_", with_reason=True)
         if not channels:
-            return {"success": False, "message": "No channels found. Set the Weather Canada — Apply To / Channel selector in Settings."}
+            return {"success": False, "message": self._no_channels_message("Weather Canada", reason)}
 
         mappings = _get_mappings()
         enabled, skipped, failed = [], [], []
@@ -3877,6 +3932,11 @@ class Plugin:
             try:
                 if cid in mappings:
                     existing = mappings[cid]
+                    if not self._mapping_identity_ok(channel, existing):
+                        failed.append(f"{channel.name} (saved mapping for this channel id belongs to "
+                                       f"'{existing.get('channel_name')}' — stale id from a migration/reimport; "
+                                       "disable and re-enable from Channels to fix)")
+                        continue
                     if existing.get("type") == "eas_ca" or existing.get("eas_ca_armed"):
                         skipped.append(f"{channel.name} (Weather Canada EAS already armed)")
                         continue
@@ -3922,9 +3982,9 @@ class Plugin:
         return {"success": not failed, "message": "\n\n".join(parts) or "Nothing to do."}
 
     def _disable_eas_ca(self, params):
-        channels = self._resolve_channels(params, prefix="eas_ca_")
+        channels, reason = self._resolve_channels(params, prefix="eas_ca_", with_reason=True)
         if not channels:
-            return {"success": False, "message": "No channels found. Set the Weather Canada — Apply To / Channel selector in Settings."}
+            return {"success": False, "message": self._no_channels_message("Weather Canada", reason)}
         mappings = _get_mappings()
         disabled, skipped, failed = [], [], []
         for channel in channels:
@@ -3934,6 +3994,11 @@ class Plugin:
             is_coarmed = mapping and mapping.get("eas_ca_armed")
             if not mapping or (not is_pure_ca and not is_coarmed):
                 skipped.append(f"{channel.name} (no Weather Canada EAS active)")
+                continue
+            if not self._mapping_identity_ok(channel, mapping):
+                failed.append(f"{channel.name} (saved mapping for this channel id belongs to "
+                               f"'{mapping.get('channel_name')}' — stale id from a migration/reimport; "
+                               "leaving it untouched)")
                 continue
             try:
                 if mapping.get("eas_profile_id"):
@@ -3968,9 +4033,9 @@ class Plugin:
         except (ValueError, TypeError):
             pass
 
-        channels = self._resolve_channels(params, prefix="eas_ca_")
+        channels, reason = self._resolve_channels(params, prefix="eas_ca_", with_reason=True)
         if not channels:
-            return {"success": False, "message": "No channels found. Set the Weather Canada — Apply To / Channel selector in Settings."}
+            return {"success": False, "message": self._no_channels_message("Weather Canada", reason)}
 
         mappings = _get_mappings()
         settings = _get_settings()
@@ -3981,6 +4046,11 @@ class Plugin:
             mapping = mappings.get(cid)
             if not mapping or (mapping.get("type") != "eas_ca" and not mapping.get("eas_ca_armed")):
                 skipped.append(f"{channel.name} (no Weather Canada EAS active — enable it first)")
+                continue
+            if not self._mapping_identity_ok(channel, mapping):
+                failed.append(f"{channel.name} (saved mapping for this channel id belongs to "
+                               f"'{mapping.get('channel_name')}' — stale id from a migration/reimport; "
+                               "refusing to touch the wrong live channel. Disable and re-enable EAS from Channels to fix)")
                 continue
             if mapping.get("eas_profile_id"):
                 skipped.append(f"{channel.name} (EAS already active — clear it first)")
@@ -4081,6 +4151,10 @@ class Plugin:
             name = mapping.get("channel_name", f"Channel {cid}")
             try:
                 channel = Channel.objects.get(id=int(cid))
+                if not self._mapping_identity_ok(channel, mapping):
+                    failed.append(f"{name} (saved mapping for this channel id now belongs to "
+                                   f"'{channel.name}' — stale id from a migration/reimport; leaving it untouched)")
+                    continue
                 _restore_profile(channel, mapping["original_profile_id"])
                 for pid_key in ("ticker_profile_id", "eas_profile_id"):
                     if mapping.get(pid_key):
@@ -4120,9 +4194,9 @@ class Plugin:
         except (ValueError, TypeError):
             pass
 
-        channels = self._resolve_channels(params, prefix="eas_")
+        channels, reason = self._resolve_channels(params, prefix="eas_", with_reason=True)
         if not channels:
-            return {"success": False, "message": "No channels found. Select a channel in the EAS section."}
+            return {"success": False, "message": self._no_channels_message("EAS Weather Alerts", reason)}
 
         mappings  = _get_mappings()
         settings  = _get_settings()
@@ -4133,6 +4207,11 @@ class Plugin:
             mapping = mappings.get(cid)
             if not mapping or (mapping.get("type") != "eas" and not mapping.get("eas_armed")):
                 skipped.append(f"{channel.name} (no EAS ticker active — enable it first)")
+                continue
+            if not self._mapping_identity_ok(channel, mapping):
+                failed.append(f"{channel.name} (saved mapping for this channel id belongs to "
+                               f"'{mapping.get('channel_name')}' — stale id from a migration/reimport; "
+                               "refusing to touch the wrong live channel. Disable and re-enable EAS from Channels to fix)")
                 continue
             if mapping.get("eas_profile_id"):
                 skipped.append(f"{channel.name} (EAS already active — clear it first)")
@@ -5375,9 +5454,22 @@ class Plugin:
     # Helpers                                                              #
     # ------------------------------------------------------------------ #
 
-    def _resolve_channels(self, params, prefix=""):
+    def _resolve_channels(self, params, prefix="", with_reason=False):
+        """Resolve the Apply-To target to a channel list.
+
+        with_reason=True additionally returns why the result was empty ("not_set" —
+        nothing configured yet, vs "stale_group:<id>" / "stale_channel:<id>" /
+        "stale_groups" — a saved id/name no longer matches anything, which is what
+        happens to every saved Apply-To selector after a channel/database migration
+        or reimport changes Channel/ChannelGroup primary keys). Callers use this to
+        tell users "you haven't set this" from "your saved selection went stale"
+        instead of one generic "No channels found."
+        """
         from apps.channels.models import Channel, ChannelGroup
         target_type = params.get(f"{prefix}target_type", "group")
+
+        def _result(channels, reason=None):
+            return (channels, reason) if with_reason else channels
 
         # Build exclusion set from the exclude_groups field (applies to all target types)
         exclude_ids = set()
@@ -5398,42 +5490,71 @@ class Plugin:
             return [ch for ch in channels if ch.id not in exclude_ids]
 
         if target_type == "all":
-            return _apply_exclusions(list(Channel.objects.all().order_by("name")))
+            return _result(_apply_exclusions(list(Channel.objects.all().order_by("name"))))
 
         if target_type == "group":
             group_id = params.get(f"{prefix}channel_group_id")
             if not group_id:
-                return []
+                return _result([], "not_set")
             try:
                 group = ChannelGroup.objects.get(id=int(group_id))
-                return _apply_exclusions(list(Channel.objects.filter(channel_group=group).order_by("name")))
+                return _result(_apply_exclusions(list(Channel.objects.filter(channel_group=group).order_by("name"))))
             except ChannelGroup.DoesNotExist:
-                return []
+                return _result([], f"stale_group:{group_id}")
 
         if target_type == "groups":
             raw = params.get(f"{prefix}channel_group_names", "")
             names = [n.strip() for n in raw.split(",") if n.strip()]
             if not names:
-                return []
+                return _result([], "not_set")
             channels = []
             seen = set()
+            any_found = False
             for name in names:
                 try:
                     group = ChannelGroup.objects.get(name__iexact=name)
+                    any_found = True
                     for ch in Channel.objects.filter(channel_group=group).order_by("name"):
                         if ch.id not in seen:
                             seen.add(ch.id)
                             channels.append(ch)
                 except ChannelGroup.DoesNotExist:
                     pass
-            return _apply_exclusions(channels)
+            return _result(_apply_exclusions(channels), None if any_found else "stale_groups")
 
         # single channel
         channel_id = params.get(f"{prefix}channel_id")
         if not channel_id:
-            return []
+            return _result([], "not_set")
         try:
             ch = Channel.objects.get(id=int(channel_id))
-            return [] if ch.id in exclude_ids else [ch]
+            return _result([] if ch.id in exclude_ids else [ch])
         except Channel.DoesNotExist:
-            return []
+            return _result([], f"stale_channel:{channel_id}")
+
+    def _no_channels_message(self, section_label, reason):
+        """Turn a _resolve_channels(with_reason=True) reason into an actionable message."""
+        if reason and reason.startswith("stale_group:"):
+            gid = reason.split(":", 1)[1]
+            return (f"No channels found — the saved {section_label} channel group (id {gid}) no longer "
+                     "exists. This happens after a channel/database migration or reimport changes channel "
+                     f"group IDs. Re-open {section_label} > Apply To, re-select the group, and save settings.")
+        if reason and reason.startswith("stale_channel:"):
+            cid = reason.split(":", 1)[1]
+            return (f"No channels found — the saved {section_label} channel (id {cid}) no longer exists. "
+                     "This happens after a channel/database migration or reimport changes channel IDs. "
+                     f"Re-open {section_label} > Apply To, re-select the channel, and save settings.")
+        if reason == "stale_groups":
+            return (f"No channels found — none of the saved {section_label} group names matched an existing "
+                     f"channel group. Re-open {section_label} > Apply To and re-enter the group names.")
+        return f"No channels found. Set the {section_label} > Apply To / Channel selector above."
+
+    def _mapping_identity_ok(self, channel, mapping):
+        """Guard against acting on the wrong live channel when a saved numeric
+        channel id has been silently reassigned to a different channel by a
+        database migration/reimport (the id still resolves, just to something
+        else now). Mappings record the channel's name at the time they were
+        created, so a name mismatch here means the id is stale, not the channel
+        we think it is."""
+        saved_name = mapping.get("channel_name")
+        return not saved_name or saved_name == channel.name

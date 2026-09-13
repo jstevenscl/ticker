@@ -1,6 +1,6 @@
 # Ticker
 
-![Version](https://img.shields.io/badge/version-0.5.02-blue)
+![Version](https://img.shields.io/badge/version-0.5.03-blue)
 
 A [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr) plugin that injects dynamic text overlays into IPTV channels via FFmpeg. Ticker clones the channel's existing stream profile, injects overlay parameters, and restores the original profile on disable — the source profile is never modified.
 
@@ -102,6 +102,8 @@ Nothing happens until you give it something to display. You enable it on a chann
 ### EAS Weather Alerts
 
 Your channel runs 100% normally at all times. Ticker sits quietly in the background watching the NWS API for your configured zone codes — no overlay, no extra encoding, nothing. The moment an actual weather alert goes active for your zone, Ticker automatically switches the channel to the EAS overlay: scrolling alert bar, severity label, and attention tone if configured. The second that alert clears on the NWS side, your channel goes silently back to normal. Completely automatic, start to finish.
+
+Lower-severity alerts don't have to scroll nonstop for their entire duration — a per-severity **Display Interval** lets a Moderate alert (e.g. a Heat Advisory) flash on screen every so often instead of staying up continuously, while Severe/Extreme alerts can stay constant. See [Shared EAS Settings](docs/USERGUIDE.md#shared-eas-settings) in the User Guide.
 
 ---
 

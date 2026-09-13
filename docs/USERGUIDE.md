@@ -256,9 +256,13 @@ In Ticker settings, scroll to the **EAS Weather Alerts** section and fill in the
 
 7. **Siren Tone Interval (seconds)** — How often the EAS attention tone (853 Hz + 960 Hz dual tone) repeats during an active alert. Set to `0` to disable the tone entirely. Minimum is 30 when enabled.
 
-8. **Test Alert Duration (seconds)** — How long the Test EAS Alert action fires before auto-restoring. Default 60. Range 10–600.
+8. **Display Interval — Moderate / Severe / Extreme (seconds)** — How often the on-screen banner reappears for an active alert of that severity, independent of the siren tone. `0` (default) keeps it constantly visible for the whole alert, matching earlier versions. Set a non-zero value on a lower severity (e.g. Moderate, for things like a Heat Advisory) so it flashes on a schedule instead of scrolling nonstop, while leaving Severe/Extreme at `0` for constant display. Only re-checked once per Poll Interval.
 
-9. **Apply To** — Choose: All Channels, Channel Group, Multiple Groups (CSV), or Single Channel. Fill in the matching target field (Channel Group dropdown, group name list, or single channel dropdown).
+9. **Display Duration (seconds)** — How long the banner stays visible each time it reappears, for any severity using a non-zero Display Interval above.
+
+10. **Test Alert Duration (seconds)** — How long the Test EAS Alert action fires before auto-restoring. Default 60. Range 10–600.
+
+11. **Apply To** — Choose: All Channels, Channel Group, Multiple Groups (CSV), or Single Channel. Fill in the matching target field (Channel Group dropdown, group name list, or single channel dropdown).
 
 > **EAS works alongside other tickers.** If a channel already has Now Playing, Custom Text, or Sports Ticker enabled, you do not need to disable it first. EAS arms on top of existing tickers and takes precedence when an alert fires. When the alert clears, the previous ticker state resumes automatically.
 
@@ -343,7 +347,7 @@ In Ticker settings, scroll to the **Weather Canada** section:
 
 3. **Canada — Apply To** — Scope of channels to arm for Weather Canada alerts. Independent from the NWS EAS channel targeting.
 
-4. Shared settings (**Minimum Severity**, **Alert Overlay Style**, **Poll Interval**, **Siren Tone Interval**, **Test Alert Duration**) are shared between NWS and Weather Canada and appear in the **Shared EAS Settings** section below the Canada block.
+4. Shared settings (**Minimum Severity**, **Alert Overlay Style**, **Poll Interval**, **Siren Tone Interval**, **Display Interval** per severity, **Display Duration**, **Test Alert Duration**) are shared between NWS and Weather Canada and appear in the **Shared EAS Settings** section below the Canada block.
 
 ---
 
@@ -594,6 +598,8 @@ These settings apply to both NWS and Weather Canada alerts.
 | Alert Overlay Style | `TV Broadcast` — news ticker bar (recommended). `Ticker Custom` — simpler flashing overlay. |
 | Poll Interval (seconds) | How often Ticker checks for alerts from both sources. Default 60s, minimum 15s. |
 | Siren Tone Interval (seconds) | Seconds between attention tone repetitions. NWS uses the 853+960 Hz EAS dual tone; Weather Canada uses the NAAD attention signal. Set to 0 to disable. |
+| Display Interval — Moderate / Severe / Extreme (seconds) | How often the on-screen overlay banner reappears for an active alert of that severity. `0` (default) means constant/always-visible — the original behavior. A non-zero value shows the banner for **Display Duration** seconds out of every interval, so a low-severity alert (e.g. a Heat Advisory) can flash briefly on a schedule instead of scrolling for the alert's entire duration, while Extreme alerts stay constant. Independent of the siren tone's own cadence. Only re-checked once per **Poll Interval**, so an interval shorter than Poll Interval has no effect. |
+| Display Duration (seconds) | How long the banner stays visible each time it reappears. Shared across all three severities; ignored for any severity left at `0` (constant) above. |
 | Test Alert Duration (seconds) | How long test alert actions run before auto-restoring. Default 60, range 10–600. |
 | Saved / Favorite Codes | Reference-only storage for NWS zone codes you use often. Not actively monitored — just a convenient place to keep codes you look up frequently. |
 
