@@ -1,18 +1,6 @@
 {
-  "generated_at": "2026-09-13T15:26:33Z",
+  "generated_at": "2026-09-13T18:27:43Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Manchester United @ Manchester City",
-      "description": "SOCCER · Manchester United @ Manchester City",
-      "start_utc": "2026-09-13T15:30:00Z",
-      "end_utc": "2026-09-13T17:30:00Z",
-      "channels": [
-        "Manchester City",
-        "Manchester United",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Detroit Tigers @ Colorado Rockies",
