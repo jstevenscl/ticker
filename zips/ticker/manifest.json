@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T16:28:12Z",
+  "generated_at": "2026-09-13T05:38:03Z",
   "manifest": {
     "slug": "ticker",
     "name": "Ticker",
@@ -7,18 +7,27 @@
     "author": "jstevenscl",
     "registry_url": "https://github.com/jstevenscl/ticker",
     "registry_name": "jstevenscl/ticker",
-    "last_updated": "2026-09-08T16:28:12Z",
+    "last_updated": "2026-09-13T05:38:03Z",
     "latest": {
-      "version": "0.5.02",
-      "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.02.zip",
-      "checksum_md5": "e3d85d9d5bdb782701482dc1f85f05c5",
-      "checksum_sha256": "09b3c746026747d954f35071be827b4183dba805d07aee21fafc3deb8ce9ae30",
-      "size": 2192147,
-      "last_updated": "2026-09-08T16:28:12Z",
-      "build_timestamp": "2026-09-08T16:28:12Z",
+      "version": "0.5.03",
+      "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.03.zip",
+      "checksum_md5": "d3de5c7a34890016c76373b4e70382b9",
+      "checksum_sha256": "285e107e323293d155559f94734f4f43bf8333032b2805c8dd772f14ea88a65b",
+      "size": 2193965,
+      "last_updated": "2026-09-13T05:38:03Z",
+      "build_timestamp": "2026-09-13T05:38:03Z",
       "latest_url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-latest.zip"
     },
     "versions": [
+      {
+        "version": "0.5.03",
+        "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.03.zip",
+        "checksum_md5": "d3de5c7a34890016c76373b4e70382b9",
+        "checksum_sha256": "285e107e323293d155559f94734f4f43bf8333032b2805c8dd772f14ea88a65b",
+        "size": 2193965,
+        "last_updated": "2026-09-13T05:38:03Z",
+        "build_timestamp": "2026-09-13T05:38:03Z"
+      },
       {
         "version": "0.5.02",
         "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.02.zip",
