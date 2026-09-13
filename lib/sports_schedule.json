@@ -1,29 +1,6 @@
 {
-  "generated_at": "2026-09-13T08:41:18Z",
+  "generated_at": "2026-09-13T15:26:33Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Coventry City @ Brighton",
-      "description": "SOCCER · Coventry City @ Brighton",
-      "start_utc": "2026-09-13T13:00:00Z",
-      "end_utc": "2026-09-13T15:00:00Z",
-      "channels": [
-        "Brighton",
-        "Coventry City",
-        "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "f1",
-      "title": "Grand Prix of Spain",
-      "description": "Formula 1 Racing and Analysis · Grand Prix of Spain · Circuito de Madring",
-      "start_utc": "2026-09-13T13:00:00Z",
-      "end_utc": "2026-09-13T15:00:00Z",
-      "channels": [
-        "F1 on SiriusXM",
-        "Formula 1 Racing and Analysis"
-      ]
-    },
     {
       "slug": "soccer",
       "title": "Manchester United @ Manchester City",
@@ -165,14 +142,15 @@
     },
     {
       "slug": "mlb",
-      "title": "New York Yankees @ New York Mets",
-      "description": "MLB · New York Yankees @ New York Mets",
+      "title": "Washington Nationals @ Los Angeles Angels",
+      "description": "MLB · Washington Nationals @ Los Angeles Angels",
       "start_utc": "2026-09-13T17:35:00Z",
       "end_utc": "2026-09-13T20:35:00Z",
       "channels": [
-        "New York Mets",
-        "New York Yankees",
-        "Satellite Radio Channel 205",
+        "Los Angeles Angels",
+        "Washington Nationals",
+        "KSPN Los Angeles",
+        "Satellite Radio Channel 204",
         "MLB Network Radio"
       ]
     },
@@ -191,28 +169,14 @@
     },
     {
       "slug": "mlb",
-      "title": "Boston Red Sox @ Kansas City Royals",
-      "description": "MLB · Boston Red Sox @ Kansas City Royals",
+      "title": "New York Yankees @ New York Mets",
+      "description": "MLB · New York Yankees @ New York Mets",
       "start_utc": "2026-09-13T17:35:00Z",
       "end_utc": "2026-09-13T20:35:00Z",
       "channels": [
-        "Kansas City Royals",
-        "Boston Red Sox",
-        "Satellite Radio Channel 203",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Washington Nationals @ Los Angeles Angels",
-      "description": "MLB · Washington Nationals @ Los Angeles Angels",
-      "start_utc": "2026-09-13T17:35:00Z",
-      "end_utc": "2026-09-13T20:35:00Z",
-      "channels": [
-        "Los Angeles Angels",
-        "Washington Nationals",
-        "KSPN Los Angeles",
-        "Satellite Radio Channel 204",
+        "New York Mets",
+        "New York Yankees",
+        "Satellite Radio Channel 205",
         "MLB Network Radio"
       ]
     },
@@ -231,19 +195,6 @@
     },
     {
       "slug": "mlb",
-      "title": "Tampa Bay Rays @ Houston Astros",
-      "description": "MLB · Tampa Bay Rays @ Houston Astros",
-      "start_utc": "2026-09-13T17:40:00Z",
-      "end_utc": "2026-09-13T20:40:00Z",
-      "channels": [
-        "Houston Astros",
-        "Tampa Bay Rays",
-        "Satellite Radio Channel 207",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
       "title": "Miami Marlins @ Los Angeles Dodgers",
       "description": "MLB · Miami Marlins @ Los Angeles Dodgers",
       "start_utc": "2026-09-13T17:40:00Z",
@@ -253,6 +204,19 @@
         "Miami Marlins",
         "Satellite Radio Channel 208",
         "MLB en Español 870",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Tampa Bay Rays @ Houston Astros",
+      "description": "MLB · Tampa Bay Rays @ Houston Astros",
+      "start_utc": "2026-09-13T17:40:00Z",
+      "end_utc": "2026-09-13T20:40:00Z",
+      "channels": [
+        "Houston Astros",
+        "Tampa Bay Rays",
+        "Satellite Radio Channel 207",
         "MLB Network Radio"
       ]
     },
@@ -271,19 +235,6 @@
     },
     {
       "slug": "mlb",
-      "title": "Milwaukee Brewers @ Cincinnati Reds",
-      "description": "MLB · Milwaukee Brewers @ Cincinnati Reds",
-      "start_utc": "2026-09-13T18:10:00Z",
-      "end_utc": "2026-09-13T21:10:00Z",
-      "channels": [
-        "Cincinnati Reds",
-        "Milwaukee Brewers",
-        "Satellite Radio Channel 213",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
       "title": "Minnesota Twins @ Cleveland Guardians",
       "description": "MLB · Minnesota Twins @ Cleveland Guardians",
       "start_utc": "2026-09-13T18:10:00Z",
@@ -292,6 +243,19 @@
         "Cleveland Guardians",
         "Minnesota Twins",
         "Satellite Radio Channel 210",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Milwaukee Brewers @ Cincinnati Reds",
+      "description": "MLB · Milwaukee Brewers @ Cincinnati Reds",
+      "start_utc": "2026-09-13T18:10:00Z",
+      "end_utc": "2026-09-13T21:10:00Z",
+      "channels": [
+        "Cincinnati Reds",
+        "Milwaukee Brewers",
+        "Satellite Radio Channel 213",
         "MLB Network Radio"
       ]
     },
@@ -319,6 +283,19 @@
         "Chicago Cubs",
         "KDKA Pittsburgh",
         "Satellite Radio Channel 212",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Boston Red Sox @ Kansas City Royals",
+      "description": "MLB · Boston Red Sox @ Kansas City Royals",
+      "start_utc": "2026-09-13T19:05:00Z",
+      "end_utc": "2026-09-13T22:05:00Z",
+      "channels": [
+        "Kansas City Royals",
+        "Boston Red Sox",
+        "Satellite Radio Channel 203",
         "MLB Network Radio"
       ]
     },
