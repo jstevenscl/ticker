@@ -1,18 +1,6 @@
 {
-  "generated_at": "2026-09-14T17:24:07Z",
+  "generated_at": "2026-09-14T22:53:59Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Leeds @ Newcastle",
-      "description": "SOCCER · Leeds @ Newcastle",
-      "start_utc": "2026-09-14T19:00:00Z",
-      "end_utc": "2026-09-14T21:00:00Z",
-      "channels": [
-        "Newcastle",
-        "Leeds",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Cleveland Guardians @ Chicago White Sox",
