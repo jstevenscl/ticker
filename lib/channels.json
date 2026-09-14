@@ -8095,6 +8095,28 @@
     "sxm_entity_id": "09c33b3e-3ba1-9c04-2c2d-dd0e0a5154a7",
     "lookaround_channel_id": "09c33b3e-3ba1-9c04-2c2d-dd0e0a5154a7"
   },
+  "country coffee house": {
+    "name": "Country Coffee House",
+    "description": "Country unplugged",
+    "genre": "Relax",
+    "sxm_number": 1319,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "4330",
+    "lookaround_channel_id": null
+  },
+  "road trip 2k": {
+    "name": "Road Trip 2K",
+    "description": "Aux cord anthems",
+    "genre": "The 2000s Decade",
+    "sxm_number": 1320,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "4331",
+    "lookaround_channel_id": null
+  },
   "country pride": {
     "name": "Country Pride",
     "description": "LGBTQIA+ voices in country",
@@ -8139,52 +8161,8 @@
     "sxm_entity_id": "4335",
     "lookaround_channel_id": null
   },
-  "sports 393": {
-    "name": "Sports 393",
-    "description": "Live play-by-play of sports",
-    "genre": "Sports Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9678",
-    "lookaround_channel_id": null
-  },
-  "sports 394": {
-    "name": "Sports 394",
-    "description": "Live play-by-play of sports",
-    "genre": "Sports Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9679",
-    "lookaround_channel_id": null
-  },
-  "country coffee house": {
-    "name": "Country Coffee House",
-    "description": "Country unplugged",
-    "genre": "Relax",
-    "sxm_number": 1319,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "4330",
-    "lookaround_channel_id": null
-  },
-  "road trip 2k": {
-    "name": "Road Trip 2K",
-    "description": "Aux cord anthems",
-    "genre": "The 2000s Decade",
-    "sxm_number": 1320,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "4331",
-    "lookaround_channel_id": null
-  },
-  "sports 205": {
-    "name": "Sports 205",
+  "sports 251": {
+    "name": "Sports 251",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8194,19 +8172,8 @@
     "sxm_entity_id": "9560",
     "lookaround_channel_id": null
   },
-  "soulcycle radio": {
-    "name": "SoulCycle Radio",
-    "description": "There's a reason we ride to the rhythm as a pack. At SoulCycle, music is what connects us, moves us, and inspires us. So we designed this channel to deliver the same joy, motivation, and heart-pumping beat you expect from us in class-and then some. Whether you're in the car, walking to work, or dancing in your bedroom, turn it up for a transformative mind-body-soul experience.",
-    "genre": "Pop",
-    "sxm_number": 704,
-    "seasonal": null,
-    "logo_url": "https://stellartunerlog.com/logos/9500.png",
-    "sxm_logo_src": "if/66/66cd9165c54231c9b831ebf64cb7417f_1756126389.png",
-    "sxm_entity_id": "9500",
-    "lookaround_channel_id": "6c535597-8e2b-5b54-968a-10cad277f43b"
-  },
-  "sports 392": {
-    "name": "Sports 392",
+  "sports 273": {
+    "name": "Sports 273",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8216,8 +8183,8 @@
     "sxm_entity_id": "9478",
     "lookaround_channel_id": null
   },
-  "sports 391": {
-    "name": "Sports 391",
+  "sports 272": {
+    "name": "Sports 272",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8227,8 +8194,8 @@
     "sxm_entity_id": "9441",
     "lookaround_channel_id": null
   },
-  "sports 390": {
-    "name": "Sports 390",
+  "sports 271": {
+    "name": "Sports 271",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8238,8 +8205,8 @@
     "sxm_entity_id": "9440",
     "lookaround_channel_id": null
   },
-  "sports 389": {
-    "name": "Sports 389",
+  "sports 270": {
+    "name": "Sports 270",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8249,8 +8216,8 @@
     "sxm_entity_id": "9439",
     "lookaround_channel_id": null
   },
-  "sports 388": {
-    "name": "Sports 388",
+  "sports 269": {
+    "name": "Sports 269",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8260,8 +8227,8 @@
     "sxm_entity_id": "9438",
     "lookaround_channel_id": null
   },
-  "sports 387": {
-    "name": "Sports 387",
+  "sports 268": {
+    "name": "Sports 268",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8271,8 +8238,8 @@
     "sxm_entity_id": "9437",
     "lookaround_channel_id": null
   },
-  "sports 386": {
-    "name": "Sports 386",
+  "sports 267": {
+    "name": "Sports 267",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8282,8 +8249,8 @@
     "sxm_entity_id": "9436",
     "lookaround_channel_id": null
   },
-  "sports 385": {
-    "name": "Sports 385",
+  "sports 266": {
+    "name": "Sports 266",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8293,8 +8260,8 @@
     "sxm_entity_id": "9435",
     "lookaround_channel_id": null
   },
-  "sports 384": {
-    "name": "Sports 384",
+  "sports 265": {
+    "name": "Sports 265",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8304,8 +8271,8 @@
     "sxm_entity_id": "9434",
     "lookaround_channel_id": null
   },
-  "sports 383": {
-    "name": "Sports 383",
+  "sports 264": {
+    "name": "Sports 264",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8315,8 +8282,8 @@
     "sxm_entity_id": "9433",
     "lookaround_channel_id": null
   },
-  "sports 382": {
-    "name": "Sports 382",
+  "sports 263": {
+    "name": "Sports 263",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8326,8 +8293,8 @@
     "sxm_entity_id": "9432",
     "lookaround_channel_id": null
   },
-  "sports 381": {
-    "name": "Sports 381",
+  "sports 262": {
+    "name": "Sports 262",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8337,8 +8304,8 @@
     "sxm_entity_id": "9431",
     "lookaround_channel_id": null
   },
-  "sports 380": {
-    "name": "Sports 380",
+  "sports 261": {
+    "name": "Sports 261",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8359,8 +8326,8 @@
     "sxm_entity_id": "8373",
     "lookaround_channel_id": null
   },
-  "big 12 198": {
-    "name": "Big 12 198",
+  "big 12 237": {
+    "name": "Big 12 237",
     "description": "Your home for live play-by-play of Big 12 sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8370,8 +8337,8 @@
     "sxm_entity_id": "8332",
     "lookaround_channel_id": null
   },
-  "big ten 197": {
-    "name": "Big Ten 197",
+  "big ten 233": {
+    "name": "Big Ten 233",
     "description": "Your home for live play-by-play of Big Ten sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8381,8 +8348,8 @@
     "sxm_entity_id": "8331",
     "lookaround_channel_id": null
   },
-  "big ten 196": {
-    "name": "Big Ten 196",
+  "big ten 232": {
+    "name": "Big Ten 232",
     "description": "Your home for live play-by-play of Big Ten sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8390,6 +8357,204 @@
     "logo_url": "",
     "sxm_logo_src": "",
     "sxm_entity_id": "8330",
+    "lookaround_channel_id": null
+  },
+  "nba 222": {
+    "name": "NBA 222",
+    "description": "Live NBA play-by-play all season long.",
+    "genre": "NBA Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8329",
+    "lookaround_channel_id": null
+  },
+  "sports 250": {
+    "name": "Sports 250",
+    "description": "Play-by-Play of live sporting events, including NCAA, NFL, NBA, NHL games and more.",
+    "genre": "Sports Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8327",
+    "lookaround_channel_id": null
+  },
+  "nfl 201": {
+    "name": "NFL 201",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8326",
+    "lookaround_channel_id": null
+  },
+  "nfl 200": {
+    "name": "NFL 200",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8325",
+    "lookaround_channel_id": null
+  },
+  "nfl 199": {
+    "name": "NFL 199",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8324",
+    "lookaround_channel_id": null
+  },
+  "nfl 198": {
+    "name": "NFL 198",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8323",
+    "lookaround_channel_id": null
+  },
+  "nfl 197": {
+    "name": "NFL 197",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8322",
+    "lookaround_channel_id": null
+  },
+  "nfl 196": {
+    "name": "NFL 196",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8321",
+    "lookaround_channel_id": null
+  },
+  "nfl 195": {
+    "name": "NFL 195",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8320",
+    "lookaround_channel_id": null
+  },
+  "nfl 194": {
+    "name": "NFL 194",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8319",
+    "lookaround_channel_id": null
+  },
+  "nfl 193": {
+    "name": "NFL 193",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8318",
+    "lookaround_channel_id": null
+  },
+  "nfl 192": {
+    "name": "NFL 192",
+    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
+    "genre": "NFL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8317",
+    "lookaround_channel_id": null
+  },
+  "sports 252": {
+    "name": "Sports 252",
+    "description": "Home of the The Jim Rome Show, plus live sports play-by-play.",
+    "genre": "Sports Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8315",
+    "lookaround_channel_id": null
+  },
+  "sports 253": {
+    "name": "Sports 253",
+    "description": "Live play-by-play of sports",
+    "genre": "Sports Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8314",
+    "lookaround_channel_id": null
+  },
+  "nba 221": {
+    "name": "NBA 221",
+    "description": "Live NBA play-by-play all season long.",
+    "genre": "NBA Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8306",
+    "lookaround_channel_id": null
+  },
+  "nba 220": {
+    "name": "NBA 220",
+    "description": "Live NBA play-by-play all season long.",
+    "genre": "NBA Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8305",
+    "lookaround_channel_id": null
+  },
+  "nba 219": {
+    "name": "NBA 219",
+    "description": "Live NBA play-by-play all season long.",
+    "genre": "NBA Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8304",
+    "lookaround_channel_id": null
+  },
+  "nba 218": {
+    "name": "NBA 218",
+    "description": "Live NBA play-by-play all season long.",
+    "genre": "NBA Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8303",
     "lookaround_channel_id": null
   },
   "nba 217": {
@@ -8400,209 +8565,11 @@
     "seasonal": null,
     "logo_url": "",
     "sxm_logo_src": "",
-    "sxm_entity_id": "8329",
-    "lookaround_channel_id": null
-  },
-  "sports 204": {
-    "name": "Sports 204",
-    "description": "Play-by-Play of live sporting events, including NCAA, NFL, NBA, NHL games and more.",
-    "genre": "Sports Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8327",
-    "lookaround_channel_id": null
-  },
-  "nfl 234": {
-    "name": "NFL 234",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8326",
-    "lookaround_channel_id": null
-  },
-  "nfl 233": {
-    "name": "NFL 233",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8325",
-    "lookaround_channel_id": null
-  },
-  "nfl 232": {
-    "name": "NFL 232",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8324",
-    "lookaround_channel_id": null
-  },
-  "nfl 231": {
-    "name": "NFL 231",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8323",
-    "lookaround_channel_id": null
-  },
-  "nfl 230": {
-    "name": "NFL 230",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8322",
-    "lookaround_channel_id": null
-  },
-  "nfl 229": {
-    "name": "NFL 229",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8321",
-    "lookaround_channel_id": null
-  },
-  "nfl 228": {
-    "name": "NFL 228",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8320",
-    "lookaround_channel_id": null
-  },
-  "nfl 227": {
-    "name": "NFL 227",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8319",
-    "lookaround_channel_id": null
-  },
-  "nfl 226": {
-    "name": "NFL 226",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8318",
-    "lookaround_channel_id": null
-  },
-  "nfl 225": {
-    "name": "NFL 225",
-    "description": "SiriusXM offers live play-by-play of the home and away team broadcasts of every NFL regular season and playoff game.",
-    "genre": "NFL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8317",
-    "lookaround_channel_id": null
-  },
-  "sports 206": {
-    "name": "Sports 206",
-    "description": "Home of the The Jim Rome Show, plus live sports play-by-play.",
-    "genre": "Sports Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8315",
-    "lookaround_channel_id": null
-  },
-  "sports 207": {
-    "name": "Sports 207",
-    "description": "Live play-by-play of sports",
-    "genre": "Sports Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8314",
-    "lookaround_channel_id": null
-  },
-  "nba 216": {
-    "name": "NBA 216",
-    "description": "Live NBA play-by-play all season long.",
-    "genre": "NBA Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8306",
-    "lookaround_channel_id": null
-  },
-  "nba 215": {
-    "name": "NBA 215",
-    "description": "Live NBA play-by-play all season long.",
-    "genre": "NBA Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8305",
-    "lookaround_channel_id": null
-  },
-  "nba 214": {
-    "name": "NBA 214",
-    "description": "Live NBA play-by-play all season long.",
-    "genre": "NBA Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8304",
-    "lookaround_channel_id": null
-  },
-  "nba 213": {
-    "name": "NBA 213",
-    "description": "Live NBA play-by-play all season long.",
-    "genre": "NBA Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8303",
-    "lookaround_channel_id": null
-  },
-  "nba 212": {
-    "name": "NBA 212",
-    "description": "Live NBA play-by-play all season long.",
-    "genre": "NBA Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
     "sxm_entity_id": "8302",
     "lookaround_channel_id": null
   },
-  "sports 202": {
-    "name": "Sports 202",
+  "sports 248": {
+    "name": "Sports 248",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8610,6 +8577,50 @@
     "logo_url": "",
     "sxm_logo_src": "",
     "sxm_entity_id": "8301",
+    "lookaround_channel_id": null
+  },
+  "nhl 227": {
+    "name": "NHL 227",
+    "description": "Every Team. Everywhere. The Satellite Radio Home of the NHL®.",
+    "genre": "NHL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8295",
+    "lookaround_channel_id": null
+  },
+  "nhl 226": {
+    "name": "NHL 226",
+    "description": "Every Team. Everywhere. The Satellite Radio Home of the NHL®.",
+    "genre": "NHL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8294",
+    "lookaround_channel_id": null
+  },
+  "nhl 225": {
+    "name": "NHL 225",
+    "description": "Every Team. Everywhere. The Satellite Radio Home of the NHL®.",
+    "genre": "NHL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8293",
+    "lookaround_channel_id": null
+  },
+  "nhl 224": {
+    "name": "NHL 224",
+    "description": "Every Team. Everywhere. The Satellite Radio Home of the NHL®.",
+    "genre": "NHL Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "8292",
     "lookaround_channel_id": null
   },
   "nhl 223": {
@@ -8620,55 +8631,11 @@
     "seasonal": null,
     "logo_url": "",
     "sxm_logo_src": "",
-    "sxm_entity_id": "8295",
-    "lookaround_channel_id": null
-  },
-  "nhl 222": {
-    "name": "NHL 222",
-    "description": "Every Team. Everywhere. The Satellite Radio Home of the NHL®.",
-    "genre": "NHL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8294",
-    "lookaround_channel_id": null
-  },
-  "nhl 221": {
-    "name": "NHL 221",
-    "description": "Every Team. Everywhere. The Satellite Radio Home of the NHL®.",
-    "genre": "NHL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8293",
-    "lookaround_channel_id": null
-  },
-  "nhl 220": {
-    "name": "NHL 220",
-    "description": "Every Team. Everywhere. The Satellite Radio Home of the NHL®.",
-    "genre": "NHL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "8292",
-    "lookaround_channel_id": null
-  },
-  "nhl 219": {
-    "name": "NHL 219",
-    "description": "Every Team. Everywhere. The Satellite Radio Home of the NHL®.",
-    "genre": "NHL Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
     "sxm_entity_id": "8291",
     "lookaround_channel_id": null
   },
-  "sports 203": {
-    "name": "Sports 203",
+  "sports 249": {
+    "name": "Sports 249",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8678,8 +8645,8 @@
     "sxm_entity_id": "8290",
     "lookaround_channel_id": null
   },
-  "sec 192": {
-    "name": "SEC 192",
+  "sec 230": {
+    "name": "SEC 230",
     "description": "Your home for live play-by-play of SEC sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8689,8 +8656,8 @@
     "sxm_entity_id": "8289",
     "lookaround_channel_id": null
   },
-  "sec 191": {
-    "name": "SEC 191",
+  "sec 229": {
+    "name": "SEC 229",
     "description": "Your home for live play-by-play of SEC sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8700,8 +8667,8 @@
     "sxm_entity_id": "8288",
     "lookaround_channel_id": null
   },
-  "sec 190": {
-    "name": "SEC 190",
+  "sec 228": {
+    "name": "SEC 228",
     "description": "Your home for live play-by-play of SEC sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8711,8 +8678,8 @@
     "sxm_entity_id": "8287",
     "lookaround_channel_id": null
   },
-  "big ten 195": {
-    "name": "Big Ten 195",
+  "big ten 231": {
+    "name": "Big Ten 231",
     "description": "Your home for live play-by-play of Big Ten sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8722,8 +8689,8 @@
     "sxm_entity_id": "8286",
     "lookaround_channel_id": null
   },
-  "acc 194": {
-    "name": "ACC 194",
+  "acc 235": {
+    "name": "ACC 235",
     "description": "Your home for live play-by-play of ACC sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8733,8 +8700,8 @@
     "sxm_entity_id": "8285",
     "lookaround_channel_id": null
   },
-  "acc 193": {
-    "name": "ACC 193",
+  "acc 234": {
+    "name": "ACC 234",
     "description": "Your home for live play-by-play of ACC sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8744,8 +8711,8 @@
     "sxm_entity_id": "8284",
     "lookaround_channel_id": null
   },
-  "sports 201": {
-    "name": "Sports 201",
+  "sports 247": {
+    "name": "Sports 247",
     "description": "Live play-by-play of sports",
     "genre": "Sports Play-by-Play",
     "sxm_number": null,
@@ -8755,9 +8722,9 @@
     "sxm_entity_id": "8283",
     "lookaround_channel_id": null
   },
-  "big 12 200": {
-    "name": "Big 12 200",
-    "description": "Your home for live play-by-play of Big 12 sports, including football and basketball games.",
+  "acc 236": {
+    "name": "ACC 236",
+    "description": "Your home for live play-by-play of ACC sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
     "seasonal": null,
@@ -8766,8 +8733,8 @@
     "sxm_entity_id": "8282",
     "lookaround_channel_id": null
   },
-  "big 12 199": {
-    "name": "Big 12 199",
+  "big 12 238": {
+    "name": "Big 12 238",
     "description": "Your home for live play-by-play of Big 12 sports, including football and basketball games.",
     "genre": "College Play-by-Play",
     "sxm_number": null,
@@ -8777,8 +8744,8 @@
     "sxm_entity_id": "8281",
     "lookaround_channel_id": null
   },
-  "mlb 189": {
-    "name": "MLB 189",
+  "mlb 216": {
+    "name": "MLB 216",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8788,8 +8755,8 @@
     "sxm_entity_id": "8280",
     "lookaround_channel_id": null
   },
-  "mlb 188": {
-    "name": "MLB 188",
+  "mlb 215": {
+    "name": "MLB 215",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8799,8 +8766,8 @@
     "sxm_entity_id": "8279",
     "lookaround_channel_id": null
   },
-  "mlb 187": {
-    "name": "MLB 187",
+  "mlb 214": {
+    "name": "MLB 214",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8810,8 +8777,8 @@
     "sxm_entity_id": "8278",
     "lookaround_channel_id": null
   },
-  "mlb 186": {
-    "name": "MLB 186",
+  "mlb 213": {
+    "name": "MLB 213",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8821,8 +8788,8 @@
     "sxm_entity_id": "8277",
     "lookaround_channel_id": null
   },
-  "mlb 185": {
-    "name": "MLB 185",
+  "mlb 212": {
+    "name": "MLB 212",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8832,8 +8799,8 @@
     "sxm_entity_id": "8276",
     "lookaround_channel_id": null
   },
-  "mlb 184": {
-    "name": "MLB 184",
+  "mlb 211": {
+    "name": "MLB 211",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8843,8 +8810,8 @@
     "sxm_entity_id": "8275",
     "lookaround_channel_id": null
   },
-  "mlb 183": {
-    "name": "MLB 183",
+  "mlb 210": {
+    "name": "MLB 210",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8854,8 +8821,8 @@
     "sxm_entity_id": "8274",
     "lookaround_channel_id": null
   },
-  "mlb 182": {
-    "name": "MLB 182",
+  "mlb 209": {
+    "name": "MLB 209",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8865,8 +8832,8 @@
     "sxm_entity_id": "8273",
     "lookaround_channel_id": null
   },
-  "mlb 181": {
-    "name": "MLB 181",
+  "mlb 208": {
+    "name": "MLB 208",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8876,8 +8843,8 @@
     "sxm_entity_id": "8272",
     "lookaround_channel_id": null
   },
-  "mlb 180": {
-    "name": "MLB 180",
+  "mlb 207": {
+    "name": "MLB 207",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8887,8 +8854,8 @@
     "sxm_entity_id": "8271",
     "lookaround_channel_id": null
   },
-  "mlb 179": {
-    "name": "MLB 179",
+  "mlb 206": {
+    "name": "MLB 206",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8898,8 +8865,8 @@
     "sxm_entity_id": "8270",
     "lookaround_channel_id": null
   },
-  "mlb 178": {
-    "name": "MLB 178",
+  "mlb 205": {
+    "name": "MLB 205",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8909,8 +8876,8 @@
     "sxm_entity_id": "8269",
     "lookaround_channel_id": null
   },
-  "mlb 177": {
-    "name": "MLB 177",
+  "mlb 204": {
+    "name": "MLB 204",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8920,8 +8887,8 @@
     "sxm_entity_id": "8268",
     "lookaround_channel_id": null
   },
-  "mlb 176": {
-    "name": "MLB 176",
+  "mlb 203": {
+    "name": "MLB 203",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8931,8 +8898,8 @@
     "sxm_entity_id": "8267",
     "lookaround_channel_id": null
   },
-  "mlb 175": {
-    "name": "MLB 175",
+  "mlb 202": {
+    "name": "MLB 202",
     "description": "One of 15 Major League Baseball® play-by-play channels.",
     "genre": "MLB Play-by-Play",
     "sxm_number": null,
@@ -8941,6 +8908,39 @@
     "sxm_logo_src": "",
     "sxm_entity_id": "8266",
     "lookaround_channel_id": null
+  },
+  "sports 274": {
+    "name": "Sports 274",
+    "description": "Live play-by-play of sports",
+    "genre": "Sports Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9678",
+    "lookaround_channel_id": null
+  },
+  "sports 275": {
+    "name": "Sports 275",
+    "description": "Live play-by-play of sports",
+    "genre": "Sports Play-by-Play",
+    "sxm_number": null,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9679",
+    "lookaround_channel_id": null
+  },
+  "soulcycle radio": {
+    "name": "SoulCycle Radio",
+    "description": "There's a reason we ride to the rhythm as a pack. At SoulCycle, music is what connects us, moves us, and inspires us. So we designed this channel to deliver the same joy, motivation, and heart-pumping beat you expect from us in class-and then some. Whether you're in the car, walking to work, or dancing in your bedroom, turn it up for a transformative mind-body-soul experience.",
+    "genre": "Pop",
+    "sxm_number": 704,
+    "seasonal": null,
+    "logo_url": "https://stellartunerlog.com/logos/9500.png",
+    "sxm_logo_src": "if/66/66cd9165c54231c9b831ebf64cb7417f_1756126389.png",
+    "sxm_entity_id": "9500",
+    "lookaround_channel_id": "6c535597-8e2b-5b54-968a-10cad277f43b"
   },
   "poplandia": {
     "name": "Poplandia",
