@@ -1,33 +1,6 @@
 {
-  "generated_at": "2026-09-14T02:51:24Z",
+  "generated_at": "2026-09-14T09:27:29Z",
   "events": [
-    {
-      "slug": "nfl",
-      "title": "New York Giants @ Dallas Cowboys",
-      "description": "NFL · New York Giants @ Dallas Cowboys",
-      "start_utc": "2026-09-14T00:20:00Z",
-      "end_utc": "2026-09-14T03:20:00Z",
-      "channels": [
-        "Dallas Cowboys",
-        "New York Giants",
-        "SiriusXM NFL Radio",
-        "NCAA Play-by-Play 192",
-        "NCAA Play-by-Play 193",
-        "NFL en Español 832"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "San Diego FC @ Philadelphia Union",
-      "description": "SOCCER · San Diego FC @ Philadelphia Union",
-      "start_utc": "2026-09-14T01:00:00Z",
-      "end_utc": "2026-09-14T03:00:00Z",
-      "channels": [
-        "Philadelphia Union",
-        "San Diego FC",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "soccer",
       "title": "Leeds @ Newcastle",
