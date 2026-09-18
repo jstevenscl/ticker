@@ -1,43 +1,6 @@
 {
-  "generated_at": "2026-09-17T22:35:25Z",
+  "generated_at": "2026-09-18T02:39:43Z",
   "events": [
-    {
-      "slug": "mlb",
-      "title": "Houston Astros @ Kansas City Royals",
-      "description": "MLB · Houston Astros @ Kansas City Royals",
-      "start_utc": "2026-09-17T23:15:00Z",
-      "end_utc": "2026-09-18T02:15:00Z",
-      "channels": [
-        "Kansas City Royals",
-        "Houston Astros",
-        "Satellite Radio Channel 202",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "New York Mets @ Philadelphia Phillies",
-      "description": "MLB · New York Mets @ Philadelphia Phillies",
-      "start_utc": "2026-09-17T23:15:00Z",
-      "end_utc": "2026-09-18T02:15:00Z",
-      "channels": [
-        "Philadelphia Phillies",
-        "New York Mets",
-        "WIP Philadelphia",
-        "Satellite Radio Channel 203",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "nascar",
-      "title": "UNOH 250 Presented by Ohio Logistics",
-      "description": "SiriusXM NASCAR Radio · UNOH 250 Presented by Ohio Logistics · Bristol Motor Speedway",
-      "start_utc": "2026-09-17T23:30:00Z",
-      "end_utc": "2026-09-18T03:00:00Z",
-      "channels": [
-        "SiriusXM NASCAR Radio"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Chicago White Sox @ Detroit Tigers",
