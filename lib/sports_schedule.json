@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T15:36:54Z",
+  "generated_at": "2026-09-18T18:47:10Z",
   "events": [
     {
       "slug": "soccer",
@@ -833,8 +833,8 @@
     },
     {
       "slug": "nascar",
-      "title": "NASCAR CRAFTSMAN Truck Series Playoff Race at Kansas",
-      "description": "SiriusXM NASCAR Radio · NASCAR CRAFTSMAN Truck Series Playoff Race at Kansas · Kansas Speedway",
+      "title": "Race to Stop Suicide 200",
+      "description": "SiriusXM NASCAR Radio · Race to Stop Suicide 200 · Kansas Speedway",
       "start_utc": "2026-09-26T16:30:00Z",
       "end_utc": "2026-09-26T20:00:00Z",
       "channels": [
