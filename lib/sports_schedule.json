@@ -1,18 +1,6 @@
 {
-  "generated_at": "2026-09-19T15:10:06Z",
+  "generated_at": "2026-09-19T18:20:17Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Brighton @ Arsenal",
-      "description": "SOCCER · Brighton @ Arsenal",
-      "start_utc": "2026-09-19T14:00:00Z",
-      "end_utc": "2026-09-19T16:00:00Z",
-      "channels": [
-        "Arsenal",
-        "Brighton",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "soccer",
       "title": "Nottingham Forest @ Coventry City",
@@ -347,18 +335,6 @@
     },
     {
       "slug": "soccer",
-      "title": "Manchester City @ Sunderland",
-      "description": "SOCCER · Manchester City @ Sunderland",
-      "start_utc": "2026-09-20T13:00:00Z",
-      "end_utc": "2026-09-20T15:00:00Z",
-      "channels": [
-        "Sunderland",
-        "Manchester City",
-        "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "soccer",
       "title": "Bournemouth @ Liverpool",
       "description": "SOCCER · Bournemouth @ Liverpool",
       "start_utc": "2026-09-20T13:00:00Z",
@@ -366,6 +342,18 @@
       "channels": [
         "Liverpool",
         "Bournemouth",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Manchester City @ Sunderland",
+      "description": "SOCCER · Manchester City @ Sunderland",
+      "start_utc": "2026-09-20T13:00:00Z",
+      "end_utc": "2026-09-20T15:00:00Z",
+      "channels": [
+        "Sunderland",
+        "Manchester City",
         "SiriusXM FC"
       ]
     },
