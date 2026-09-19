@@ -1,18 +1,6 @@
 {
-  "generated_at": "2026-09-19T08:26:33Z",
+  "generated_at": "2026-09-19T15:10:06Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Tottenham @ Aston Villa",
-      "description": "SOCCER · Tottenham @ Aston Villa",
-      "start_utc": "2026-09-19T11:30:00Z",
-      "end_utc": "2026-09-19T13:30:00Z",
-      "channels": [
-        "Aston Villa",
-        "Tottenham",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "soccer",
       "title": "Brighton @ Arsenal",
@@ -35,6 +23,20 @@
         "Coventry City",
         "Nottingham Forest",
         "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "Chicago White Sox @ Detroit Tigers",
+      "description": "MLB · Chicago White Sox @ Detroit Tigers",
+      "start_utc": "2026-09-19T18:10:00Z",
+      "end_utc": "2026-09-19T21:10:00Z",
+      "channels": [
+        "Detroit Tigers",
+        "Chicago White Sox",
+        "WXYT Detroit",
+        "Satellite Radio Channel 209",
+        "MLB Network Radio"
       ]
     },
     {
@@ -113,6 +115,19 @@
     },
     {
       "slug": "mlb",
+      "title": "Pittsburgh Pirates @ Kansas City Royals",
+      "description": "MLB · Pittsburgh Pirates @ Kansas City Royals",
+      "start_utc": "2026-09-19T22:40:00Z",
+      "end_utc": "2026-09-20T01:40:00Z",
+      "channels": [
+        "Kansas City Royals",
+        "Pittsburgh Pirates",
+        "Satellite Radio Channel 206",
+        "MLB Network Radio"
+      ]
+    },
+    {
+      "slug": "mlb",
       "title": "Cincinnati Reds @ Chicago Cubs",
       "description": "MLB · Cincinnati Reds @ Chicago Cubs",
       "start_utc": "2026-09-19T22:40:00Z",
@@ -126,16 +141,15 @@
       ]
     },
     {
-      "slug": "mlb",
-      "title": "Pittsburgh Pirates @ Kansas City Royals",
-      "description": "MLB · Pittsburgh Pirates @ Kansas City Royals",
-      "start_utc": "2026-09-19T22:40:00Z",
-      "end_utc": "2026-09-20T01:40:00Z",
+      "slug": "nhl",
+      "title": "Montreal Canadiens @ Toronto Maple Leafs",
+      "description": "NHL · Montreal Canadiens @ Toronto Maple Leafs",
+      "start_utc": "2026-09-19T23:00:00Z",
+      "end_utc": "2026-09-20T01:30:00Z",
       "channels": [
-        "Kansas City Royals",
-        "Pittsburgh Pirates",
-        "Satellite Radio Channel 206",
-        "MLB Network Radio"
+        "Toronto Maple Leafs",
+        "Montreal Canadiens",
+        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -147,18 +161,6 @@
       "channels": [
         "Montreal Canadiens",
         "Toronto Maple Leafs",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Montreal Canadiens @ Toronto Maple Leafs",
-      "description": "NHL · Montreal Canadiens @ Toronto Maple Leafs",
-      "start_utc": "2026-09-19T23:00:00Z",
-      "end_utc": "2026-09-20T01:30:00Z",
-      "channels": [
-        "Toronto Maple Leafs",
-        "Montreal Canadiens",
         "SiriusXM NHL Network Radio"
       ]
     },
@@ -192,20 +194,6 @@
     },
     {
       "slug": "mlb",
-      "title": "Chicago White Sox @ Detroit Tigers",
-      "description": "MLB · Chicago White Sox @ Detroit Tigers",
-      "start_utc": "2026-09-19T23:10:00Z",
-      "end_utc": "2026-09-20T02:10:00Z",
-      "channels": [
-        "Detroit Tigers",
-        "Chicago White Sox",
-        "WXYT Detroit",
-        "Satellite Radio Channel 209",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
       "title": "St. Louis Cardinals @ Washington Nationals",
       "description": "MLB · St. Louis Cardinals @ Washington Nationals",
       "start_utc": "2026-09-19T23:15:00Z",
@@ -231,6 +219,18 @@
     },
     {
       "slug": "nhl",
+      "title": "Minnesota Wild @ Chicago Blackhawks",
+      "description": "NHL · Minnesota Wild @ Chicago Blackhawks",
+      "start_utc": "2026-09-20T00:00:00Z",
+      "end_utc": "2026-09-20T02:30:00Z",
+      "channels": [
+        "Chicago Blackhawks",
+        "Minnesota Wild",
+        "SiriusXM NHL Network Radio"
+      ]
+    },
+    {
+      "slug": "nhl",
       "title": "Edmonton Oilers @ Winnipeg Jets",
       "description": "NHL · Edmonton Oilers @ Winnipeg Jets",
       "start_utc": "2026-09-20T00:00:00Z",
@@ -239,18 +239,6 @@
         "Winnipeg Jets",
         "Edmonton Oilers",
         "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Minnesota Wild @ Chicago Blackhawks",
-      "description": "NHL · Minnesota Wild @ Chicago Blackhawks",
-      "start_utc": "2026-09-20T00:00:00Z",
-      "end_utc": "2026-09-20T02:30:00Z",
-      "channels": [
-        "Chicago Blackhawks",
-        "Minnesota Wild",
         "SiriusXM NHL Network Radio"
       ]
     },
