@@ -1,251 +1,6 @@
 {
-  "generated_at": "2026-09-20T18:25:32Z",
+  "generated_at": "2026-09-20T22:06:09Z",
   "events": [
-    {
-      "slug": "nhl",
-      "title": "New Jersey Devils @ New York Islanders",
-      "description": "NHL · New Jersey Devils @ New York Islanders",
-      "start_utc": "2026-09-20T17:00:00Z",
-      "end_utc": "2026-09-20T19:30:00Z",
-      "channels": [
-        "New York Islanders",
-        "New Jersey Devils",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Atlanta Falcons @ Carolina Panthers",
-      "description": "NFL · Atlanta Falcons @ Carolina Panthers",
-      "start_utc": "2026-09-20T17:00:00Z",
-      "end_utc": "2026-09-20T20:00:00Z",
-      "channels": [
-        "Carolina Panthers",
-        "Atlanta Falcons",
-        "NCAA Play-by-Play 192",
-        "Satellite Radio Channel 261",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Tampa Bay Buccaneers @ Cleveland Browns",
-      "description": "NFL · Tampa Bay Buccaneers @ Cleveland Browns",
-      "start_utc": "2026-09-20T17:00:00Z",
-      "end_utc": "2026-09-20T20:00:00Z",
-      "channels": [
-        "Cleveland Browns",
-        "Tampa Bay Buccaneers",
-        "NCAA Play-by-Play 198",
-        "Satellite Radio Channel 267",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "New York Jets @ Green Bay Packers",
-      "description": "NFL · New York Jets @ Green Bay Packers",
-      "start_utc": "2026-09-20T17:00:00Z",
-      "end_utc": "2026-09-20T20:00:00Z",
-      "channels": [
-        "Green Bay Packers",
-        "New York Jets",
-        "WMFS Memphis",
-        "NCAA Play-by-Play 197",
-        "Satellite Radio Channel 266",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "New England Patriots @ Pittsburgh Steelers",
-      "description": "NFL · New England Patriots @ Pittsburgh Steelers",
-      "start_utc": "2026-09-20T17:00:00Z",
-      "end_utc": "2026-09-20T20:00:00Z",
-      "channels": [
-        "Pittsburgh Steelers",
-        "New England Patriots",
-        "NCAA Play-by-Play 195",
-        "Satellite Radio Channel 264",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Houston Texans @ Cincinnati Bengals",
-      "description": "NFL · Houston Texans @ Cincinnati Bengals",
-      "start_utc": "2026-09-20T17:00:00Z",
-      "end_utc": "2026-09-20T20:00:00Z",
-      "channels": [
-        "Cincinnati Bengals",
-        "Houston Texans",
-        "NCAA Play-by-Play 196",
-        "Satellite Radio Channel 265",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Baltimore Ravens @ New Orleans Saints",
-      "description": "NFL · Baltimore Ravens @ New Orleans Saints",
-      "start_utc": "2026-09-20T17:00:00Z",
-      "end_utc": "2026-09-20T20:00:00Z",
-      "channels": [
-        "New Orleans Saints",
-        "Baltimore Ravens",
-        "NCAA Play-by-Play 193",
-        "Satellite Radio Channel 262",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Chicago Bears @ Minnesota Vikings",
-      "description": "NFL · Chicago Bears @ Minnesota Vikings",
-      "start_utc": "2026-09-20T17:00:00Z",
-      "end_utc": "2026-09-20T20:00:00Z",
-      "channels": [
-        "Minnesota Vikings",
-        "Chicago Bears",
-        "NCAA Play-by-Play 194",
-        "Satellite Radio Channel 263",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Tennessee Titans @ Philadelphia Eagles",
-      "description": "NFL · Tennessee Titans @ Philadelphia Eagles",
-      "start_utc": "2026-09-20T17:00:00Z",
-      "end_utc": "2026-09-20T20:00:00Z",
-      "channels": [
-        "Philadelphia Eagles",
-        "Tennessee Titans",
-        "NCAA Play-by-Play 199",
-        "Satellite Radio Channel 268",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "New York Mets @ Philadelphia Phillies",
-      "description": "MLB · New York Mets @ Philadelphia Phillies",
-      "start_utc": "2026-09-20T17:10:00Z",
-      "end_utc": "2026-09-20T20:10:00Z",
-      "channels": [
-        "Philadelphia Phillies",
-        "New York Mets",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Pittsburgh Pirates @ Kansas City Royals",
-      "description": "MLB · Pittsburgh Pirates @ Kansas City Royals",
-      "start_utc": "2026-09-20T17:35:00Z",
-      "end_utc": "2026-09-20T20:35:00Z",
-      "channels": [
-        "Kansas City Royals",
-        "Pittsburgh Pirates",
-        "Satellite Radio Channel 202",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Cincinnati Reds @ Chicago Cubs",
-      "description": "MLB · Cincinnati Reds @ Chicago Cubs",
-      "start_utc": "2026-09-20T17:40:00Z",
-      "end_utc": "2026-09-20T20:40:00Z",
-      "channels": [
-        "Chicago Cubs",
-        "Cincinnati Reds",
-        "WSCR Chicago",
-        "Satellite Radio Channel 205",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Tampa Bay Rays @ Boston Red Sox",
-      "description": "MLB · Tampa Bay Rays @ Boston Red Sox",
-      "start_utc": "2026-09-20T17:40:00Z",
-      "end_utc": "2026-09-20T20:40:00Z",
-      "channels": [
-        "Boston Red Sox",
-        "Tampa Bay Rays",
-        "WEEI Boston",
-        "Satellite Radio Channel 204",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Cleveland Guardians @ Athletics",
-      "description": "MLB · Cleveland Guardians @ Athletics",
-      "start_utc": "2026-09-20T17:40:00Z",
-      "end_utc": "2026-09-20T20:40:00Z",
-      "channels": [
-        "Athletics",
-        "Cleveland Guardians",
-        "Satellite Radio Channel 203",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Chicago White Sox @ Detroit Tigers",
-      "description": "MLB · Chicago White Sox @ Detroit Tigers",
-      "start_utc": "2026-09-20T18:10:00Z",
-      "end_utc": "2026-09-20T21:10:00Z",
-      "channels": [
-        "Detroit Tigers",
-        "Chicago White Sox",
-        "WXYT Detroit",
-        "Satellite Radio Channel 207",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Houston Astros @ Atlanta Braves",
-      "description": "MLB · Houston Astros @ Atlanta Braves",
-      "start_utc": "2026-09-20T18:10:00Z",
-      "end_utc": "2026-09-20T21:10:00Z",
-      "channels": [
-        "Atlanta Braves",
-        "Houston Astros",
-        "Satellite Radio Channel 206",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "St. Louis Cardinals @ Washington Nationals",
-      "description": "MLB · St. Louis Cardinals @ Washington Nationals",
-      "start_utc": "2026-09-20T18:15:00Z",
-      "end_utc": "2026-09-20T21:15:00Z",
-      "channels": [
-        "Washington Nationals",
-        "St. Louis Cardinals",
-        "Satellite Radio Channel 208",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Texas Rangers @ Toronto Blue Jays",
-      "description": "MLB · Texas Rangers @ Toronto Blue Jays",
-      "start_utc": "2026-09-20T18:35:00Z",
-      "end_utc": "2026-09-20T21:35:00Z",
-      "channels": [
-        "Toronto Blue Jays",
-        "Texas Rangers",
-        "Satellite Radio Channel 209",
-        "MLB en Español 870",
-        "MLB Network Radio"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Colorado Rockies @ Seattle Mariners",
@@ -340,19 +95,6 @@
     },
     {
       "slug": "mlb",
-      "title": "San Diego Padres @ Miami Marlins",
-      "description": "MLB · San Diego Padres @ Miami Marlins",
-      "start_utc": "2026-09-20T20:10:00Z",
-      "end_utc": "2026-09-20T23:10:00Z",
-      "channels": [
-        "Miami Marlins",
-        "San Diego Padres",
-        "Satellite Radio Channel 212",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
       "title": "Arizona Diamondbacks @ New York Yankees",
       "description": "MLB · Arizona Diamondbacks @ New York Yankees",
       "start_utc": "2026-09-20T20:10:00Z",
@@ -362,6 +104,19 @@
         "Arizona Diamondbacks",
         "MLB Network Radio",
         "WFAN New York"
+      ]
+    },
+    {
+      "slug": "mlb",
+      "title": "San Diego Padres @ Miami Marlins",
+      "description": "MLB · San Diego Padres @ Miami Marlins",
+      "start_utc": "2026-09-20T20:10:00Z",
+      "end_utc": "2026-09-20T23:10:00Z",
+      "channels": [
+        "Miami Marlins",
+        "San Diego Padres",
+        "Satellite Radio Channel 212",
+        "MLB Network Radio"
       ]
     },
     {
