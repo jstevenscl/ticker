@@ -1,30 +1,6 @@
 {
-  "generated_at": "2026-09-20T08:58:06Z",
+  "generated_at": "2026-09-20T15:14:36Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Manchester City @ Sunderland",
-      "description": "SOCCER · Manchester City @ Sunderland",
-      "start_utc": "2026-09-20T13:00:00Z",
-      "end_utc": "2026-09-20T15:00:00Z",
-      "channels": [
-        "Sunderland",
-        "Manchester City",
-        "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "Bournemouth @ Liverpool",
-      "description": "SOCCER · Bournemouth @ Liverpool",
-      "start_utc": "2026-09-20T13:00:00Z",
-      "end_utc": "2026-09-20T15:00:00Z",
-      "channels": [
-        "Liverpool",
-        "Bournemouth",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "soccer",
       "title": "Fulham @ Manchester United",
@@ -171,8 +147,7 @@
       "channels": [
         "Philadelphia Phillies",
         "New York Mets",
-        "MLB Network Radio",
-        "WIP Philadelphia"
+        "MLB Network Radio"
       ]
     },
     {
