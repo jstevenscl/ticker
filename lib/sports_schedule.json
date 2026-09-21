@@ -1,21 +1,6 @@
 {
-  "generated_at": "2026-09-21T02:48:20Z",
+  "generated_at": "2026-09-21T09:29:34Z",
   "events": [
-    {
-      "slug": "nfl",
-      "title": "Kansas City Chiefs @ Indianapolis Colts",
-      "description": "NFL · Kansas City Chiefs @ Indianapolis Colts",
-      "start_utc": "2026-09-21T00:20:00Z",
-      "end_utc": "2026-09-21T03:20:00Z",
-      "channels": [
-        "Indianapolis Colts",
-        "Kansas City Chiefs",
-        "SiriusXM NFL Radio",
-        "NCAA Play-by-Play 192",
-        "NCAA Play-by-Play 193",
-        "NFL en Español 832"
-      ]
-    },
     {
       "slug": "mlb",
       "title": "Baltimore Orioles @ Toronto Blue Jays",
