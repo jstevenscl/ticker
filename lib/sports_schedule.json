@@ -1,89 +1,15 @@
 {
-  "generated_at": "2026-09-21T22:57:04Z",
+  "generated_at": "2026-09-22T02:49:04Z",
   "events": [
     {
-      "slug": "mlb",
-      "title": "Baltimore Orioles @ Toronto Blue Jays",
-      "description": "MLB · Baltimore Orioles @ Toronto Blue Jays",
-      "start_utc": "2026-09-21T22:35:00Z",
-      "end_utc": "2026-09-22T01:35:00Z",
-      "channels": [
-        "Toronto Blue Jays",
-        "Baltimore Orioles",
-        "MLB Network Radio"
-      ]
-    },
-    {
-      "slug": "mlb",
-      "title": "Detroit Tigers @ Washington Nationals",
-      "description": "MLB · Detroit Tigers @ Washington Nationals",
-      "start_utc": "2026-09-21T22:40:00Z",
-      "end_utc": "2026-09-22T01:40:00Z",
-      "channels": [
-        "Washington Nationals",
-        "Detroit Tigers",
-        "Satellite Radio Channel 202",
-        "MLB Network Radio"
-      ]
-    },
-    {
       "slug": "nhl",
-      "title": "Ottawa Senators @ Montreal Canadiens",
-      "description": "NHL · Ottawa Senators @ Montreal Canadiens",
-      "start_utc": "2026-09-21T23:00:00Z",
-      "end_utc": "2026-09-22T01:30:00Z",
+      "title": "Winnipeg Jets @ Colorado Avalanche",
+      "description": "NHL · Winnipeg Jets @ Colorado Avalanche",
+      "start_utc": "2026-09-22T00:00:00Z",
+      "end_utc": "2026-09-22T02:30:00Z",
       "channels": [
-        "Montreal Canadiens",
-        "Ottawa Senators",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Washington Capitals @ Philadelphia Flyers",
-      "description": "NHL · Washington Capitals @ Philadelphia Flyers",
-      "start_utc": "2026-09-21T23:00:00Z",
-      "end_utc": "2026-09-22T01:30:00Z",
-      "channels": [
-        "Philadelphia Flyers",
-        "Washington Capitals",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Columbus Blue Jackets @ Detroit Red Wings",
-      "description": "NHL · Columbus Blue Jackets @ Detroit Red Wings",
-      "start_utc": "2026-09-21T23:00:00Z",
-      "end_utc": "2026-09-22T01:30:00Z",
-      "channels": [
-        "Detroit Red Wings",
-        "Columbus Blue Jackets",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "New Jersey Devils @ New York Rangers",
-      "description": "NHL · New Jersey Devils @ New York Rangers",
-      "start_utc": "2026-09-21T23:00:00Z",
-      "end_utc": "2026-09-22T01:30:00Z",
-      "channels": [
-        "New York Rangers",
-        "New Jersey Devils",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Pittsburgh Penguins @ Buffalo Sabres",
-      "description": "NHL · Pittsburgh Penguins @ Buffalo Sabres",
-      "start_utc": "2026-09-21T23:00:00Z",
-      "end_utc": "2026-09-22T01:30:00Z",
-      "channels": [
-        "Buffalo Sabres",
-        "Pittsburgh Penguins",
+        "Colorado Avalanche",
+        "Winnipeg Jets",
         "SiriusXM NHL Network Radio"
       ]
     },
@@ -96,18 +22,6 @@
       "channels": [
         "Minnesota Wild",
         "Chicago Blackhawks",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Winnipeg Jets @ Colorado Avalanche",
-      "description": "NHL · Winnipeg Jets @ Colorado Avalanche",
-      "start_utc": "2026-09-22T00:00:00Z",
-      "end_utc": "2026-09-22T02:30:00Z",
-      "channels": [
-        "Colorado Avalanche",
-        "Winnipeg Jets",
         "SiriusXM NHL Network Radio"
       ]
     },
