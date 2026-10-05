@@ -157,7 +157,7 @@
     "name": "WWE Radio",
     "description": "WWE Radio is a 24/7 channel for wrestling fans featuring live talk shows, exclusive play-by-play coverage of WWE Premium Live Events, WWE TV simulcasts, and popular WWE podcasts. Flagship show Busted Open with Dave LaGreca delivers daily analysis, news, and fan interaction, alongside programs like NotSam Wrestling Live and Off the Ropes.",
     "genre": "Sports Talk",
-    "sxm_number": 156,
+    "sxm_number": 93,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/8230.png",
     "sxm_logo_src": "",
@@ -212,7 +212,7 @@
     "name": "Influence Franco",
     "description": "Whether they're written for the street of for the clubs, urban music has seen its audience grow in the past decades. Since L'école du micro d'argent by IAM, French artists have been at it, creating original, unique and upbeat songs. Hear the best new releases from the likes of Loud, Stromae and Sarahmée to classics from Muzion and Dubmatique without missing a beat from the hottest club hits, Influence Franco is your one stop for everything rap and danse in French.",
     "genre": "Canada & More",
-    "sxm_number": 145,
+    "sxm_number": 156,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/8246.png",
     "sxm_logo_src": "aem/a4/a4411b85983d021cb2a678c7abc42ac0_1699375636.jpeg",
@@ -221,7 +221,7 @@
   },
   "siriusxm sports schedule": {
     "name": "SiriusXM Sports Schedule",
-    "description": "Find your favorite team, and today's biggest games, on SiriusXM. Every 10 minutes, hear the full NFL, MLB, NBA and NHL schedule, plus top college sports and soccer matchups. It's the day in SiriusXM sports on the SiriusXM Sports Schedule channel.",
+    "description": "Find your favorite team, and today's biggest games, on SiriusXM. Every 10 minutes, hear the full NFL, MLB®, NBA and NHL® schedule, plus top college sports and soccer matchups. It's the day in SiriusXM sports on the SiriusXM Sports Schedule channel.",
     "genre": "Sports Talk",
     "sxm_number": 191,
     "seasonal": null,
@@ -2474,14 +2474,14 @@
     "sxm_entity_id": "9398",
     "lookaround_channel_id": "d1320015-4873-9375-d7ea-6c0f325479c7"
   },
-  "limited edition 5": {
-    "name": "Limited Edition 5",
-    "description": "An online home for more of SiriusXM's exclusive limited-run channels - from Pop to Rock, Comedy to Talk, and much more.",
+  "talking heads radio": {
+    "name": "Talking Heads Radio",
+    "description": "Celebrating over 50 years of Talking Heads, this exclusive channel features music and true stories from David Byrne, Chris Frantz, Jerry Harrison, and Tina Weymouth. Hear deep cuts from their legendary catalog alongside curated guest DJ sets, special commentary from some of the band's influences, the latest on upcoming projects plus an exclusive live Front Row Q&A hosted with all four band members at SiriusXM's New York studios.",
     "genre": "Rock",
     "sxm_number": 505,
-    "seasonal": true,
+    "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/9399.png",
-    "sxm_logo_src": "if/6c/6c536f034a843709818dbe4d0a73a472_1774285986.png",
+    "sxm_logo_src": "",
     "sxm_entity_id": "9399",
     "lookaround_channel_id": "4a121e6f-9d04-d2bb-763f-2b9119a5d281"
   },
@@ -2507,12 +2507,12 @@
     "sxm_entity_id": "9401",
     "lookaround_channel_id": "1e78cc73-4c8d-3a3f-6db2-7cc1857a8b7c"
   },
-  "earth, wind & fire radio": {
-    "name": "Earth, Wind & Fire Radio",
-    "description": "With over 90 million records sold worldwide, Earth, Wind & Fire ranks among the best-selling music artists of all time. Their impact spans R&B, soul, jazz, funk, disco, pop, Latin and Afro-pop. Celebrate the genre-bending hits and anthems that we've been grooving to for over fifty years. Hear stories and memories from group members Philip Bailey, Verdine White, and Ralph Johnson, as they reflect on their iconic career - and it all starts, of course, on September 1st!",
+  "limited edition 8": {
+    "name": "Limited Edition 8",
+    "description": "An online home for more of SiriusXM's exclusive limited-run channels - from Pop to Rock, Comedy to Talk, and much more.",
     "genre": "Hip-Hop/R&B",
     "sxm_number": 508,
-    "seasonal": null,
+    "seasonal": true,
     "logo_url": "https://stellartunerlog.com/logos/9402.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9402",
@@ -3048,7 +3048,7 @@
   },
   "nbc sports radio": {
     "name": "NBC Sports Radio",
-    "description": "NBC Sports Radio is a sports talk channel consisting of some of the most important newsmakers and interviewers in the industry. Opinionated sports talk hosts and journalists such as Dan Patrick, Mike Florio, Dan Le Batard, Chris Simms, Matthew Berry and more deliver their insightful and entertaining thoughts on everything happening from the world of sports while speaking with A-list guests from sports, pop culture and more.",
+    "description": "NBC Sports Radio is a sports talk channel consisting of some of the most important newsmakers and interviewers in the industry. Opinionated sports talk hosts and journalists such as Dan Patrick, Mike Florio, Dan Le Batard, Chris Simms, and more deliver their insightful and entertaining thoughts on everything happening from the world of sports while speaking with A-list guests from sports, pop culture, and more.",
     "genre": "Sports Talk",
     "sxm_number": 85,
     "seasonal": null,
@@ -3827,11 +3827,11 @@
     "sxm_entity_id": "9673",
     "lookaround_channel_id": "fc92713b-2006-4980-ef7c-e70f1da80427"
   },
-  "the billy joel channel": {
-    "name": "The Billy Joel Channel",
-    "description": "Billy Joel has written and performed songs that have touched a generation. Now, SiriusXM presents a limited-run channel dedicated to his music and his stories behind the songs. In addition, Billy will offer exclusive commentary on his writing process and the music that influenced it, along with track-by-track specials on three of his albums: Turnstiles, 52nd Street and Glass Houses.",
-    "genre": "Pop",
-    "sxm_number": 93,
+  "talking heads radio_145": {
+    "name": "Talking Heads Radio",
+    "description": "Celebrating over 50 years of Talking Heads, this exclusive channel features music and true stories from David Byrne, Chris Frantz, Jerry Harrison, and Tina Weymouth. Hear deep cuts from their legendary catalog alongside curated guest DJ sets, special commentary from some of the band's influences, the latest on upcoming projects plus an exclusive live Front Row Q&A hosted with all four band members at SiriusXM's New York studios.",
+    "genre": "Rock",
+    "sxm_number": 145,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/9674.png",
     "sxm_logo_src": "",
