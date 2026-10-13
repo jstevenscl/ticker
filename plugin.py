@@ -679,10 +679,18 @@ def _clone_and_inject_eas(channel_id, original_profile, channel_name="", tone_in
 def _assign_profile(channel, profile):
     channel.stream_profile = profile
     channel.save(update_fields=["stream_profile"])
+
+
+def _get_tone_interval(settings):
+    # 0 is a valid value (tone disabled), so only fall back to 300 when unset/blank/invalid.
+    raw = settings.get("eas_tone_interval")
+    if raw is None or raw == "":
+        return 300
     try:
-        channel.update_stream_profile(profile.id)
-    except Exception as e:
-        logger.warning(f"ticker: update_stream_profile failed for {channel.name}: {e}")
+        interval = int(raw)
+    except (TypeError, ValueError):
+        return 300
+    return max(30, interval) if interval > 0 else 0
 
 
 def _assign_logo(channel, logo_url, channel_display_name):
@@ -1114,11 +1122,7 @@ def _eas_sweep():
     ca_language = settings.get("eas_ca_language") or "en"
 
     severity_threshold = settings.get("eas_severity_filter") or "Moderate"
-    try:
-        tone_interval = int(settings.get("eas_tone_interval") or 300)
-        tone_interval = max(30, tone_interval) if tone_interval > 0 else 0
-    except Exception:
-        tone_interval = 300
+    tone_interval = _get_tone_interval(settings)
     overlay_style = settings.get("eas_overlay_style") or "ticker"
     transcode_mode = settings.get("eas_transcode_mode") or "full"
 
@@ -4062,8 +4066,7 @@ class Plugin:
                     failed.append(f"{channel.name} (original profile missing)")
                     continue
 
-                tone_interval  = int(settings.get("eas_tone_interval") or 300)
-                tone_interval  = max(30, tone_interval) if tone_interval > 0 else 0
+                tone_interval  = _get_tone_interval(settings)
                 overlay_style  = settings.get("eas_overlay_style")  or "ticker"
                 label_color    = settings.get("eas_label_color")     or "0xCC0000"
                 transcode_mode = settings.get("eas_transcode_mode")  or "full"
@@ -4223,8 +4226,7 @@ class Plugin:
                     failed.append(f"{channel.name} (original profile missing)")
                     continue
 
-                tone_interval  = int(settings.get("eas_tone_interval") or 300)
-                tone_interval  = max(30, tone_interval) if tone_interval > 0 else 0
+                tone_interval  = _get_tone_interval(settings)
                 overlay_style  = settings.get("eas_overlay_style")  or "ticker"
                 label_color    = settings.get("eas_label_color")     or "0xCC0000"
                 transcode_mode = settings.get("eas_transcode_mode")  or "full"

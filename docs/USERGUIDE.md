@@ -783,6 +783,10 @@ Sports Ticker and EAS overlays require video re-encoding. If you experience A/V 
 
 Confirm **Siren Tone Interval** is greater than 0. The tone only applies to profiles cloned after the setting is saved — if an EAS alert was already active when you changed the setting, it will not apply until the next alert cycle. Use **Test EAS Alert** after saving the new setting to verify.
 
+### Siren tone still playing with Siren Tone Interval set to 0
+
+In v0.5.03 and earlier, an interval of `0` was treated as "unset" and silently fell back to 300 seconds, so the tone (and its audio-mixing filter) was still added to EAS profiles. Fixed in v0.5.04 — `0` now disables the tone entirely and the EAS profile no longer contains the tone generator or mixing filter. Profiles created before the update keep the tone; the next alert (or **Test EAS Alert**) after updating creates a new profile without it. You can remove the old ones with **Actions → Clean Orphaned Profiles**.
+
 ### Orphaned stream profiles after deleting channels
 
 Run **Actions → Clean Orphaned Profiles**.
