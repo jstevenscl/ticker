@@ -3563,8 +3563,8 @@
     "sxm_entity_id": "9607",
     "lookaround_channel_id": "ad0ab172-202f-c05b-c7b9-597be600541f"
   },
-  "the kelly clarkson connection": {
-    "name": "The Kelly Clarkson Connection",
+  "kellyclarkson connection": {
+    "name": "KellyClarkson Connection",
     "description": "The Kelly Clarkson universe hits the airwaves with The Kelly Clarkson Connection! Make yourself comfortable in Kelly's world - you'll be surrounded by the music she loves, music she's inspired by and the stories behind the songs in Kelly's two-decade long catalog of award-winning hits. Experience the chemistry of The Kelly Clarkson Connection!",
     "genre": "Pop",
     "sxm_number": 12,
@@ -8964,17 +8964,6 @@
     "sxm_entity_id": "9470",
     "lookaround_channel_id": null
   },
-  "comedy classics": {
-    "name": "Comedy Classics",
-    "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
-    "genre": "Comedy",
-    "sxm_number": 772,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9542",
-    "lookaround_channel_id": null
-  },
   "she's so funny": {
     "name": "She's So Funny",
     "description": "The funniest female comedians all in one place hand-curated just for you to keep you in stitches!",
@@ -8984,6 +8973,17 @@
     "logo_url": "",
     "sxm_logo_src": "",
     "sxm_entity_id": "9503",
+    "lookaround_channel_id": null
+  },
+  "comedy classics": {
+    "name": "Comedy Classics",
+    "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
+    "genre": "Comedy",
+    "sxm_number": 772,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9542",
     "lookaround_channel_id": null
   },
   "the message_1258": {
@@ -8997,17 +8997,6 @@
     "sxm_entity_id": "4270",
     "lookaround_channel_id": "c5647ffa-5f13-5030-88f6-13ed47df40dc"
   },
-  "navidad": {
-    "name": "Navidad",
-    "description": "Latin holiday music and traditional sounds, including Ricky Martin, Gloria Estefan, José Feliciano, Tito El Bambino, Marco Antonio Solís and Fania All-Stars.",
-    "genre": "Holiday",
-    "sxm_number": 626,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9348",
-    "lookaround_channel_id": null
-  },
   "holly": {
     "name": "Holly",
     "description": "Merry and bright holiday hits featuring songs by Mariah Carey, Michael Bublé, Dean Martin, Kelly Clarkson, Pentatonix, Josh Groban, John Legend, Brenda Lee, Train, Gwen Stefani and more.",
@@ -9017,6 +9006,17 @@
     "logo_url": "",
     "sxm_logo_src": "",
     "sxm_entity_id": "9343",
+    "lookaround_channel_id": null
+  },
+  "navidad": {
+    "name": "Navidad",
+    "description": "Latin holiday music and traditional sounds, including Ricky Martin, Gloria Estefan, José Feliciano, Tito El Bambino, Marco Antonio Solís and Fania All-Stars.",
+    "genre": "Holiday",
+    "sxm_number": 626,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9348",
     "lookaround_channel_id": null
   }
 }
