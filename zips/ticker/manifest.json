@@ -1,24 +1,33 @@
 {
-  "generated_at": "2026-10-13T03:25:45Z",
+  "generated_at": "2026-10-22T16:10:44Z",
   "manifest": {
     "slug": "ticker",
     "name": "Ticker",
-    "description": "Dynamic text overlays for IPTV channels — Satellite Radio Now Playing, Sports Ticker, Custom Text, EAS Weather Alerts",
+    "description": "Dynamic text overlays for IPTV channels \u2014 Satellite Radio Now Playing, Sports Ticker, Custom Text, EAS Weather Alerts",
     "author": "jstevenscl",
     "registry_url": "https://github.com/jstevenscl/ticker",
     "registry_name": "jstevenscl/ticker",
-    "last_updated": "2026-10-13T03:25:45Z",
+    "last_updated": "2026-10-22T16:10:44Z",
     "latest": {
-      "version": "0.5.04",
-      "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.04.zip",
-      "checksum_md5": "1eee1c0cec68a26ac8ea5d4605641706",
-      "checksum_sha256": "e005dfb1192b50bdb3839e155bba068617c96ab9ba2f5d8e90abdd245e69826e",
-      "size": 2193977,
-      "last_updated": "2026-10-13T03:25:45Z",
-      "build_timestamp": "2026-10-13T03:25:45Z",
+      "version": "0.5.05",
+      "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.05.zip",
+      "checksum_md5": "c9f9040cad3064c4a0af277e85c931af",
+      "checksum_sha256": "47a3c00a1f27d7398ed1bf54fef56d028f3a3d6c4e2398bfa9129da725c2f005",
+      "size": 2193910,
+      "last_updated": "2026-10-22T16:10:44Z",
+      "build_timestamp": "2026-10-22T16:10:44Z",
       "latest_url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-latest.zip"
     },
     "versions": [
+      {
+        "version": "0.5.05",
+        "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.05.zip",
+        "checksum_md5": "c9f9040cad3064c4a0af277e85c931af",
+        "checksum_sha256": "47a3c00a1f27d7398ed1bf54fef56d028f3a3d6c4e2398bfa9129da725c2f005",
+        "size": 2193910,
+        "last_updated": "2026-10-22T16:10:44Z",
+        "build_timestamp": "2026-10-22T16:10:44Z"
+      },
       {
         "version": "0.5.04",
         "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.04.zip",
