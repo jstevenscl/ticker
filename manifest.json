@@ -8,7 +8,7 @@
       {
         "slug": "ticker",
         "name": "Ticker",
-        "description": "Dynamic text overlays for IPTV channels \u2014 Satellite Radio Now Playing, Sports Ticker, Custom Text, EAS Weather Alerts",
+        "description": "Dynamic text overlays for IPTV channels — Satellite Radio Now Playing, Sports Ticker, Custom Text, EAS Weather Alerts",
         "manifest_url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/manifest.json",
         "author": "jstevenscl",
         "last_updated": "2026-10-22T16:10:44Z",
