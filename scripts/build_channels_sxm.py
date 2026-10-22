@@ -31,7 +31,7 @@ REBROWSER_CSV_URL = "https://raw.githubusercontent.com/rebrowser/siriusxm-datase
 UA = "Ticker/1.0 (github.com/jstevenscl/ticker)"
 
 _SEASONAL_RE = re.compile(
-    r"(holiday|christmas|xmas|halloween|thanksgiving|seasonal|limited edition"
+    r"(holiday|christmas|xmas|halloween|scream radio|thanksgiving|seasonal|limited edition"
     r"|fallon|country christmas|christmas spirit|billboard \d{4})",
     re.IGNORECASE,
 )
