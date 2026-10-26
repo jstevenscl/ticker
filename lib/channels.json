@@ -22,8 +22,8 @@
     "lookaround_channel_id": "884c803d-cbd9-098b-527d-a34979274ded"
   },
   "siriusxm pga tour radio": {
-    "name": "SiriusXM PGA TOUR Radio",
-    "description": "SiriusXM PGA TOUR Radio is home to the most comprehensive coverage in golf with news, tournament scores, and highlights from the PGA TOUR, Champions TOUR, Korn Ferry TOUR, & LPGA TOUR.",
+    "name": "SiriusXM PGA Tour Radio",
+    "description": "SiriusXM PGA Tour Radio is home to the most comprehensive coverage in golf with news, tournament scores, and highlights from the PGA Tour, Champions Tour, Korn Ferry Tour, & LPGA Tour.",
     "genre": "Sports Talk",
     "sxm_number": 92,
     "seasonal": null,
@@ -2309,12 +2309,12 @@
     "sxm_entity_id": "9352",
     "lookaround_channel_id": "f95497ef-39c0-66fd-5749-f6c7b6f768b9"
   },
-  "siriusxm 300": {
-    "name": "SiriusXM 300",
-    "description": "SiriusXM 300",
+  "scream radio": {
+    "name": "Scream Radio",
+    "description": "Scream Radio is an annual tradition for Halloween enthusiasts, providing the perfect backdrop for the holiday by mixing creepy sound effects with music and atmosphere. Scream sets the tone for fans who want that spooky haunted house vibe this Halloween.",
     "genre": "Pop",
     "sxm_number": 300,
-    "seasonal": null,
+    "seasonal": true,
     "logo_url": "https://stellartunerlog.com/logos/9353.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9353",
@@ -2785,7 +2785,7 @@
   "triumph": {
     "name": "Triumph",
     "description": "Home to Dr. Laura, Nancy Grace, Dave Ramsey and Glenn Beck. This is radio driven by conviction, where bold voices take on life's toughest topics with clarity, courage and common sense. From personal finance to justice, family and leadership, these hosts don't shy away from the hard conversations, they lean into them. It's a destination for those who believe in standing for something, navigating decisions with integrity, and choosing what's right.",
-    "genre": "Entertainment",
+    "genre": "Politics/Issues",
     "sxm_number": 123,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/9449.png",
@@ -3343,14 +3343,14 @@
     "sxm_entity_id": "9580",
     "lookaround_channel_id": "dd21ed4a-49e7-ae02-3a61-cd730602a389"
   },
-  "law&crime": {
-    "name": "Law&Crime",
-    "description": "Law&Crime is the leading destination for true crime and law enforcement programming. Founded by acclaimed legal analyst and attorney Dan Abrams, Law&Crime offers an inside look at the compelling world of law enforcement, featuring in-depth bodycam footage and more. Our daily lineup includes binge-worthy law enforcement series plus original primetime programming.",
+  "court tv": {
+    "name": "Court TV",
+    "description": "Court TV brings you inside the courtroom for the most compelling and high-profile cases across the country. Listen to live, gavel-to-gavel coverage with in-depth legal reporting and expert legal analysis.",
     "genre": "Entertainment",
     "sxm_number": 793,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/9581.png",
-    "sxm_logo_src": "if/66/66479d5b38ef364c82df5b81513e00f2_1756126397.png",
+    "sxm_logo_src": "",
     "sxm_entity_id": "9581",
     "lookaround_channel_id": "2e6388fd-e5fc-a495-586f-2494e81fd919"
   },
@@ -3563,8 +3563,8 @@
     "sxm_entity_id": "9607",
     "lookaround_channel_id": "ad0ab172-202f-c05b-c7b9-597be600541f"
   },
-  "kellyclarkson connection": {
-    "name": "KellyClarkson Connection",
+  "the kelly clarkson connection": {
+    "name": "The Kelly Clarkson Connection",
     "description": "The Kelly Clarkson universe hits the airwaves with The Kelly Clarkson Connection! Make yourself comfortable in Kelly's world - you'll be surrounded by the music she loves, music she's inspired by and the stories behind the songs in Kelly's two-decade long catalog of award-winning hits. Experience the chemistry of The Kelly Clarkson Connection!",
     "genre": "Pop",
     "sxm_number": 12,
@@ -3827,10 +3827,10 @@
     "sxm_entity_id": "9673",
     "lookaround_channel_id": "fc92713b-2006-4980-ef7c-e70f1da80427"
   },
-  "talking heads radio_145": {
-    "name": "Talking Heads Radio",
-    "description": "Celebrating over 50 years of Talking Heads, this exclusive channel features music and true stories from David Byrne, Chris Frantz, Jerry Harrison, and Tina Weymouth. Hear deep cuts from their legendary catalog alongside curated guest DJ sets, special commentary from some of the band's influences, the latest on upcoming projects plus an exclusive live Front Row Q&A hosted with all four band members at SiriusXM's New York studios.",
-    "genre": "Rock",
+  "siriusxm 145": {
+    "name": "SiriusXM 145",
+    "description": "SiriusXM 145",
+    "genre": "Pop",
     "sxm_number": 145,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/9674.png",
@@ -3886,7 +3886,7 @@
     "name": "20/20 True Crime",
     "description": "A nonstop destination for gripping true crime storytelling from ABC News and 20/20. Hear award-winning podcasts, full episodes of 20/20, installments of 20/20: The After Show, and cases from the 20/20 True Crime Vault. From headline-making investigations to unforgettable mysteries, dive into the stories, twists, and reporting that brings the truth to light. True Crime, all the time.",
     "genre": "Entertainment",
-    "sxm_number": 794,
+    "sxm_number": 450,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/9685.png",
     "sxm_logo_src": "",
@@ -4027,7 +4027,7 @@
   },
   "wgr buffalo": {
     "name": "WGR Buffalo",
-    "description": "WGR Sports Radio Buffalo brings you the latest sports talk, breaking news, interviews, game coverage, analysis, and podcasts from the top personalities, hosts, and reporters in Buffalo. We're also the radio home of the Bills, Sabres, and Niagara basketball.",
+    "description": "WGR Sports Radio Buffalo brings you the latest sports talk, breaking news, interviews, game coverage, analysis, and podcasts from the top personalities, hosts, and reporters in Buffalo. We're also the radio home of the Sabres.",
     "genre": "Sports Talk",
     "sxm_number": 175,
     "seasonal": null,
