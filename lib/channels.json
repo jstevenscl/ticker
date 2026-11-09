@@ -841,7 +841,7 @@
     "genre": "Holiday",
     "sxm_number": 612,
     "seasonal": true,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9346.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9346",
     "lookaround_channel_id": "1809a154-5d8c-344d-14e8-fa6171dc1c46"
@@ -1963,7 +1963,7 @@
     "genre": "Holiday",
     "sxm_number": 640,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9559.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9559",
     "lookaround_channel_id": "c1763aa8-6534-2e12-acdf-2185f3b59fe8"
@@ -1985,7 +1985,7 @@
     "genre": "Holiday",
     "sxm_number": 144,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9343.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9343",
     "lookaround_channel_id": "ba107a8d-fb2d-571e-1894-f6ea03ed318a"
@@ -2051,7 +2051,7 @@
     "genre": "Holiday",
     "sxm_number": 620,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9591.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9591",
     "lookaround_channel_id": "164e2592-cbd8-900c-6201-2fe759db6211"
@@ -2271,7 +2271,7 @@
     "genre": "Holiday",
     "sxm_number": 610,
     "seasonal": true,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9489.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9489",
     "lookaround_channel_id": "52832987-456a-28a1-f52e-92c03847ea7a"
@@ -2865,7 +2865,7 @@
     "genre": "Holiday",
     "sxm_number": 626,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9348.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9348",
     "lookaround_channel_id": "a05129e3-a5d2-2b5f-63ce-1986cddbb452"
@@ -3217,7 +3217,7 @@
     "genre": "Holiday",
     "sxm_number": 622,
     "seasonal": true,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9344.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9344",
     "lookaround_channel_id": "7bd88d44-6398-8733-a7a7-3858468c55a8"
@@ -3239,7 +3239,7 @@
     "genre": "Holiday",
     "sxm_number": 621,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9612.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9612",
     "lookaround_channel_id": "799b6a46-163c-1f97-4d0c-5454b5c1842b"
@@ -3272,7 +3272,7 @@
     "genre": "Holiday",
     "sxm_number": 608,
     "seasonal": true,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9521.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9521",
     "lookaround_channel_id": "b529697a-7923-3f82-5cf6-af9b95f837b4"
@@ -3294,7 +3294,7 @@
     "genre": "Holiday",
     "sxm_number": 300,
     "seasonal": null,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9483.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9483",
     "lookaround_channel_id": "acf8556b-03f4-e739-554f-464d50ba738d"
@@ -5131,7 +5131,7 @@
     "genre": "Holiday",
     "sxm_number": 606,
     "seasonal": true,
-    "logo_url": "",
+    "logo_url": "https://stellartunerlog.com/logos/9345.png",
     "sxm_logo_src": "",
     "sxm_entity_id": "9345",
     "lookaround_channel_id": "71dbb5a0-8995-958b-e139-b63b2864cabb"
@@ -8260,6 +8260,17 @@
     "sxm_entity_id": "4335",
     "lookaround_channel_id": null
   },
+  "innerrhythm radio": {
+    "name": "INNERRHYTHM Radio",
+    "description": "R&B, hip-hop & global grooves",
+    "genre": "Hip-Hop/R&B",
+    "sxm_number": 1326,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "4337",
+    "lookaround_channel_id": null
+  },
   "sports 251": {
     "name": "Sports 251",
     "description": "Live play-by-play of sports",
@@ -9063,17 +9074,6 @@
     "sxm_entity_id": "9470",
     "lookaround_channel_id": null
   },
-  "comedy classics": {
-    "name": "Comedy Classics",
-    "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
-    "genre": "Comedy",
-    "sxm_number": 772,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9542",
-    "lookaround_channel_id": null
-  },
   "she's so funny": {
     "name": "She's So Funny",
     "description": "The funniest female comedians all in one place hand-curated just for you to keep you in stitches!",
@@ -9083,6 +9083,17 @@
     "logo_url": "",
     "sxm_logo_src": "",
     "sxm_entity_id": "9503",
+    "lookaround_channel_id": null
+  },
+  "comedy classics": {
+    "name": "Comedy Classics",
+    "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
+    "genre": "Comedy",
+    "sxm_number": 772,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9542",
     "lookaround_channel_id": null
   },
   "the message_1258": {
