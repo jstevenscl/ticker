@@ -1,0 +1,70 @@
+name: Data Health Check
+
+# Independent watchdog. The build workflows can report "success" while publishing
+# degraded data (that is exactly how the 2026-09 SiriusXM sports redesign went
+# unnoticed for ~8 weeks), so this checks the PUBLISHED data and workflow
+# liveness, and opens a GitHub issue (-> email) when something is wrong.
+# One issue at a time: re-failures comment on it, recovery closes it.
+
+on:
+  schedule:
+    - cron: '41 */6 * * *'   # every 6h, off the :00 mark (GitHub drops :00 runs under load)
+  workflow_dispatch:
+
+jobs:
+  health:
+    # Only the public repo publishes to GitHub Pages; the private dev repo has nothing to check.
+    if: github.repository == 'jstevenscl/ticker'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run health check
+        id: check
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEALTH_REPORT: ${{ runner.temp }}/health-report.md
+        run: python scripts/health_check.py
+
+      - name: Open or update alert issue
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          REPORT="${{ runner.temp }}/health-report.md"
+          [ -f "$REPORT" ] || echo "Health check crashed before writing a report -- see ${RUN_URL}" > "$REPORT"
+          printf '\n[Workflow run](%s)\n' "$RUN_URL" >> "$REPORT"
+          gh label create health-check --color d93f0b --description "Ticker data health alerts" 2>/dev/null || true
+          EXISTING=$(gh issue list --label health-check --state open --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body-file "$REPORT"
+          else
+            gh issue create --label health-check \
+              --title "Ticker data health check failing -- $(date +%Y-%m-%d)" \
+              --body-file "$REPORT"
+          fi
+
+      - name: Close alert issue on recovery
+        if: steps.check.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          for n in $(gh issue list --label health-check --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Recovered: all checks passing (${RUN_URL})"
+          done
+
+      - name: Fail the run if unhealthy
+        if: steps.check.outcome == 'failure'
+        run: exit 1

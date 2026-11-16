@@ -152,202 +152,158 @@ def clean_text(s):
     return re.sub(r"\s+", " ", s).strip()
 
 
-def parse_eastern_time(date_str, time_str, tz_str):
-    """Parse 'May 17', '8:00 PM', 'EDT' → UTC datetime. Assumes current or next year."""
-    offset = timedelta(hours=-4) if "DT" in tz_str else timedelta(hours=-5)  # EDT=-4, EST=-5
+def _us_eastern_is_dst(d):
+    """True if US Eastern Time observes DST on date d (2nd Sun Mar -> 1st Sun Nov).
+
+    Hand-rolled so the script has no tz-database dependency (zoneinfo needs the
+    tzdata package on Windows). Day-granularity is fine for schedule dates.
+    """
+    def nth_sunday(year, month, n):
+        first = datetime(year, month, 1)
+        first_sun = 1 + (6 - first.weekday()) % 7
+        return datetime(year, month, first_sun + 7 * (n - 1))
+    start = nth_sunday(d.year, 3, 2)
+    end = nth_sunday(d.year, 11, 1)
+    return start <= datetime(d.year, d.month, d.day) < end
+
+
+def parse_eastern_time(date_str, time_str):
+    """Parse 'November 16', '7:00 PM' (US Eastern) -> UTC datetime, or None.
+
+    The page headings carry no year: assume the current year, and roll forward a
+    year if that puts the date more than 180 days in the past (Dec -> Jan games).
+    """
     now = datetime.now(timezone.utc)
     year = now.year
     try:
-        dt_naive = datetime.strptime(f"{date_str} {year} {time_str}", "%B %d %Y %I:%M %p")
+        naive = datetime.strptime(f"{date_str} {year} {time_str}", "%B %d %Y %I:%M %p")
     except ValueError:
         return None
-    dt_et = dt_naive.replace(tzinfo=timezone(offset))
-    # If parsed date is > 6 months in the past, assume next year
-    if (now - dt_et).days > 180:
-        dt_naive = dt_naive.replace(year=year + 1)
-        dt_et = dt_naive.replace(tzinfo=timezone(offset))
+    for _ in range(2):
+        offset = timedelta(hours=-4) if _us_eastern_is_dst(naive) else timedelta(hours=-5)
+        dt_et = naive.replace(tzinfo=timezone(offset))
+        if (now - dt_et).days > 180:
+            naive = naive.replace(year=naive.year + 1)
+            continue
+        break
     return dt_et.astimezone(timezone.utc)
+
+
+# The siriusxm.com sports pages are a Next.js app with CSS-module class names of
+# the form "<component>-module-scss-module__<hash>__<name>". The hash changes on
+# rebuilds, so every pattern below anchors on the stable "__<name>" suffix only.
+# (Pre-2026-09 the pages used "sportschedule_*"/"sportstrip_*"; SiriusXM
+# redesigned them and the old parser silently returned 0 events.)
+_DATE_HEADING_RE = re.compile(r'<h3[^>]*__dateHeading"[^>]*>(.*?)</h3>', re.I | re.S)
+_STRIP_SPLIT_RE = re.compile(r'data-cy="molecules-sports-strip"', re.I)
+_ENTITY_SPLIT_RE = re.compile(r'<div[^>]*__entity"[^>]*>', re.I)
+_START_TIME_RE = re.compile(r'__startTime"[^>]*>([^<]+)<', re.I)
+_NAME_RE = re.compile(r'__name"[^>]*>([^<]+)<', re.I)
+_DESC_RE = re.compile(r'__description"[^>]*>([^<]*)<', re.I)
+_CHANNEL_RE = re.compile(r'aria-label="[^"]*?\bchannel\s+(\d+)"', re.I)
+
+
+def _parse_entity(chunk):
+    """Return (name, description, [channel numbers]) for one entity block, or None."""
+    name_m = _NAME_RE.search(chunk)
+    if not name_m:
+        return None
+    name = clean_text(name_m.group(1))
+    if len(name) < 2:
+        return None
+    desc_m = _DESC_RE.search(chunk)
+    desc = clean_text(desc_m.group(1)) if desc_m else ""
+    nums = []
+    for n in _CHANNEL_RE.findall(chunk):
+        if int(n) not in nums:
+            nums.append(int(n))
+    return name, desc, nums
 
 
 def parse_schedule_page(html, sport_slug, sport_type, duration_h, ch_map):
     """
-    Parse a SiriusXM sports schedule page.
+    Parse a SiriusXM sports schedule page (post-2026-09 redesign).
+
+    Layout: <h3 ...dateHeading>Monday, November 16</h3> followed by strips; each
+    strip has a start time and 1+ entities. Two entities = a matchup (away first,
+    home second, joined by an "at" marker); one entity = a single event (race,
+    tournament round) with an optional description such as the venue.
 
     Returns list of event dicts:
       {slug, title, description, start_utc, end_utc, channels: [...]}
+    An off-season sport has no schedule section at all and returns [].
     """
     events = []
-
-    # Extract the schedule list section
-    sched_start = html.find("sportschedule_listStylings")
-    if sched_start == -1:
-        return events
-    sched_html = html[sched_start:]
-
-    # Split into date-block pairs: interleave <h3> headers and <li> items
-    # Walk the schedule section, tracking the current date/time from h3 headers
-    current_start_utc = None
-    current_date_str = None
-
-    # Find all h3 date headers and li game items in order
-    tokens = re.split(
-        r'(<h3[^>]*class="[^"]*sportschedule_dateTitle[^"]*"[^>]*>.*?</h3>|<li[^>]*>.*?</li>)',
-        sched_html,
-        flags=re.DOTALL | re.IGNORECASE,
-    )
-
-    for token in tokens:
-        token = token.strip()
-        if not token:
+    headings = list(_DATE_HEADING_RE.finditer(html))
+    for i, hm in enumerate(headings):
+        date_m = re.search(r'([A-Za-z]+),\s+([A-Za-z]+)\s+(\d{1,2})', clean_text(hm.group(1)))
+        if not date_m:
             continue
+        date_str = f"{date_m.group(2)} {date_m.group(3)}"
+        block_end = headings[i + 1].start() if i + 1 < len(headings) else len(html)
+        block = html[hm.end():block_end]
 
-        # ── Date/time header ──────────────────────────────────────────────
-        if re.match(r'<h3[^>]*sportschedule_dateTitle', token, re.IGNORECASE):
-            header_text = clean_text(token)
-            # Format: "Sunday, May 17 • 8:00 PM EDT"  (bullet may be any separator)
-            date_m = re.search(r'(\w+,\s+(\w+)\s+(\d{1,2}))', header_text)
-            time_m = re.search(r'(\d{1,2}:\d{2})\s*(AM|PM)\s+([A-Z]{2,4})', header_text)
-            if date_m and time_m:
-                month_name = date_m.group(2)
-                day = date_m.group(3)
-                time_part = time_m.group(1) + " " + time_m.group(2)
-                tz_part = time_m.group(3)
-                current_start_utc = parse_eastern_time(f"{month_name} {day}", time_part, tz_part)
-                current_date_str = header_text
-            continue
+        for strip in _STRIP_SPLIT_RE.split(block)[1:]:
+            time_m = _START_TIME_RE.search(strip)
+            if not time_m:
+                continue
+            start_utc = parse_eastern_time(date_str, clean_text(time_m.group(1)))
+            if start_utc is None:
+                continue
+            end_utc = start_utc + timedelta(hours=duration_h)
 
-        # ── Game / event list item ─────────────────────────────────────────
-        if not token.startswith("<li"):
-            continue
-
-        if current_start_utc is None:
-            continue
-
-        duration = timedelta(hours=duration_h)
-        end_utc = current_start_utc + duration
-
-        if sport_type == "matchup":
-            event = _parse_matchup_item(token, sport_slug, current_start_utc, end_utc, ch_map)
-        else:
-            event = _parse_event_item(token, sport_slug, current_start_utc, end_utc, ch_map)
-
-        if event:
+            entities = [e for e in (_parse_entity(c) for c in _ENTITY_SPLIT_RE.split(strip)[1:]) if e]
+            if not entities:
+                continue
+            if len(entities) >= 2:
+                event = _build_matchup(entities[0], entities[1], sport_slug, start_utc, end_utc, ch_map)
+            else:
+                event = _build_event(entities[0], sport_slug, start_utc, end_utc, ch_map)
             events.append(event)
-
     return events
 
 
-def _parse_matchup_item(li_html, sport_slug, start_utc, end_utc, ch_map):
-    """Parse a team-vs-team game from a <li> block."""
-    # Game title from li aria-label: "Detroit Pistons vs Cleveland Cavaliers"
-    li_label = re.search(r'<li[^>]*aria-label="([^"]+)"', li_html)
-    if not li_label:
-        return None
-
-    matchup_raw = li_label.group(1).strip()
-    # Must contain "vs" (team matchup indicator)
-    if " vs " not in matchup_raw.lower():
-        return None
-
-    # Parse away vs home (format is "Away vs Home" with away team listed first)
-    vs_m = re.search(r'^(.+?)\s+vs\s+(.+)$', matchup_raw, re.IGNORECASE)
-    if not vs_m:
-        return None
-    away_team = clean_text(vs_m.group(1)).strip()
-    home_team = clean_text(vs_m.group(2)).strip()
-
-    # Skip if either team name is empty/garbage
-    if len(away_team) < 2 or len(home_team) < 2:
-        return None
-
-    title = f"{away_team} @ {home_team}"
-    sport_label = sport_slug.upper()
-    description = f"{sport_label} · {title}"
-
-    # Collect channels for this game
-    channels = []
-
-    # Home and away team channels (team name IS the channel name in Dispatcharr)
-    channels.append(home_team)
-    channels.append(away_team)
-
-    # National/league/additional channels from aria-labels inside the li
-    all_labels = re.findall(r'aria-label="([^"]+)"', li_html)
-    extra_ch_nums = set()
-    for lbl in all_labels:
-        lbl_l = lbl.lower()
-        # Skip the home/away team labels already handled above
-        if "away channel" in lbl_l or "home channel" in lbl_l:
-            continue
-        m = re.search(r'(?:channel|on)\s+(\d+)', lbl_l)
-        if m:
-            extra_ch_nums.add(int(m.group(1)))
-
-    for num in sorted(extra_ch_nums):
+def _channels_for(names, nums, sport_slug, ch_map):
+    channels = list(names)
+    for num in nums:
         ch_name = channel_name_for_num(num, ch_map, sport_slug)
         if ch_name not in channels:
             channels.append(ch_name)
-
     # Always include the sport's primary league channel
     primary = SPORT_PRIMARY_CH.get(sport_slug)
     if primary and primary not in channels:
         channels.append(primary)
+    return channels
 
+
+def _build_matchup(away, home, sport_slug, start_utc, end_utc, ch_map):
+    """Team-vs-team game. Team name IS the channel name in Dispatcharr."""
+    away_name, _, away_nums = away
+    home_name, _, home_nums = home
+    title = f"{away_name} @ {home_name}"
     return {
         "slug": sport_slug,
         "title": title,
-        "description": description,
+        "description": f"{sport_slug.upper()} · {title}",
         "start_utc": start_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "end_utc": end_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "channels": channels,
+        "channels": _channels_for([home_name, away_name], home_nums + away_nums, sport_slug, ch_map),
     }
 
 
-def _parse_event_item(li_html, sport_slug, start_utc, end_utc, ch_map):
-    """Parse an event (race, tournament round, etc.) from a <li> block."""
-    # Event name from sportstrip_teamName div
-    name_m = re.search(r'sportstrip_teamName[^"]*"[^>]*>([^<]+)<', li_html)
-    if not name_m:
-        return None
-    event_name = clean_text(name_m.group(1)).strip()
-    if len(event_name) < 2:
-        return None
-
-    # Location if present
-    loc_m = re.search(r'sportstrip_locationText[^"]*"[^>]*>([^<]+)<', li_html)
-    location = clean_text(loc_m.group(1)).strip() if loc_m else ""
-
-    title = event_name
-    description = f"{SPORT_PRIMARY_CH.get(sport_slug, sport_slug.upper())} · {event_name}"
+def _build_event(entity, sport_slug, start_utc, end_utc, ch_map):
+    """Single event (race, tournament round, practice session...)."""
+    name, location, nums = entity
+    description = f"{SPORT_PRIMARY_CH.get(sport_slug, sport_slug.upper())} · {name}"
     if location:
         description += f" · {location}"
-
-    # Channel from aria-label: "Listen to EVENT on N" or "Listen to EVENT on channel N"
-    channels = []
-    all_labels = re.findall(r'aria-label="([^"]+)"', li_html)
-    seen_nums = set()
-    for lbl in all_labels:
-        m = re.search(r'(?:channel|on)\s+(\d+)', lbl.lower())
-        if m:
-            num = int(m.group(1))
-            if num not in seen_nums:
-                seen_nums.add(num)
-                ch_name = channel_name_for_num(num, ch_map, sport_slug)
-                if ch_name not in channels:
-                    channels.append(ch_name)
-
-    # Fallback to sport's primary channel if nothing found via number
-    primary = SPORT_PRIMARY_CH.get(sport_slug)
-    if primary and primary not in channels:
-        channels.append(primary)
-
     return {
         "slug": sport_slug,
-        "title": title,
+        "title": name,
         "description": description,
         "start_utc": start_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "end_utc": end_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "channels": channels,
+        "channels": _channels_for([], nums, sport_slug, ch_map),
     }
 
 
@@ -395,7 +351,10 @@ def format_game_time_et(dt_utc):
     _DAYS   = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     _MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    is_edt = 3 <= dt_utc.month <= 11
+    # Real US DST rules (2nd Sun Mar -> 1st Sun Nov). The old `3 <= month <= 11`
+    # shortcut labelled all of November as EDT, putting titles an hour off from
+    # Nov 1 until the March changeover.
+    is_edt = _us_eastern_is_dst(dt_utc + timedelta(hours=-4))
     local  = dt_utc + timedelta(hours=-4 if is_edt else -5)
     tz     = "EDT" if is_edt else "EST"
     hour   = local.hour % 12 or 12
@@ -659,6 +618,7 @@ def main():
     print(f"  {len(ch_map)} channels with lineup numbers, {len(ch_descs)} with descriptions, {len(ch_logos)} with logos")
 
     all_events = []
+    fetch_failures = 0
 
     for sport in SPORTS:
         slug  = sport["slug"]
@@ -668,6 +628,7 @@ def main():
             html = fetch_html(sport["url"])
         except Exception as e:
             print(f"  ERROR fetching {sport['url']}: {e}", file=sys.stderr)
+            fetch_failures += 1
             continue
 
         events = parse_schedule_page(html, slug, sport["type"], sport["duration_h"], ch_map)
@@ -675,7 +636,7 @@ def main():
         all_events.extend(events)
 
     if not all_events:
-        print("No upcoming events across any sport — all sports may be off-season.", file=sys.stderr)
+        print("No upcoming events across any sport.", file=sys.stderr)
 
     # Deduplicate: same title + start_utc + channel set
     seen_keys = set()
@@ -784,6 +745,22 @@ def main():
         by_sport[ev["slug"]] += 1
     for slug, count in sorted(by_sport.items()):
         print(f"  {slug}: {count} events")
+
+    # ── Health signal ────────────────────────────────────────────────────────
+    # Everything above has already been written, so the EPG still publishes
+    # (show schedules + generic fill are unaffected). The non-zero exit just
+    # lets the workflow raise an alert. Zero events across ALL sports is never
+    # legitimate -- some league is always in season -- and is exactly what a
+    # siriusxm.com redesign looks like (the 2026-09 redesign went unnoticed for
+    # ~8 weeks because this used to exit 0). Single off-season sports are fine.
+    if not all_events:
+        reason = (f"all {fetch_failures}/{len(SPORTS)} sports pages failed to fetch"
+                  if fetch_failures == len(SPORTS)
+                  else "0 events parsed from every sports page -- siriusxm.com markup "
+                       "has probably changed and parse_schedule_page needs updating")
+        print(f"::error title=Sports scrape unhealthy::{reason}")
+        print(f"HEALTH FAIL: {reason}", file=sys.stderr)
+        sys.exit(3)
 
 
 if __name__ == "__main__":

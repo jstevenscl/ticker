@@ -2,7 +2,10 @@ name: Update Satellite Radio EPG
 
 on:
   schedule:
-    - cron: '0 */4 * * *'   # Every 4 hours — sports schedules change (rain delays, postponements)
+    # Every 4 hours — sports schedules change (rain delays, postponements).
+    # Deliberately NOT on the hour: GitHub drops/delays scheduled runs at :00
+    # when load is high (the :00 schedule was skipping runs for 8-13h at a time).
+    - cron: '17 */4 * * *'
   workflow_dispatch:         # Allow manual trigger
 
 jobs:
@@ -20,13 +23,19 @@ jobs:
         with:
           python-version: '3.12'
 
+      # continue-on-error: build_sports_epg.py writes the EPG and THEN exits
+      # non-zero if the sports scrape is unhealthy (0 events everywhere = the
+      # siriusxm.com markup changed). We still want the rest of the EPG (show
+      # schedules, filler) published, so the job can't stop here -- the alert
+      # and the final failing step below handle it instead.
       - name: Build satellite radio EPG
+        id: build
+        continue-on-error: true
         run: |
           mkdir -p lib
           python scripts/build_sports_epg.py
 
       - name: Commit and push if XML changed
-        if: success()
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -38,26 +47,50 @@ jobs:
             echo "Sports EPG content unchanged -- nothing to commit"
           fi
 
-      - name: Create issue on workflow failure
-        if: failure()
+      # One open issue at a time: repeat failures comment on it instead of
+      # opening a new issue every 4 hours.
+      - name: Alert on build failure
+        if: failure() || steps.build.outcome == 'failure'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           DATE=$(date +%Y-%m-%d)
           RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           gh label create sports-epg --color 0075ca --description "Sports EPG build alerts" 2>/dev/null || true
-          gh issue create \
-            --title "Sports EPG build failed -- ${DATE}" \
-            --body "## Ticker Sports EPG build failed
+          EXISTING=$(gh issue list --label sports-epg --state open --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "Still failing as of ${DATE}: ${RUN_URL}"
+          else
+            cat > "$RUNNER_TEMP/alert.md" <<BODY
+          ## Ticker sports EPG build is unhealthy
 
-          The \`update-sports-epg\` workflow failed on ${DATE}.
+          The update-sports-epg workflow reported a problem on ${DATE}.
 
           **Workflow run:** ${RUN_URL}
 
           **Likely causes:**
-          - Network error fetching schedule pages
-          - Schedule page structure changed (parser needs updating)
-          - Python exception in build script
+          - SiriusXM changed their sports page markup (0 events parsed from every sport): parse_schedule_page in scripts/build_sports_epg.py needs updating
+          - Network error fetching the schedule pages
+          - Python exception in the build script
 
-          Check the run logs above. The last successfully built \`satellite_radio_epg.xml\` remains in place until fixed." \
-            --label "sports-epg" || true
+          The rest of the EPG (show schedules, filler) is still published; only live sports data is affected. This issue closes itself when a build succeeds.
+          BODY
+            gh issue create --label sports-epg \
+              --title "Sports EPG build unhealthy -- ${DATE}" \
+              --body-file "$RUNNER_TEMP/alert.md"
+          fi
+
+      - name: Close alert issue on recovery
+        if: steps.build.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          for n in $(gh issue list --label sports-epg --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Recovered: build healthy again (${RUN_URL})"
+          done
+
+      # Make the run show red in the Actions tab (continue-on-error kept the job green).
+      - name: Fail the run if the build was unhealthy
+        if: steps.build.outcome == 'failure'
+        run: exit 1
