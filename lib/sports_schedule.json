@@ -1,4 +1,428 @@
 {
-  "generated_at": "2026-11-16T17:45:51Z",
-  "events": []
+  "generated_at": "2026-11-16T19:44:20Z",
+  "events": [
+    {
+      "slug": "nba",
+      "title": "Orlando Magic @ Boston Celtics",
+      "description": "NBA · Orlando Magic @ Boston Celtics",
+      "start_utc": "2026-11-17T00:00:00Z",
+      "end_utc": "2026-11-17T02:30:00Z",
+      "channels": [
+        "Boston Celtics",
+        "Orlando Magic",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Memphis Grizzlies @ Washington Wizards",
+      "description": "NBA · Memphis Grizzlies @ Washington Wizards",
+      "start_utc": "2026-11-17T00:00:00Z",
+      "end_utc": "2026-11-17T02:30:00Z",
+      "channels": [
+        "Washington Wizards",
+        "Memphis Grizzlies",
+        "NHL/NBA Play-by-Play 219",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Chicago Bulls @ Cleveland Cavaliers",
+      "description": "NBA · Chicago Bulls @ Cleveland Cavaliers",
+      "start_utc": "2026-11-17T00:00:00Z",
+      "end_utc": "2026-11-17T02:30:00Z",
+      "channels": [
+        "Cleveland Cavaliers",
+        "Chicago Bulls",
+        "Satellite Radio Channel 218",
+        "WSCR Chicago",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Philadelphia 76ers @ Brooklyn Nets",
+      "description": "NBA · Philadelphia 76ers @ Brooklyn Nets",
+      "start_utc": "2026-11-17T00:30:00Z",
+      "end_utc": "2026-11-17T03:00:00Z",
+      "channels": [
+        "Brooklyn Nets",
+        "Philadelphia 76ers",
+        "NHL/NBA Play-by-Play 220",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Houston Rockets @ Miami Heat",
+      "description": "NBA · Houston Rockets @ Miami Heat",
+      "start_utc": "2026-11-17T00:30:00Z",
+      "end_utc": "2026-11-17T03:00:00Z",
+      "channels": [
+        "Miami Heat",
+        "Houston Rockets",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nhl",
+      "title": "Montreal Canadiens @ New York Rangers",
+      "description": "NHL · Montreal Canadiens @ New York Rangers",
+      "start_utc": "2026-11-17T00:30:00Z",
+      "end_utc": "2026-11-17T03:00:00Z",
+      "channels": [
+        "New York Rangers",
+        "Montreal Canadiens",
+        "NHL Network Radio",
+        "SiriusXM NHL Network Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Portland Trail Blazers @ Minnesota Timberwolves",
+      "description": "NBA · Portland Trail Blazers @ Minnesota Timberwolves",
+      "start_utc": "2026-11-17T01:00:00Z",
+      "end_utc": "2026-11-17T03:30:00Z",
+      "channels": [
+        "Minnesota Timberwolves",
+        "Portland Trail Blazers",
+        "NHL/NBA Play-by-Play 221",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Golden State Warriors @ New Orleans Pelicans",
+      "description": "NBA · Golden State Warriors @ New Orleans Pelicans",
+      "start_utc": "2026-11-17T01:00:00Z",
+      "end_utc": "2026-11-17T03:30:00Z",
+      "channels": [
+        "New Orleans Pelicans",
+        "Golden State Warriors",
+        "NHL/NBA Play-by-Play 222",
+        "KGMZ San Francisco",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Los Angeles Chargers @ Baltimore Ravens",
+      "description": "NFL · Los Angeles Chargers @ Baltimore Ravens",
+      "start_utc": "2026-11-17T01:15:00Z",
+      "end_utc": "2026-11-17T04:15:00Z",
+      "channels": [
+        "Baltimore Ravens",
+        "Los Angeles Chargers",
+        "NCAA Play-by-Play 192",
+        "NCAA Play-by-Play 193",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Phoenix Suns @ Denver Nuggets",
+      "description": "NBA · Phoenix Suns @ Denver Nuggets",
+      "start_utc": "2026-11-17T02:00:00Z",
+      "end_utc": "2026-11-17T04:30:00Z",
+      "channels": [
+        "Denver Nuggets",
+        "Phoenix Suns",
+        "Satellite Radio Channel 247",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nhl",
+      "title": "Vancouver Canucks @ Utah Mammoth",
+      "description": "NHL · Vancouver Canucks @ Utah Mammoth",
+      "start_utc": "2026-11-17T02:30:00Z",
+      "end_utc": "2026-11-17T05:00:00Z",
+      "channels": [
+        "Utah Mammoth",
+        "Vancouver Canucks",
+        "NHL/NBA Play-by-Play 223",
+        "SiriusXM NHL Network Radio"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 1",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 1 · Las Vegas Street Circuit",
+      "start_utc": "2026-11-20T00:25:00Z",
+      "end_utc": "2026-11-20T02:25:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Orlando City SC @ FC Cincinnati",
+      "description": "SOCCER · Orlando City SC @ FC Cincinnati",
+      "start_utc": "2026-11-20T00:30:00Z",
+      "end_utc": "2026-11-20T02:30:00Z",
+      "channels": [
+        "FC Cincinnati",
+        "Orlando City SC",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Seattle Sounders @ Real Salt Lake",
+      "description": "SOCCER · Seattle Sounders @ Real Salt Lake",
+      "start_utc": "2026-11-20T03:00:00Z",
+      "end_utc": "2026-11-20T05:00:00Z",
+      "channels": [
+        "Real Salt Lake",
+        "Seattle Sounders",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 2",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 2 · Las Vegas Street Circuit",
+      "start_utc": "2026-11-20T03:55:00Z",
+      "end_utc": "2026-11-20T05:55:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 3",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 3 · Las Vegas Street Circuit",
+      "start_utc": "2026-11-21T00:25:00Z",
+      "end_utc": "2026-11-21T02:25:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Qualifying",
+      "description": "Formula 1 Racing and Analysis · F-1 Qualifying · Las Vegas Street Circuit",
+      "start_utc": "2026-11-21T03:55:00Z",
+      "end_utc": "2026-11-21T05:55:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Manchester City @ Fulham",
+      "description": "SOCCER · Manchester City @ Fulham",
+      "start_utc": "2026-11-21T12:30:00Z",
+      "end_utc": "2026-11-21T14:30:00Z",
+      "channels": [
+        "Fulham",
+        "Manchester City",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Tottenham @ Ipswich",
+      "description": "SOCCER · Tottenham @ Ipswich",
+      "start_utc": "2026-11-21T15:00:00Z",
+      "end_utc": "2026-11-21T17:00:00Z",
+      "channels": [
+        "Ipswich",
+        "Tottenham",
+        "Satellite Radio Channel 247",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Chelsea @ Leeds",
+      "description": "SOCCER · Chelsea @ Leeds",
+      "start_utc": "2026-11-21T15:00:00Z",
+      "end_utc": "2026-11-21T17:00:00Z",
+      "channels": [
+        "Leeds",
+        "Chelsea",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Newcastle @ Arsenal",
+      "description": "SOCCER · Newcastle @ Arsenal",
+      "start_utc": "2026-11-21T17:30:00Z",
+      "end_utc": "2026-11-21T19:30:00Z",
+      "channels": [
+        "Arsenal",
+        "Newcastle",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "New England Revolution @ Philadelphia Union",
+      "description": "SOCCER · New England Revolution @ Philadelphia Union",
+      "start_utc": "2026-11-21T19:00:00Z",
+      "end_utc": "2026-11-21T21:00:00Z",
+      "channels": [
+        "Philadelphia Union",
+        "New England Revolution",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "FC Dallas @ Portland Timbers",
+      "description": "SOCCER · FC Dallas @ Portland Timbers",
+      "start_utc": "2026-11-21T21:00:00Z",
+      "end_utc": "2026-11-21T23:00:00Z",
+      "channels": [
+        "Portland Timbers",
+        "FC Dallas",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Inter Miami CF @ Columbus Crew SC",
+      "description": "SOCCER · Inter Miami CF @ Columbus Crew SC",
+      "start_utc": "2026-11-21T23:00:00Z",
+      "end_utc": "2026-11-22T01:00:00Z",
+      "channels": [
+        "Columbus Crew SC",
+        "Inter Miami CF",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "Las Vegas Grand Prix",
+      "description": "Formula 1 Racing and Analysis · Las Vegas Grand Prix · Las Vegas Street Circuit",
+      "start_utc": "2026-11-22T04:00:00Z",
+      "end_utc": "2026-11-22T06:00:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Hull City @ Brighton",
+      "description": "SOCCER · Hull City @ Brighton",
+      "start_utc": "2026-11-22T14:00:00Z",
+      "end_utc": "2026-11-22T16:00:00Z",
+      "channels": [
+        "Brighton",
+        "Hull City",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Liverpool @ Manchester United",
+      "description": "SOCCER · Liverpool @ Manchester United",
+      "start_utc": "2026-11-22T16:30:00Z",
+      "end_utc": "2026-11-22T18:30:00Z",
+      "channels": [
+        "Manchester United",
+        "Liverpool",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Chicago Fire @ Charlotte FC",
+      "description": "SOCCER · Chicago Fire @ Charlotte FC",
+      "start_utc": "2026-11-22T23:30:00Z",
+      "end_utc": "2026-11-23T01:30:00Z",
+      "channels": [
+        "Charlotte FC",
+        "Chicago Fire",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Brentford @ Everton",
+      "description": "SOCCER · Brentford @ Everton",
+      "start_utc": "2026-11-23T20:00:00Z",
+      "end_utc": "2026-11-23T22:00:00Z",
+      "channels": [
+        "Everton",
+        "Brentford",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "St. Louis City SC @ LAFC",
+      "description": "SOCCER · St. Louis City SC @ LAFC",
+      "start_utc": "2026-11-24T01:00:00Z",
+      "end_utc": "2026-11-24T03:00:00Z",
+      "channels": [
+        "LAFC",
+        "St. Louis City SC",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 1",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 1 · Lusail International Circuit",
+      "start_utc": "2026-11-27T13:25:00Z",
+      "end_utc": "2026-11-27T15:25:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 2",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 2 · Lusail International Circuit",
+      "start_utc": "2026-11-27T16:55:00Z",
+      "end_utc": "2026-11-27T18:55:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Practice 3",
+      "description": "Formula 1 Racing and Analysis · F-1 Practice 3 · Lusail International Circuit",
+      "start_utc": "2026-11-28T14:25:00Z",
+      "end_utc": "2026-11-28T16:25:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "F-1 Qualifying",
+      "description": "Formula 1 Racing and Analysis · F-1 Qualifying · Lusail International Circuit",
+      "start_utc": "2026-11-28T17:55:00Z",
+      "end_utc": "2026-11-28T19:55:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "f1",
+      "title": "Qatar Grand Prix",
+      "description": "Formula 1 Racing and Analysis · Qatar Grand Prix · Lusail International Circuit",
+      "start_utc": "2026-11-29T16:00:00Z",
+      "end_utc": "2026-11-29T18:00:00Z",
+      "channels": [
+        "Satellite Radio Channel 251",
+        "Formula 1 Racing and Analysis"
+      ]
+    }
+  ]
 }
