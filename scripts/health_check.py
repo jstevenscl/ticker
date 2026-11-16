@@ -38,12 +38,17 @@ EPG_MIN_CHANNEL_RATIO = 0.98      # of lineup channels that must appear in the E
 EPG_MIN_COVERED_NOW_RATIO = 0.98  # of EPG channels that must have a programme airing right now
 SPORTS_MAX_AGE_H = 24             # built every 4h; GitHub drops/delays cron runs, so allow ~5 misses
 SHOW_SCHEDULES_MAX_AGE_H = 72     # built daily; 72h = 2 missed runs
-SHOW_SCHEDULES_MIN_CHANNELS = 300 # normally ~400
+SHOW_SCHEDULES_MIN_CHANNELS = 350 # normally ~400 (observed 393-408 since Sep); siriusxm.com scrape, no STL equivalent
+STL_URL = "https://stellartunerlog.com/channels.json"   # source of truth for the lineup
+STL_MAX_AGE_H = 48                # STL refreshes ~daily; older = STL itself stalled, don't trust it
+STL_MIN_CHANNELS = 600            # normally ~745; far below = broken feed, not a lineup change
+BUNDLED_MAX_CHANGES = 40          # STL-vs-shipped-zip differences before a release is advised
+RELEASE_ZIP_URL = "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-latest.zip"
 # workflow file -> (max hours since last run, human name). Cron cadence x ~3.
 WORKFLOWS = {
     "update-sports-epg.yml":      (24,      "Update Satellite Radio EPG (every 4h)"),
     "update-show-schedules.yml":  (3 * 24,  "Update Satellite Radio Show Schedules (daily)"),
-    "update-channels.yml":        (10 * 24, "Update Channel Cache (weekly)"),
+    "update-channels.yml":        (3 * 24,  "Update Channel Cache (daily)"),
 }
 
 
@@ -160,6 +165,108 @@ def check_show_schedules(now, problems, notes):
             f"(normally ~400, floor {SHOW_SCHEDULES_MIN_CHANNELS}) -- scraper is likely broken")
 
 
+def _norm(name):
+    return "".join(c for c in name.lower() if c.isalnum())
+
+
+def lineup_problems(stl, catalog, aliases, epg_ids):
+    """Cross-check everything we publish against STL (StellarTunerLog), which
+    auto-detects SiriusXM lineup changes and is the source of truth.
+
+    stl      {entity_id: STL channel dict}      live stellartunerlog.com/channels.json
+    catalog  {key: our channel dict}            published lib/channels.json
+    aliases  {alias_lower: canonical}           published lib/channel_aliases.json
+    epg_ids  set of channel ids in the published EPG
+    Returns a list of problem strings (empty = consistent).
+    """
+    problems = []
+    by_id = {str(v.get("sxm_entity_id")): v for v in catalog.values()}
+
+    # Catalog: every STL channel present, same name and number.
+    missing, renamed, renumbered = [], [], []
+    for v in stl.values():
+        ours = by_id.get(str(v["id"]))
+        if ours is None:
+            missing.append(f"{v['name']} (ch {v.get('channel_number')})")
+            continue
+        if _norm(ours["name"]) != _norm(v["name"]):
+            renamed.append(f"{v['name']} -> ours: {ours['name']}")
+        if ours.get("sxm_number") != v.get("channel_number"):
+            renumbered.append(f"{v['name']}: STL {v.get('channel_number')} vs ours {ours.get('sxm_number')}")
+    for label, items in (("missing from our channel catalog", missing),
+                         ("named differently in our catalog than in STL", renamed),
+                         ("numbered differently in our catalog than in STL", renumbered)):
+        if items:
+            problems.append(f"**{len(items)} STL channel(s) {label}** -- the channel cache is behind "
+                            f"the lineup (e.g. {'; '.join(items[:5])})")
+
+    # EPG: every STL channel (by our canonical name) has a guide channel.
+    no_epg = [by_id[str(v["id"])]["name"] for v in stl.values()
+              if str(v["id"]) in by_id and by_id[str(v["id"])]["name"] not in epg_ids]
+    if no_epg:
+        problems.append(f"**{len(no_epg)} STL channel(s) have no EPG entry** (e.g. {', '.join(no_epg[:6])})")
+
+    # Aliases are applied to Dispatcharr names *before* matching against live STL
+    # names, so they must never redirect a live STL name to a different channel
+    # (2026-11: 'message worship' -> The Message matched ch 78 instead of 79).
+    live = {}
+    for v in stl.values():
+        live.setdefault(_norm(v["name"]), []).append(v)
+    bad = []
+    for key, target in aliases.items():
+        k, t = live.get(_norm(key)), live.get(_norm(target))
+        if k and not t:
+            bad.append(f"'{key}' is a live STL name but its target '{target}' is not (no match at all)")
+        elif k and t and {x["id"] for x in k} != {x["id"] for x in t}:
+            bad.append(f"'{key}' (ch {k[0].get('channel_number')}) points at a DIFFERENT live channel "
+                       f"'{target}' (ch {t[0].get('channel_number')})")
+    if bad:
+        problems.append(f"**{len(bad)} alias(es) mis-route live STL channels**: " + "; ".join(bad[:4]))
+    return problems
+
+
+def check_lineup(now, problems, notes):
+    try:
+        feed = json.loads(get(STL_URL).decode("utf-8"))
+        stl = {str(v["id"]): v for v in feed["channels"].values()}
+        stl_updated = parse_iso(feed["updated_utc"].split(".")[0].rstrip("Z") + "Z")
+        catalog = json.loads(get(f"{BASE}/channels.json").decode("utf-8"))
+        aliases = json.loads(get(f"{BASE}/channel_aliases.json").decode("utf-8"))
+        epg_ids = {c.get("id") for c in ET.fromstring(get(f"{BASE}/satellite_radio_epg.xml")).findall("channel")}
+    except Exception as e:
+        problems.append(f"**Could not load STL / published data for the lineup cross-check**: {e}")
+        return
+    notes.append(f"STL: {len(stl)} channels, updated {age_h(stl_updated, now):.1f}h ago")
+    if age_h(stl_updated, now) > STL_MAX_AGE_H:
+        problems.append(f"**STL itself looks stalled**: feed last updated {age_h(stl_updated, now):.0f}h ago "
+                        f"(limit {STL_MAX_AGE_H}h) -- lineup changes are not being detected")
+        return
+    if len(stl) < STL_MIN_CHANNELS:
+        problems.append(f"**STL feed has only {len(stl)} channels** (normally ~745) -- not trusting it for "
+                        f"the cross-check; check stellartunerlog.com")
+        return
+    problems.extend(lineup_problems(stl, catalog, {k.lower(): v for k, v in aliases.items()}, epg_ids))
+
+    # The plugin zip bundles a fallback catalog (used only if the live fetch fails).
+    try:
+        import io, zipfile
+        z = zipfile.ZipFile(io.BytesIO(get(RELEASE_ZIP_URL)))
+        bundled = json.loads(z.read("channels.json").decode("utf-8"))
+    except Exception as e:
+        notes.append(f"Bundled fallback catalog: could not read release zip ({e})")
+        return
+    b_ids = {str(v.get("sxm_entity_id")): v for v in bundled.values()}
+    added = [v["name"] for v in stl.values() if str(v["id"]) not in b_ids]
+    changed = [v["name"] for v in stl.values() if str(v["id"]) in b_ids and
+               (_norm(b_ids[str(v["id"])]["name"]) != _norm(v["name"]) or
+                b_ids[str(v["id"])].get("sxm_number") != v.get("channel_number"))]
+    notes.append(f"Bundled fallback catalog vs STL: {len(added)} new, {len(changed)} renamed/renumbered "
+                 f"(live-fetch covers these; fallback only used if STL is unreachable)")
+    if len(added) + len(changed) >= BUNDLED_MAX_CHANGES:
+        problems.append(f"**Released plugin's bundled channel catalog is {len(added)} new + {len(changed)} "
+                        f"changed channels behind STL** -- consider cutting a release to refresh the fallback")
+
+
 def check_workflows(now, problems, notes):
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     if not token:
@@ -203,7 +310,7 @@ def check_workflows(now, problems, notes):
 def main():
     now = datetime.now(timezone.utc)
     problems, notes = [], []
-    for check in (check_epg, check_sports, check_show_schedules, check_workflows):
+    for check in (check_epg, check_sports, check_show_schedules, check_lineup, check_workflows):
         try:
             check(now, problems, notes)
         except Exception as e:  # a broken check must alert, not crash silently

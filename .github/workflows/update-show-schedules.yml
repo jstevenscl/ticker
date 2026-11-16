@@ -2,10 +2,19 @@ name: Update Satellite Radio Show Schedules
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # Once daily — show lineups don't change nearly as often
+    - cron: '37 6 * * *'   # Once daily — show lineups don't change nearly as often
                           # as sports schedules (rain delays, overtime, etc.),
                           # which is why that job stays on its own 4h cadence.
   workflow_dispatch:       # Allow manual trigger
+
+# All three data workflows commit to master. Serialize them in one group so a long
+# run (the show-schedule scrape takes ~10 min) can't have its push rejected
+# because another workflow pushed in the meantime (happened twice on 2026-11-16).
+# cancel-in-progress is false: a running job is never killed mid-commit; at most
+# one further run waits in the queue.
+concurrency:
+  group: ticker-data-writers
+  cancel-in-progress: false
 
 jobs:
   update-show-schedules:
@@ -35,6 +44,7 @@ jobs:
           git add lib/show_schedules.json
           if git diff --staged -- lib/show_schedules.json | grep -q .; then
             git commit -m "chore: update satellite radio show schedules"
+            git pull --rebase origin master
             git push
           else
             echo "Show schedules unchanged -- nothing to commit"

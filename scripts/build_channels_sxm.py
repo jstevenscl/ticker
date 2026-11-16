@@ -9,7 +9,7 @@ if STL is unreachable.
 Run manually:
   python scripts/build_channels_sxm.py
 
-Called automatically by .github/workflows/update-channels.yml on a weekly schedule.
+Called automatically by .github/workflows/update-channels.yml daily (shortly after STL refreshes).
 """
 
 import csv
@@ -172,7 +172,11 @@ _DYNAMIC_RE = re.compile(
 # channels and must not be carried into the lineup (they otherwise linger in the
 # EPG and channel catalog as ghosts). Measured relative to the file's newest row,
 # not today, so a stalled Rebrowser scraper can't empty the lineup.
-REBROWSER_STALE_DAYS = 7
+# 30 days, not shorter: live channels are re-stamped daily (807/831 rows had
+# today's date on 2026-11-16), so 30 days is already a long miss, and it keeps a
+# seasonal channel that is only briefly off-air from being dropped prematurely.
+# Real endings are far older (22 of 24 stale rows on 2026-11-16 were 46-287 days).
+REBROWSER_STALE_DAYS = 30
 
 
 def _drop_stale_rebrowser(rows: list) -> list:

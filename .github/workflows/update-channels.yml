@@ -2,8 +2,20 @@ name: Update Channel Cache
 
 on:
   schedule:
-    - cron: '0 6 * * 1'   # Every Monday at 06:00 UTC — SiriusXM lineup changes are infrequent
+    # Daily, shortly after STL's own daily refresh (~05:25 UTC). STL auto-detects SiriusXM lineup
+    # changes; a weekly pull left our EPG ids / show-schedule keys up to 6 days behind it.
+    # Cheap: one JSON fetch, and it only commits when channels.json actually changed.
+    - cron: '13 6 * * *'
   workflow_dispatch:       # Allow manual trigger
+
+# All three data workflows commit to master. Serialize them in one group so a long
+# run (the show-schedule scrape takes ~10 min) can't have its push rejected
+# because another workflow pushed in the meantime (happened twice on 2026-11-16).
+# cancel-in-progress is false: a running job is never killed mid-commit; at most
+# one further run waits in the queue.
+concurrency:
+  group: ticker-data-writers
+  cancel-in-progress: false
 
 jobs:
   update-cache:
@@ -34,6 +46,7 @@ jobs:
             echo "Channel cache unchanged -- nothing to commit"
           else
             git commit -m "chore: update SiriusXM channel cache from STL"
+            git pull --rebase origin master
             git push
           fi
 

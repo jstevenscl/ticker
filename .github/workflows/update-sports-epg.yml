@@ -8,6 +8,15 @@ on:
     - cron: '17 */4 * * *'
   workflow_dispatch:         # Allow manual trigger
 
+# All three data workflows commit to master. Serialize them in one group so a long
+# run (the show-schedule scrape takes ~10 min) can't have its push rejected
+# because another workflow pushed in the meantime (happened twice on 2026-11-16).
+# cancel-in-progress is false: a running job is never killed mid-commit; at most
+# one further run waits in the queue.
+concurrency:
+  group: ticker-data-writers
+  cancel-in-progress: false
+
 jobs:
   update-epg:
     runs-on: ubuntu-latest
@@ -42,6 +51,7 @@ jobs:
           git add lib/satellite_radio_epg.xml lib/sports_schedule.json
           if git diff --staged -- lib/satellite_radio_epg.xml | grep -q .; then
             git commit -m "chore: update satellite radio EPG"
+            git pull --rebase origin master
             git push
           else
             echo "Sports EPG content unchanged -- nothing to commit"
