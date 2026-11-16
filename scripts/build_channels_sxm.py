@@ -19,6 +19,7 @@ import os
 import re
 import unicodedata
 import urllib.request
+from datetime import datetime
 from pathlib import Path
 
 ROOT        = Path(__file__).parent.parent
@@ -165,12 +166,43 @@ _DYNAMIC_RE = re.compile(
 )
 
 
+# The Rebrowser CSV never deletes rows: a channel SiriusXM drops (Scream Radio,
+# SiriusXM 144, SoulCycle...) just stops getting its _lastSeenAt bumped. Rows whose
+# _lastSeenAt trails the newest row in the file by more than this are ended
+# channels and must not be carried into the lineup (they otherwise linger in the
+# EPG and channel catalog as ghosts). Measured relative to the file's newest row,
+# not today, so a stalled Rebrowser scraper can't empty the lineup.
+REBROWSER_STALE_DAYS = 7
+
+
+def _drop_stale_rebrowser(rows: list) -> list:
+    stamps = [(r.get("_lastSeenAt") or "")[:10] for r in rows]
+    stamps = [s for s in stamps if len(s) == 10]
+    if not stamps:
+        return rows  # no usable timestamps: don't guess
+    newest = datetime.strptime(max(stamps), "%Y-%m-%d")
+    keep, dropped = [], []
+    for r in rows:
+        seen = (r.get("_lastSeenAt") or "")[:10]
+        try:
+            age = (newest - datetime.strptime(seen, "%Y-%m-%d")).days
+        except ValueError:
+            keep.append(r)  # unparseable/missing: keep rather than drop a live channel
+            continue
+        (dropped if age > REBROWSER_STALE_DAYS else keep).append(r)
+    if dropped:
+        names = ", ".join(sorted(r.get("name", "?") for r in dropped)[:12])
+        print(f"  Rebrowser: ignoring {len(dropped)} stale row(s) not seen in >{REBROWSER_STALE_DAYS}d "
+              f"(ended channels): {names}{' ...' if len(dropped) > 12 else ''}")
+    return keep
+
+
 def build_from_rebrowser(rows: list, existing: dict, aliases: dict) -> dict:
     """Build channels.json from Rebrowser CSV (fallback)."""
     out = {}
     seen_numbers = set()
 
-    for row in rows:
+    for row in _drop_stale_rebrowser(rows):
         raw_name = row.get("name", "").strip()
         if not raw_name:
             continue
