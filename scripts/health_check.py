@@ -40,6 +40,8 @@ SPORTS_MAX_AGE_H = 24             # built every 4h; GitHub drops/delays cron run
 SHOW_SCHEDULES_MAX_AGE_H = 72     # built daily; 72h = 2 missed runs
 SHOW_SCHEDULES_MIN_CHANNELS = 350 # normally ~400 (observed 393-408 since Sep); siriusxm.com scrape, no STL equivalent
 STL_URL = "https://stellartunerlog.com/channels.json"   # source of truth for the lineup
+STL_CHANGES_URL = "https://api.stellartunerlog.com/v1/lineup/changes"   # public, 14-day rolling change log
+FLAP_MIN_RENAMES = 3              # renames of one channel within the STL window that count as flapping
 STL_MAX_AGE_H = 48                # STL refreshes ~daily; older = STL itself stalled, don't trust it
 STL_MIN_CHANNELS = 600            # normally ~745; far below = broken feed, not a lineup change
 BUNDLED_MAX_CHANGES = 40          # STL-vs-shipped-zip differences before a release is advised
@@ -225,6 +227,36 @@ def lineup_problems(stl, catalog, aliases, epg_ids):
     return problems
 
 
+def flap_problems(events, aliases):
+    """STL's lineup-change log records every rename it observes. A channel whose
+    name keeps flipping between spellings (2026-11: 'KellyClarkson Connection' <->
+    'The Kelly Clarkson Connection', 8 renames in 13 days) makes our catalog and
+    EPG channel id flip with it on every daily rebuild -- unless our alias map
+    canonicalizes every spelling to one name. Flag flapping channels whose
+    spellings are NOT all canonicalized to a single name.
+
+    events   STL /v1/lineup/changes "events" list
+    aliases  {alias_lower: canonical}
+    """
+    names, renames = {}, {}
+    for ev in events:
+        if ev.get("change_type") != "renamed":
+            continue
+        cid = str(ev.get("channel_id"))
+        renames[cid] = renames.get(cid, 0) + 1
+        names.setdefault(cid, set()).update(x for x in (ev.get("name"), ev.get("old_name")) if x)
+    out = []
+    for cid, n in renames.items():
+        if n < FLAP_MIN_RENAMES:
+            continue
+        canon = {aliases.get(x.lower(), x) for x in names[cid]}
+        if len(canon) > 1:
+            out.append(f"'{' / '.join(sorted(names[cid]))}' was renamed {n}x in STL's change log but our alias "
+                       f"map does not map every spelling to one name -- catalog/EPG id can flip between daily "
+                       f"builds (add an alias for the missing spelling)")
+    return out
+
+
 def check_lineup(now, problems, notes):
     try:
         feed = json.loads(get(STL_URL).decode("utf-8"))
@@ -245,7 +277,18 @@ def check_lineup(now, problems, notes):
         problems.append(f"**STL feed has only {len(stl)} channels** (normally ~745) -- not trusting it for "
                         f"the cross-check; check stellartunerlog.com")
         return
-    problems.extend(lineup_problems(stl, catalog, {k.lower(): v for k, v in aliases.items()}, epg_ids))
+    alias_map = {k.lower(): v for k, v in aliases.items()}
+    problems.extend(lineup_problems(stl, catalog, alias_map, epg_ids))
+
+    # STL's own change log (public API): flapping names. Advisory source, so an
+    # unreachable endpoint is a note, never a failure.
+    try:
+        log = json.loads(get(STL_CHANGES_URL).decode("utf-8"))
+        events = log.get("events", [])
+        notes.append(f"STL lineup-change log: {len(events)} event(s) in the last {log.get('window_days', 14)} days")
+        problems.extend(f"**Unstable channel name**: {m}" for m in flap_problems(events, alias_map))
+    except Exception as e:
+        notes.append(f"STL lineup-change log unavailable ({e})")
 
     # The plugin zip bundles a fallback catalog (used only if the live fetch fails).
     try:
