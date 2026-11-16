@@ -1770,14 +1770,14 @@
     "sxm_entity_id": "9426",
     "lookaround_channel_id": "8a53ab2f-e2bb-5f5f-bb74-b073f7a82647"
   },
-  "the message": {
-    "name": "The Message",
+  "message worship": {
+    "name": "Message Worship",
     "description": "Uplifting worship music that sings to God. It's the music you hear and sing in your Sunday service.",
     "genre": "Christian",
     "sxm_number": 79,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/9675.png",
-    "sxm_logo_src": "if/5c/5c64da6d1dc53d689652611d63d1b8ec_1765946657.png",
+    "sxm_logo_src": "",
     "sxm_entity_id": "9675",
     "lookaround_channel_id": "c5647ffa-5f13-5030-88f6-13ed47df40dc"
   },
@@ -3552,14 +3552,14 @@
     "sxm_entity_id": "9455",
     "lookaround_channel_id": "f5701423-11a8-9ee3-e9f9-11142108ae31"
   },
-  "the message_78": {
+  "the message": {
     "name": "The Message",
     "description": "Pop and rock with a higher purpose. Contemporary Christian music delivered by compassionate hosts to encourage you and your family on your faith journey.",
     "genre": "Christian",
     "sxm_number": 78,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/spirit.png",
-    "sxm_logo_src": "",
+    "sxm_logo_src": "if/5c/5c64da6d1dc53d689652611d63d1b8ec_1765946657.png",
     "sxm_entity_id": "spirit",
     "lookaround_channel_id": "c2e3e686-93a6-5d22-c818-6d8ea63bcc7c"
   },
@@ -8084,8 +8084,8 @@
     "sxm_entity_id": "9e9b3f37-c423-c564-3700-5e4c882342fa",
     "lookaround_channel_id": "9e9b3f37-c423-c564-3700-5e4c882342fa"
   },
-  "alt workout_1309": {
-    "name": "Alt Workout",
+  "bangers": {
+    "name": "Bangers",
     "description": "",
     "genre": "Hip-Hop",
     "sxm_number": 1309,
@@ -9018,93 +9018,5 @@
     "sxm_logo_src": "",
     "sxm_entity_id": "8266",
     "lookaround_channel_id": null
-  },
-  "sports 275": {
-    "name": "Sports 275",
-    "description": "Live play-by-play of sports",
-    "genre": "Sports Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9679",
-    "lookaround_channel_id": null
-  },
-  "sports 274": {
-    "name": "Sports 274",
-    "description": "Live play-by-play of sports",
-    "genre": "Sports Play-by-Play",
-    "sxm_number": null,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9678",
-    "lookaround_channel_id": null
-  },
-  "soulcycle radio": {
-    "name": "SoulCycle Radio",
-    "description": "There's a reason we ride to the rhythm as a pack. At SoulCycle, music is what connects us, moves us, and inspires us. So we designed this channel to deliver the same joy, motivation, and heart-pumping beat you expect from us in class-and then some. Whether you're in the car, walking to work, or dancing in your bedroom, turn it up for a transformative mind-body-soul experience.",
-    "genre": "Pop",
-    "sxm_number": 704,
-    "seasonal": null,
-    "logo_url": "https://stellartunerlog.com/logos/9500.png",
-    "sxm_logo_src": "if/66/66cd9165c54231c9b831ebf64cb7417f_1756126389.png",
-    "sxm_entity_id": "9500",
-    "lookaround_channel_id": "6c535597-8e2b-5b54-968a-10cad277f43b"
-  },
-  "poplandia": {
-    "name": "Poplandia",
-    "description": "Poplandia is the soundtrack for pop culture junkies. Hear the hottest hits and exclusive interviews from your favorite artists. Movies, music, celebrity gossip, current events and more, Poplandia has you covered.",
-    "genre": "Canadian",
-    "sxm_number": 754,
-    "seasonal": null,
-    "logo_url": "https://stellartunerlog.com/logos/9511.png",
-    "sxm_logo_src": "if/d9/d9cc2fd60c833fb7960e0f7fc1afb381_1756126386.png",
-    "sxm_entity_id": "9511",
-    "lookaround_channel_id": "5721af4f-a1df-65fa-e127-01efe4a92eaa"
-  },
-  "marky ramone's punk rock": {
-    "name": "Marky Ramone's Punk Rock",
-    "description": "Marky Ramone's Punk Rock Blitzkrieg is Classic Punk 24/7 hosted by long-time Ramones drummer Marky Ramone! You'll hear Sex Pistols, Black Flag, Social Distortion, The Clash and of course, The Ramones! All this plus- Songs from Marky's personal music collection, rare recordings, live performances & more! Whether it is Ska-influenced, surf guitar-oriented, Cowpunk, Proto-Punk, Hardcore, or Pop Punk, if it's Classic Punk it's on Marky Ramone’s Punk Rock Blitzkrieg!",
-    "genre": "Rock",
-    "sxm_number": 712,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9470",
-    "lookaround_channel_id": null
-  },
-  "comedy classics": {
-    "name": "Comedy Classics",
-    "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
-    "genre": "Comedy",
-    "sxm_number": 772,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9542",
-    "lookaround_channel_id": null
-  },
-  "she's so funny": {
-    "name": "She's So Funny",
-    "description": "The funniest female comedians all in one place hand-curated just for you to keep you in stitches!",
-    "genre": "Comedy",
-    "sxm_number": 771,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9503",
-    "lookaround_channel_id": null
-  },
-  "the message_1258": {
-    "name": "The Message",
-    "description": "Praise and worship music",
-    "genre": "All Xtra",
-    "sxm_number": 1258,
-    "seasonal": null,
-    "logo_url": "https://stellartunerlog.com/logos/9675.png",
-    "sxm_logo_src": "if/5c/5c64da6d1dc53d689652611d63d1b8ec_1765946657.png",
-    "sxm_entity_id": "4270",
-    "lookaround_channel_id": "c5647ffa-5f13-5030-88f6-13ed47df40dc"
   }
 }
