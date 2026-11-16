@@ -9074,17 +9074,6 @@
     "sxm_entity_id": "9470",
     "lookaround_channel_id": null
   },
-  "she's so funny": {
-    "name": "She's So Funny",
-    "description": "The funniest female comedians all in one place hand-curated just for you to keep you in stitches!",
-    "genre": "Comedy",
-    "sxm_number": 771,
-    "seasonal": null,
-    "logo_url": "",
-    "sxm_logo_src": "",
-    "sxm_entity_id": "9503",
-    "lookaround_channel_id": null
-  },
   "comedy classics": {
     "name": "Comedy Classics",
     "description": "Classic stand-up from icons of the past, who paved the way for the greats we love today. Timeless comedy that shaped the landscape and defined generations. Featuring legends like Bob Newhart, Joan Rivers, Jackie Gleason and Redd Foxx, as well as exclusive classic archives.",
@@ -9094,6 +9083,17 @@
     "logo_url": "",
     "sxm_logo_src": "",
     "sxm_entity_id": "9542",
+    "lookaround_channel_id": null
+  },
+  "she's so funny": {
+    "name": "She's So Funny",
+    "description": "The funniest female comedians all in one place hand-curated just for you to keep you in stitches!",
+    "genre": "Comedy",
+    "sxm_number": 771,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9503",
     "lookaround_channel_id": null
   },
   "the message_1258": {
