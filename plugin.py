@@ -2832,6 +2832,76 @@ def _migrate_group_name_settings():
         logger.warning(f"ticker: group-name settings migration skipped: {e}")
 
 
+# ── Sports leagues: one multiselect (list) replacing 51 per-league toggles ─────────
+_LEAGUE_HEADER_IDS = (
+    "_sports_football", "_sports_basketball", "_sports_baseball", "_sports_hockey",
+    "_sports_soccer_na", "_sports_soccer_eu", "_sports_soccer_eu2", "_sports_soccer_uefa",
+    "_sports_soccer_intl", "_sports_golf", "_sports_motor", "_sports_combat",
+    "_sports_tennis", "_sports_college_other",
+)
+
+
+def _truthy(v):
+    return v in (True, "true", "True", "1", 1)
+
+
+def _selected_leagues(params):
+    """League ids chosen in settings. Prefers the multiselect list (sports_leagues);
+    falls back to the legacy per-league boolean toggles (sports_<id>) used before v0.6."""
+    chosen = params.get("sports_leagues")
+    if isinstance(chosen, (list, tuple)):
+        return [s for s in KNOWN_SPORTS if s in {str(c) for c in chosen}]
+    return [s for s in KNOWN_SPORTS if _truthy(params.get(f"sports_{s}"))]
+
+
+def _migrate_league_settings():
+    """One-time, idempotent: saved per-league toggles become the sports_leagues list.
+    The old boolean keys are left in place so rolling back to a pre-0.6 build still
+    sees the user's leagues."""
+    try:
+        from apps.plugins.models import PluginConfig
+        config = PluginConfig.objects.filter(key=_PLUGIN_KEY).first()
+        if not config or not config.settings:
+            return
+        settings = dict(config.settings)
+        if "sports_leagues" in settings:
+            return
+        legacy = [s for s in KNOWN_SPORTS if _truthy(settings.get(f"sports_{s}"))]
+        if not legacy and not any(f"sports_{s}" in settings for s in KNOWN_SPORTS):
+            return
+        settings["sports_leagues"] = legacy
+        config.settings = settings
+        config.save(update_fields=["settings"])
+        logger.info(f"ticker: migrated {len(legacy)} per-league toggle(s) to the sports_leagues multiselect")
+    except Exception as e:
+        logger.warning(f"ticker: league settings migration skipped: {e}")
+
+
+def _collapse_league_toggles(fields):
+    """Replace the per-league heading + boolean toggles with a single multiselect."""
+    headers = set(_LEAGUE_HEADER_IDS)
+    out, options, group, slot, in_leagues = [], [], "", None, False
+    for f in fields:
+        fid = f.get("id", "")
+        if fid in headers:
+            group = re.sub(r"^\s*-+\s*|\s*-+\s*$", "", f.get("label", ""))
+            in_leagues = True
+            if slot is None:
+                slot = len(out)
+                out.append(None)
+            continue
+        if in_leagues and fid == "sports_favorites":
+            in_leagues = False
+        if in_leagues and f.get("type") == "boolean" and fid.startswith("sports_"):
+            options.append({"value": fid[len("sports_"):], "label": f"{group}: {f.get('label', fid)}"})
+            continue
+        out.append(f)
+    if slot is not None:
+        out[slot] = {"id": "sports_leagues", "type": "multiselect",
+                     "label": "Leagues (select one or more)", "options": options}
+    return out
+
+
 # ── Settings sections (manifest_version >= 1) ──────────────────────────────
 # Dispatcharr 0.34.0+ renders `section`-type marker fields as collapsible groups;
 # member fields join one via their own "section" key. Sections are display-only and
@@ -2848,20 +2918,6 @@ _SECTION_PLAN = [
     ("_eas_shared_section",   "sec_eas_shared",    "EAS — Shared Settings (USA + Canada)", False, True),
     ("_custom_section",       "sec_custom",        "Custom Text",                          False, True),
     ("_sports_section",       "sec_sports",        "Sports Ticker",                        False, True),
-    ("_sports_football",      "sec_sp_football",   "Leagues — Football",                   True,  True),
-    ("_sports_basketball",    "sec_sp_basketball", "Leagues — Basketball",                 True,  True),
-    ("_sports_baseball",      "sec_sp_baseball",   "Leagues — Baseball / Softball",        True,  True),
-    ("_sports_hockey",        "sec_sp_hockey",     "Leagues — Hockey",                     True,  True),
-    ("_sports_soccer_na",     "sec_sp_soccer_na",  "Leagues — Soccer: North America",      True,  True),
-    ("_sports_soccer_eu",     "sec_sp_soccer_eu",  "Leagues — Soccer: Europe (Big 5)",     True,  True),
-    ("_sports_soccer_eu2",    "sec_sp_soccer_eu2", "Leagues — Soccer: Europe (Other)",     True,  True),
-    ("_sports_soccer_uefa",   "sec_sp_soccer_uefa","Leagues — Soccer: UEFA",               True,  True),
-    ("_sports_soccer_intl",   "sec_sp_soccer_intl","Leagues — Soccer: International",      True,  True),
-    ("_sports_golf",          "sec_sp_golf",       "Leagues — Golf",                       True,  True),
-    ("_sports_motor",         "sec_sp_motor",      "Leagues — Motorsports",                True,  True),
-    ("_sports_combat",        "sec_sp_combat",     "Leagues — Combat Sports",              True,  True),
-    ("_sports_tennis",        "sec_sp_tennis",     "Leagues — Tennis",                     True,  True),
-    ("_sports_college_other", "sec_sp_college",    "Leagues — College & Other",            True,  True),
     ("sports_favorites",      "sec_sp_display",    "Sports Ticker — Display & Target",     False, False),
     ("_active_section",       "sec_active",        "Active Tickers (as of last plugin reload)", False, True),
 ]
@@ -2934,6 +2990,7 @@ class Plugin:
             group_name_opts = []
 
         _migrate_group_name_settings()
+        _migrate_league_settings()
         try:
             _saved_for_opts = _get_settings()
         except Exception:
@@ -3271,7 +3328,7 @@ class Plugin:
             {"id": "_active_section", "type": "info", "label": "==========  ACTIVE TICKERS  =========="},
             {"id": "_ticker_list",    "type": "info", "label": active_label},
         ]
-        return _apply_sections(fields)
+        return _apply_sections(_collapse_league_toggles(fields))
 
     def run(self, action, params, context):
         saved = _get_settings()
@@ -3634,7 +3691,7 @@ class Plugin:
         return {"success": bool(updated or cleared), "message": "\n\n".join(parts) or "Nothing to do."}
 
     def _enable_sports(self, params):
-        sports_list = [s for s in KNOWN_SPORTS if params.get(f"sports_{s}") in (True, "true", "1", 1)]
+        sports_list = _selected_leagues(params)
         if not sports_list:
             return {"success": False, "message": "Select at least one sport/league before enabling."}
 
@@ -3744,7 +3801,7 @@ class Plugin:
         """Update sports settings on already-enabled channels without restarting the stream.
         Updates sports_list and display settings in mappings.json; the sweep loop picks up the
         new sports_list on its next cycle and reload=1 delivers it without a stream restart."""
-        sports_list = [s for s in KNOWN_SPORTS if params.get(f"sports_{s}") in (True, "true", "1", 1)]
+        sports_list = _selected_leagues(params)
         if not sports_list:
             return {"success": False, "message": "Select at least one sport/league."}
 
