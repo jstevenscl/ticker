@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import threading
 import time
+import urllib.error
 import urllib.request
 
 logger = logging.getLogger(__name__)
@@ -3994,9 +3995,16 @@ class Plugin:
             return {"success": False, "message": f"'{state}' is not a valid state code. Use the 2-letter abbreviation (e.g. TX, WA, FL, NY)."}
         url = f"https://api.weather.gov/zones?type=public&area={state}"
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": NWS_UA, "Accept": "application/json"})
+            # NWS serves this as GeoJSON; its edge answers a plain application/json Accept
+            # with HTTP 503 (seen 2026-11-17 while other Accept values returned 200).
+            req = urllib.request.Request(url, headers={"User-Agent": NWS_UA, "Accept": "application/geo+json"})
             with urllib.request.urlopen(req, timeout=15) as r:
                 data = json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code >= 500:
+                return {"success": False, "message": f"The National Weather Service API is unavailable right now (HTTP {e.code}). "
+                                                     "This is on NWS's side -- try again in a few minutes."}
+            return {"success": False, "message": f"NWS API error: HTTP {e.code} {e.reason}"}
         except Exception as e:
             return {"success": False, "message": f"NWS API error: {e}"}
         features = data.get("features") or []
