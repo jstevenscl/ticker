@@ -4,6 +4,18 @@
 
 ## General
 
+**Q: Which version of Ticker do I need?**
+
+Ticker 0.6 and newer require **Dispatcharr 0.34.0 or newer**. On Dispatcharr 0.33 or older, use Ticker 0.5.x — pick a 0.5.x version from the version picker in **Find Plugins**, and see the [legacy documentation](https://github.com/jstevenscl/ticker/tree/legacy-0.5). Ticker 0.5.x only receives bug fixes.
+
+---
+
+**Q: I upgraded from 0.5.x — do I have to set everything up again?**
+
+No. Updating keeps your saved settings and any tickers that are already running. The group and league settings are converted to the new pickers automatically the first time the plugin loads.
+
+---
+
 **Q: Do I need to restart Dispatcharr after installing or updating Ticker?**
 
 No. Dispatcharr 0.34 and later loads new plugin code as soon as it is installed or updated. If an overlay seems to be running old behavior after an update, use the **Reload Plugin** button on the Ticker page.

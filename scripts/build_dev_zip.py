@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build a dev zip of Ticker for manual install on a test Dispatcharr (Import Plugin).
 
-Usage: python scripts/build_dev_zip.py <dev-suffix> [out_dir] [--manifest N] [--caps a,b,c] [--async action,action]
+Usage: python scripts/build_dev_zip.py <dev-suffix> [out_dir] [--manifest N] [--caps a,b,c] [--async action,action] [--version X.Y.Z]
   e.g. python scripts/build_dev_zip.py 20261117 -> ticker-<version>-dev.20261117.zip
        python scripts/build_dev_zip.py v2a out --manifest 2 --caps outbound_network,filesystem_write
   --manifest / --caps / --async override manifest_version / capabilities / mark actions
@@ -21,7 +21,7 @@ LIB = ["channels.json", "channel_aliases.json"]
 def main():
     args = sys.argv[1:]
     opts = {}
-    for flag in ("--manifest", "--caps", "--async"):
+    for flag in ("--manifest", "--caps", "--async", "--version"):
         if flag in args:
             i = args.index(flag)
             opts[flag] = args[i + 1]
@@ -33,6 +33,8 @@ def main():
     parts = base.split(".")
     parts[-1] = str(int(parts[-1]) + 1).zfill(len(parts[-1]))   # next patch, keep zero-padding (0.5.06 -> 0.5.07)
     version = f"{'.'.join(parts)}-dev.{suffix}"
+    if "--version" in opts:
+        version = opts["--version"]          # exact version (e.g. for documentation screenshots)
     manifest["version"] = version
     if "--manifest" in opts:
         manifest["manifest_version"] = int(opts["--manifest"])

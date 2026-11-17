@@ -4,7 +4,21 @@
 
 A [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr) plugin that injects dynamic text overlays into IPTV channels via FFmpeg. Ticker clones the channel's existing stream profile, injects overlay parameters, and restores the original profile on disable — the source profile is never modified.
 
-**On Dispatcharr v0.29.0+**, Ticker uses the new [`{channelId}` stream profile token](https://github.com/Dispatcharr/Dispatcharr/issues/1252) to share **one** stream profile across every channel using the same overlay type and base profile, instead of cloning one profile per channel. Older Dispatcharr versions automatically fall back to the previous one-clone-per-channel behavior — Ticker detects which mode it's running in and there's nothing to configure either way.
+Ticker uses Dispatcharr's [`{channelId}` stream profile token](https://github.com/Dispatcharr/Dispatcharr/issues/1252) to share **one** stream profile across every channel using the same overlay type and base profile, instead of cloning one profile per channel. There is nothing to configure.
+
+
+## Which version do I need?
+
+| Your Dispatcharr | Use Ticker | Documentation |
+|---|---|---|
+| **0.34.0 or newer** | **0.6.x** (current) | This page and the [User Guide](docs/USERGUIDE.md) |
+| 0.33.x or older | 0.5.x (legacy — bug fixes only) | [Legacy documentation](https://github.com/jstevenscl/ticker/tree/legacy-0.5) |
+
+Dispatcharr 0.34 introduced the plugin format Ticker 0.6 is built on, so 0.6 cannot be installed on 0.33 or older. On an older Dispatcharr, open Ticker in **Find Plugins** and choose a 0.5.x version from the version picker.
+
+**Upgrading from 0.5.x on Dispatcharr 0.34+?** Update from the plugin page. Your settings and running tickers are kept, and the group and league settings convert to the new pickers automatically.
+
+---
 
 ---
 
@@ -12,7 +26,7 @@ A [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr) plugin that injects 
 
 <table>
 <tr>
-<td><img src="docs/screenshots/actions-nowplaying.jpg" alt="Now Playing actions" width="420"></td>
+<td><img src="docs/screenshots/plugin-page.jpg" alt="The Ticker plugin page: actions on the left, collapsible settings sections on the right" width="420"></td>
 <td><img src="docs/screenshots/actions-manage.jpg" alt="Manage actions, including Migrate to Shared Profiles" width="420"></td>
 </tr>
 <tr>
@@ -113,7 +127,7 @@ Ticker was renamed from **Tickarr** in v0.5.00 — a full rebrand, not a fork, b
 
 ## Requirements
 
-- Dispatcharr v0.27.1 or later. **v0.29.0 or later is recommended** — Ticker automatically uses a single shared stream profile per overlay type instead of cloning one per channel (see [Screenshots](#screenshots) above). Upgrading an existing install from an older Dispatcharr version to v0.29.0+ picks this up automatically the next time you enable a ticker; run **Actions → Migrate to Shared Profiles** to move already-enabled channels over immediately without waiting.
+- Dispatcharr v0.34.0 or later (see [Which version do I need?](#which-version-do-i-need) for older Dispatcharr versions). Ticker uses a single shared stream profile per overlay type instead of cloning one per channel (see [Screenshots](#screenshots) above). If you enabled tickers before upgrading, run **Actions → Migrate to Shared Profiles** once to move them onto shared profiles.
 - Redis (used by Dispatcharr — standard in all installs)
 - FFmpeg in the Dispatcharr container (standard in all installs)
 - Channels must have an FFmpeg-based stream profile assigned — **Proxy** and **Redirect** profiles bypass FFmpeg and cannot be used with any Ticker overlay. See [Before You Start](docs/USERGUIDE.md#before-you-start--universal-requirements) in the User Guide if affected channels are being skipped.
@@ -136,9 +150,9 @@ See the [User Guide](docs/USERGUIDE.md) for full setup instructions, settings re
 
 ---
 
-## Actions Tab — Button Color Key
+## Action Button Colors
 
-Each section of the Actions tab has its own button color. Filled buttons activate or update; outline buttons remove, restore, or run a secondary utility.
+Each section of the Actions list has its own button color. Filled buttons activate or update; outline buttons remove, restore, or run a secondary utility.
 
 | Color | Section |
 |---|---|

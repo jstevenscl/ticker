@@ -21,10 +21,24 @@ Ticker is a plugin for [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)
 
 ## Installation
 
+> **Ticker 0.6 requires Dispatcharr 0.34.0 or newer.** On Dispatcharr 0.33 or older, use Ticker 0.5.x and its [legacy guide](https://github.com/jstevenscl/ticker/tree/legacy-0.5/docs/USERGUIDE.md) instead.
+
 1. In Dispatcharr, go to **Plugins → Find Plugins**.
 2. Search for **Ticker** and click **Install**.
 3. Enable the plugin. Dispatcharr loads new plugin code as soon as it is installed or updated, so no restart is needed.
 4. Open the Ticker plugin page and continue with the setup section below for the overlay type you want.
+
+
+### Using the Ticker page
+
+Open the Ticker plugin page in Dispatcharr (**Plugins → My Plugins → Ticker → Open**). The page has two columns:
+
+- **Actions** (left) — the buttons that do things (Enable, Disable, Fill EPG, and so on). Use the filter box at the top to find one quickly.
+- **Settings** (right) — grouped into collapsible sections, one per feature. Click a section heading to open or close it. The league lists start closed to keep the page short.
+
+When you change a setting, a bar appears at the bottom of the page. **Click Save** to keep your changes, or **Discard** to throw them away. Settings are not stored until you click Save.
+
+Lists of channels and groups in the settings are loaded when the plugin loads. If you add a new channel or group and it is missing from a list, run **Refresh Channel Data** (Actions) or click **Reload Plugin** at the top of the page.
 
 ---
 
@@ -118,7 +132,7 @@ In Ticker settings, scroll to the **Now Playing** section (it is the first secti
 1. **Apply To** — Choose the scope:
    - **All Channels** — Enables Now Playing on every channel Ticker can see. Use this only if your entire channel library is satellite radio.
    - **Channel Group** — Enables Now Playing on every channel in a specific group. This is the recommended option for most installs where satellite radio channels are in their own group.
-   - **Multiple Groups (CSV)** — Enter a comma-separated list of group names to enable across several groups at once.
+   - **Multiple Groups** — Pick one or more groups from the **Group Names** list to enable across several groups at once.
    - **Single Channel** — Enables Now Playing on one specific channel.
 
 2. Fill in the field that matches your Apply To selection:
@@ -127,7 +141,7 @@ In Ticker settings, scroll to the **Now Playing** section (it is the first secti
    - If **Single Channel**: select the channel from the **Channel** dropdown.
    - Leave all other target fields blank.
 
-3. **Exclude Groups (optional)** — If you chose **All Channels** or **Channel Group**, enter any group names you want skipped (e.g. `News, Sports`) as a comma-separated list.
+3. **Exclude Groups (optional)** — If you chose **All Channels** or **Channel Group**, pick any groups you want skipped from the **Exclude Groups** list (e.g. `News`, `Sports`).
 
 4. **Trigger Mode** — Controls when the overlay profile is active:
    - **On-Demand (default, recommended)** — No profile is cloned until a viewer tunes in. The overlay activates on connect and restores to passthrough after about 30 seconds with no viewers. Saves a permanent profile per channel, but every connect requires Ticker to swap profiles and restart the stream — most players handle this fine, but some (Plex is a known example) can be sensitive to a mid-connect restart.
@@ -135,9 +149,7 @@ In Ticker settings, scroll to the **Now Playing** section (it is the first secti
 
 ### Shared vs. per-channel stream profiles
 
-**On Dispatcharr v0.29.0 and later**, Ticker uses the [`{channelId}` stream profile substitution token](https://github.com/Dispatcharr/Dispatcharr/issues/1252) (shipped in v0.29.0, closing the feature request Ticker had been waiting on) to point every channel at **one shared stream profile per overlay type** instead of cloning a separate profile per channel. Enable Always On across a full 400+ channel satellite radio lineup and you'll see exactly one new profile appear in Dispatcharr's Stream Profiles list — named something like `Ticker — <base profile> [shared:nowplaying:<hash>]` — shared by every channel using that same base profile. If some channels in your lineup use a different base stream profile than others, you'll see one shared profile per distinct base profile in use, not one per channel.
-
-**On Dispatcharr versions before v0.29.0**, Ticker automatically falls back to the previous behavior: one cloned stream profile per enabled channel — for example, 424 channels means 424 cloned profiles. **This has no performance impact either way.** FFmpeg only runs while a channel is actively connected regardless of how many profiles exist; unwatched channels cost nothing whether they have a cloned profile sitting in the database or not. This was directly verified on both paths: bulk-enabling Always On across 424 channels completed in under 2 seconds with zero errors, and server load/CPU/memory were unaffected both during the operation and afterward.
+Ticker uses the [`{channelId}` stream profile substitution token](https://github.com/Dispatcharr/Dispatcharr/issues/1252) (shipped in v0.29.0, closing the feature request Ticker had been waiting on) to point every channel at **one shared stream profile per overlay type** instead of cloning a separate profile per channel. Enable Always On across a full 400+ channel satellite radio lineup and you'll see exactly one new profile appear in Dispatcharr's Stream Profiles list — named something like `Ticker — <base profile> [shared:nowplaying:<hash>]` — shared by every channel using that same base profile. If some channels in your lineup use a different base stream profile than others, you'll see one shared profile per distinct base profile in use, not one per channel.
 
 Ticker detects which mode to use automatically — there is nothing to configure. Run **Actions → Check Stream Profile Capabilities** at any time to see which mode your Dispatcharr install is currently using and why.
 
@@ -145,7 +157,7 @@ Ticker detects which mode to use automatically — there is nothing to configure
 
 #### Upgrading an existing install to shared profiles
 
-If you enabled Ticker on a Dispatcharr version older than v0.29.0 and later upgrade Dispatcharr to v0.29.0+, your already-enabled channels keep using their existing per-channel clones until something naturally re-clones them (a disable/re-enable cycle, or — for On-Demand mode — the next time a channel goes idle and a viewer reconnects). To move already-enabled channels onto shared profiles immediately instead of waiting, run **Actions → Migrate to Shared Profiles**. It's safe to run more than once — channels already on a shared profile are skipped — and it reassigns each channel to the correct shared profile (creating one if needed) before deleting the old per-channel clone, so no channel is ever left without a working profile mid-migration. EAS and Weather Canada channels aren't touched by this action: their overlay profiles only exist while an alert is actively firing and are already rebuilt from scratch on every new alert, so they migrate to shared profiles automatically the next time an alert fires — nothing to run manually there.
+If you enabled Ticker before upgrading Dispatcharr (for example, with Ticker 0.5.x on a Dispatcharr older than v0.29.0), your already-enabled channels keep using their existing per-channel clones until something naturally re-clones them (a disable/re-enable cycle, or — for On-Demand mode — the next time a channel goes idle and a viewer reconnects). To move already-enabled channels onto shared profiles immediately instead of waiting, run **Actions → Migrate to Shared Profiles**. It's safe to run more than once — channels already on a shared profile are skipped — and it reassigns each channel to the correct shared profile (creating one if needed) before deleting the old per-channel clone, so no channel is ever left without a working profile mid-migration. EAS and Weather Canada channels aren't touched by this action: their overlay profiles only exist while an alert is actively firing and are already rebuilt from scratch on every new alert, so they migrate to shared profiles automatically the next time an alert fires — nothing to run manually there.
 
 ---
 
@@ -259,7 +271,7 @@ In Ticker settings, scroll to the **EAS Weather Alerts** section and fill in the
 
 10. **Test Alert Duration (seconds)** — How long the Test EAS Alert action fires before auto-restoring. Default 60. Range 10–600.
 
-11. **Apply To** — Choose: All Channels, Channel Group, Multiple Groups (CSV), or Single Channel. Fill in the matching target field (Channel Group dropdown, group name list, or single channel dropdown).
+11. **Apply To** — Choose: All Channels, Channel Group, Multiple Groups, or Single Channel. Fill in the matching target field (Channel Group dropdown, Group Names list, or single channel dropdown).
 
 > **EAS works alongside other tickers.** If a channel already has Now Playing, Custom Text, or Sports Ticker enabled, you do not need to disable it first. EAS arms on top of existing tickers and takes precedence when an alert fires. When the alert clears, the previous ticker state resumes automatically.
 
@@ -386,7 +398,7 @@ In Ticker settings, scroll to the **Custom Text** section and fill in the follow
 
 2. Fill in the matching target field (group dropdown, group name list, or channel dropdown). Leave all other target fields blank.
 
-3. **Exclude Groups (optional)** — Comma-separated group names to skip when using All Channels or Channel Group scope (e.g. `SiriusXM, News`).
+3. **Exclude Groups (optional)** — Groups to skip when using All Channels or Channel Group scope. Pick them from the list (e.g. `SiriusXM`, `News`).
 
 4. **Trigger Mode** — Controls when the overlay profile is active:
    - **On-Demand (recommended)** — No profile is cloned until you set text via **Update Custom Text**. When you clear the text (set it to blank) and run Update again, the overlay removes itself and the channel returns to passthrough. This saves CPU on channels where you only occasionally need a message.
@@ -457,11 +469,13 @@ In Ticker settings, scroll to the **Sports Ticker** section and fill in the foll
    - **720p** — Scaled to 720p at source framerate.
    - **720p 30fps** — Scaled to 720p, capped at 30fps. Maximum CPU reduction. Best for high-framerate source channels (59.94fps, 60fps).
 
-2. **League Selection** — Toggle on the leagues you want to include in the ticker. Leagues are grouped by sport. You can enable as many as you like — sports seasons rarely overlap so enabling several does not usually mean they all appear at once.
+2. **Leagues** — Select the leagues you want to include in the ticker. Click the field and type to search (for example `NFL` or `Soccer`); each league is labelled with its sport. You can select as many as you like — sports seasons rarely overlap so enabling several does not usually mean they all appear at once.
 
    Available leagues: NFL, NCAAF, CFL, UFL, XFL, NBA, WNBA, NCAA Men's/Women's Basketball, NBA G League, MLB, NCAA Baseball/Softball, NHL, NCAA Men's/Women's Hockey, MLS, NWSL, Liga MX, EPL, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga, Scottish Premiership, UCL, UEL, UEFA Conference League, FIFA World Cup, FIFA Women's World Cup, Copa America, CONCACAF, Leagues Cup, PGA Tour, LPGA, DP World Tour, LIV Golf, PGA Champions Tour, Formula 1, IndyCar, NASCAR, UFC/MMA, ATP, WTA, NCAA Volleyball, NCAA Men's/Women's Lacrosse, PLL
 
-   > **Tip:** The leagues you toggle on define what triggers the overlay in Active Games Only and Favorite Teams Only modes. If you enable NFL and NHL, the overlay fires when either has a live game.
+   > **Tip:** The leagues you select define what triggers the overlay in Active Games Only and Favorite Teams Only modes. If you enable NFL and NHL, the overlay fires when either has a live game.
+
+   ![Selecting leagues in Ticker settings](screenshots/sports-leagues.jpg)
 
 3. **Favorite Teams** — Optional. Enter team abbreviations comma-separated (e.g. `GB, CHI, DET`). When favorites are set, only games involving those teams appear in the ticker. Required when using **Favorite Teams Only** trigger mode. See [TEAMS.md](TEAMS.md) for all abbreviations by league.
 
@@ -486,7 +500,7 @@ In Ticker settings, scroll to the **Sports Ticker** section and fill in the foll
 
 10. **Apply To** — Choose: All Channels, Channel Group, Multiple Groups, or Single Channel. Fill in the matching target field. Leave the others blank.
 
-11. **Exclude Groups (optional)** — Comma-separated group names to skip when using All Channels or Channel Group scope (e.g. `SiriusXM` to exclude your satellite radio group).
+11. **Exclude Groups (optional)** — Groups to skip when using All Channels or Channel Group scope. Pick them from the list (e.g. `SiriusXM` to exclude your satellite radio group).
 
 12. **Test Ticker Duration (seconds)** — How long the Test Sports Ticker action runs before auto-restoring. Default 60, range 10–600.
 
@@ -532,7 +546,7 @@ Run **Actions → Disable Sports Ticker**. All cloned profiles are deleted and o
 
 ## Settings Reference
 
-The Settings panel displays sections in this order: **Now Playing → Satellite Radio Channel Setup → EAS Weather Alerts (USA) → Weather Canada Alerts → Shared EAS Settings → Custom Text → Sports Ticker → Active Tickers**.
+The settings page is grouped into collapsible sections in this order: **Now Playing → Satellite Radio Channel Setup → EAS/JAS Weather Alerts → EAS — USA → EAS — Canada → EAS — Shared Settings → Custom Text → Sports Ticker → Sports Ticker — Display & Target → Active Tickers**. The Active Tickers list is a snapshot from when the plugin last loaded; use the **View Active Tickers** action for live status.
 
 ### Now Playing Settings
 
@@ -540,9 +554,9 @@ The Settings panel displays sections in this order: **Now Playing → Satellite 
 |---|---|
 | Apply To | Scope: All Channels, Channel Group, Multiple Groups, or Single Channel |
 | Channel Group | The group to enable (visible when Apply To is Channel Group) |
-| Group Names | Comma-separated group names (visible when Apply To is Multiple Groups) |
+| Group Names | One or more groups to enable (visible when Apply To is Multiple Groups) |
 | Channel | The individual channel to enable (visible when Apply To is Single Channel) |
-| Exclude Groups | Comma-separated group names to skip when using All Channels or Channel Group scope. |
+| Exclude Groups | Groups to skip when using All Channels or Channel Group scope. Pick them from the list. |
 | Trigger Mode | On-Demand (default) or Always On |
 
 ### Satellite Radio Channel Setup Settings
@@ -572,7 +586,7 @@ The Settings panel displays sections in this order: **Now Playing → Satellite 
 | Zone Lookup — US State Code | Enter a 2-letter state code here (e.g. `TX`), then run Actions → NWS Zone Lookup to get all zone codes for that state. This field is for lookup only and is not saved. |
 | USA — Apply To | Scope of channels to enable NWS EAS on. Independent from Weather Canada targeting. |
 | Channel Group / Group Names / Channel | Matching target field for the Apply To selection |
-| Exclude Groups | Comma-separated group names to skip when using All Channels or Channel Group scope. |
+| Exclude Groups | Groups to skip when using All Channels or Channel Group scope. Pick them from the list. |
 
 ### Weather Canada Settings
 
@@ -583,7 +597,7 @@ The Settings panel displays sections in this order: **Now Playing → Satellite 
 | Alert Language | Language for area names: English, French, or Both (bilingual). |
 | Canada — Apply To | Scope of channels to enable Weather Canada alerts on. Independent from NWS EAS targeting. |
 | Channel Group / Group Names / Channel | Matching target field for the Apply To selection |
-| Exclude Groups | Comma-separated group names to skip when using All Channels or Channel Group scope. |
+| Exclude Groups | Groups to skip when using All Channels or Channel Group scope. Pick them from the list. |
 
 ### Shared EAS Settings
 
@@ -606,7 +620,7 @@ These settings apply to both NWS and Weather Canada alerts.
 |---|---|
 | Apply To | Scope: All Channels, Channel Group, Multiple Groups, or Single Channel |
 | Channel Group / Group Names / Channel | Matching target field for the Apply To selection |
-| Exclude Groups | Comma-separated group names to skip when using All Channels or Channel Group scope. |
+| Exclude Groups | Groups to skip when using All Channels or Channel Group scope. Pick them from the list. |
 | Trigger Mode | On-Demand (recommended) or Always On |
 | Custom Text | The message to display. Can be left blank in On-Demand mode. |
 | Style | Static (fixed position), Scrolling (horizontal scroll) |
@@ -620,7 +634,7 @@ These settings apply to both NWS and Weather Canada alerts.
 | Field | Description |
 |---|---|
 | Transcode Quality (Video Channels) | Output quality during ticker: `1080p30` (default), `full`, `720p`, or `720p30`. Lower = less CPU. Use `720p30` for high-framerate source channels. |
-| League Toggles | One toggle per supported league; enable any combination |
+| Leagues | Searchable multi-select of every supported league; pick any combination |
 | Favorite Teams | Comma-separated team abbreviations. Required for Favorite Teams Only mode. |
 | Trigger Mode | Always On (default), Active Games Only, or Favorite Teams Only |
 | Color Mode | Single Color — White or Multi-Color |
@@ -631,18 +645,18 @@ These settings apply to both NWS and Weather Canada alerts.
 | Team Abbreviation Color | Team abbreviation color (Multi-Color only, default `#00d4ff`) |
 | Apply To | Scope: All Channels, Channel Group, Multiple Groups, or Single Channel |
 | Channel Group / Group Names / Channel | Matching target field |
-| Exclude Groups | Comma-separated group names to skip when using All Channels or Channel Group scope. |
+| Exclude Groups | Groups to skip when using All Channels or Channel Group scope. Pick them from the list. |
 | Test Ticker Duration | Seconds the Test Sports Ticker action runs before auto-restoring. Default 60, range 10–600. |
 
 ---
 
 ## Actions Reference
 
-The Actions panel displays sections in the same order as the Settings panel: **Now Playing → Channel Setup → EAS/JAS Weather Alerts → Custom Text → Sports Ticker → Manage**.
+Actions are listed in the left column of the Ticker page in this order: **Now Playing → Channel Setup → EAS/JAS Weather Alerts → Custom Text → Sports Ticker → Manage**. Use the filter box above the list to find one.
 
 <table>
 <tr>
-<td><img src="screenshots/actions-nowplaying.jpg" alt="Now Playing and Channel Setup actions" width="420"></td>
+<td><img src="screenshots/plugin-page.jpg" alt="The Ticker plugin page: actions on the left, collapsible settings sections on the right" width="420"></td>
 <td><img src="screenshots/actions-manage.jpg" alt="Manage actions, including Migrate to Shared Profiles and Check Stream Profile Capabilities" width="420"></td>
 </tr>
 </table>
@@ -723,9 +737,9 @@ Each section has its own button color so you can identify which overlay type an 
 | Refresh Channel Data | Re-fetches the live satellite radio channel/station catalog and repairs already-enabled channels that have no ticker.com match (no now-playing data ever appears for them). Also reloads the channel/group list for dropdowns in Settings. |
 | Disable All Tickers | Disables every active Ticker overlay across all channels. |
 | Clean Orphaned Profiles | Removes cloned stream profiles left behind when channels were deleted while a Ticker overlay was active. Also reaps shared profiles once no channel references them anymore. |
-| Migrate to Shared Profiles | On Dispatcharr v0.29.0+, moves already-enabled channels off their old per-channel cloned profile onto a shared one. Safe to run repeatedly. See [Upgrading an existing install to shared profiles](#upgrading-an-existing-install-to-shared-profiles). |
+| Migrate to Shared Profiles | Moves already-enabled channels off their old per-channel cloned profile onto a shared one. Safe to run repeatedly. See [Upgrading an existing install to shared profiles](#upgrading-an-existing-install-to-shared-profiles). |
 | Migrate from Tickarr | One-time upgrade helper for anyone coming from the pre-v0.5.00 "Tickarr" plugin. Requires Tickarr to still be installed alongside Ticker. See [Upgrading from the old Tickarr plugin](#upgrading-from-the-old-tickarr-plugin). |
-| Check Stream Profile Capabilities | Reports whether this Dispatcharr install supports the `{channelId}` token (v0.29.0+) and therefore which profile mode Ticker is using — shared or per-channel. |
+| Check Stream Profile Capabilities | Reports whether this Dispatcharr install supports the `{channelId}` token and therefore which profile mode Ticker is using — shared or per-channel. |
 | Redis Diagnostics | Reports whether Redis is reachable and how many channels have active viewers detected. |
 | Reload Poller | Restarts background polling threads without restarting Dispatcharr. Use if overlays stop updating but streams are still live. |
 
@@ -793,6 +807,10 @@ Run **Actions → Redis Diagnostics**. If Redis is unreachable, On-Demand and sm
 ### Plugin changes not taking effect after an update
 
 Click **Reload Plugin** on the Ticker page. Dispatcharr 0.34+ loads new plugin code automatically, so a restart is not needed.
+
+### A channel or group is missing from a list
+
+The channel and group lists in Settings are loaded when the plugin loads. After adding channels or groups in Dispatcharr, run **Actions → Refresh Channel Data**, or click **Reload Plugin** at the top of the Ticker page, then reopen the list.
 
 ### Settings changes not saving
 
