@@ -1,5 +1,7 @@
 # Ticker User Guide
 
+> **This is the documentation for Ticker 0.5.x, for Dispatcharr 0.33 and older.** Running Dispatcharr 0.34.0 or newer? Use Ticker 0.6 or newer — see the [current documentation](https://github.com/jstevenscl/ticker#readme).
+
 Ticker is a plugin for [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr) that adds live text overlays to IPTV channels via FFmpeg. It clones the channel's existing stream profile, injects overlay parameters into the clone, and restores the original when disabled. Your source profiles are never modified.
 
 ---

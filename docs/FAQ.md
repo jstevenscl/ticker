@@ -1,5 +1,7 @@
 # Ticker FAQ
 
+> **This is the documentation for Ticker 0.5.x, for Dispatcharr 0.33 and older.** Running Dispatcharr 0.34.0 or newer? Use Ticker 0.6 or newer — see the [current documentation](https://github.com/jstevenscl/ticker#readme).
+
 ---
 
 ## General
