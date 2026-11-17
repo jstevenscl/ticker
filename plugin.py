@@ -2781,6 +2781,114 @@ def _poll_loop(stop_event):
 # ---------------------------------------------------------------------------
 
 
+# ── Group-name settings: multiselect (list) with legacy CSV compatibility ──────────
+_GROUP_NAME_KEYS = (
+    "np_channel_group_names", "np_exclude_groups",
+    "eas_channel_group_names", "eas_exclude_groups",
+    "eas_ca_channel_group_names", "eas_ca_exclude_groups",
+    "custom_channel_group_names", "custom_exclude_groups",
+    "sports_channel_group_names", "sports_exclude_groups",
+)
+
+
+def _as_name_list(raw):
+    """Group names from a multiselect value (list) or a legacy comma-separated string."""
+    if not raw:
+        return []
+    if isinstance(raw, (list, tuple, set)):
+        return [str(n).strip() for n in raw if str(n).strip()]
+    return [n.strip() for n in str(raw).split(",") if n.strip()]
+
+
+def _groups_named(name):
+    """ChannelGroups matching a saved group name. Exact match first (IPTV playlists often
+    carry groups that differ only by case, e.g. "Bein Sports" and "BEIN SPORTS"); falls
+    back to case-insensitive for hand-typed legacy names. Never raises on duplicates."""
+    from apps.channels.models import ChannelGroup
+    exact = list(ChannelGroup.objects.filter(name=name))
+    return exact or list(ChannelGroup.objects.filter(name__iexact=name))
+
+
+def _migrate_group_name_settings():
+    """One-time, idempotent: legacy CSV strings in the group-name settings become lists
+    so the multiselect controls show the user's existing selections."""
+    try:
+        from apps.plugins.models import PluginConfig
+        config = PluginConfig.objects.filter(key=_PLUGIN_KEY).first()
+        if not config or not config.settings:
+            return
+        settings = dict(config.settings)
+        changed = False
+        for key in _GROUP_NAME_KEYS:
+            val = settings.get(key)
+            if isinstance(val, str):
+                settings[key] = _as_name_list(val)
+                changed = True
+        if changed:
+            config.settings = settings
+            config.save(update_fields=["settings"])
+            logger.info("ticker: migrated group-name settings from CSV text to multiselect lists")
+    except Exception as e:
+        logger.warning(f"ticker: group-name settings migration skipped: {e}")
+
+
+# ── Settings sections (manifest_version >= 1) ──────────────────────────────
+# Dispatcharr 0.34.0+ renders `section`-type marker fields as collapsible groups;
+# member fields join one via their own "section" key. Sections are display-only and
+# store no value, so saved settings are untouched. Each entry starts a new section at
+# the field with `start`. `replace=True` swaps that (info heading) field for the
+# section marker; otherwise the marker is inserted before the field.
+_SECTION_PLAN = [
+    # (start field id,         section id,          label,                                  collapsed, replace)
+    ("_np_section",           "sec_np",            "Now Playing",                          False, True),
+    ("_ch_section",           "sec_ch",            "Satellite Radio Channel Setup",        False, True),
+    ("_eas_section",          "sec_eas",           "EAS/JAS Weather Alerts",               False, True),
+    ("_eas_usa_section",      "sec_eas_usa",       "EAS — USA (NWS Alerts)",               False, True),
+    ("_eas_ca_section",       "sec_eas_ca",        "EAS — Canada (Environment Canada)",    False, True),
+    ("_eas_shared_section",   "sec_eas_shared",    "EAS — Shared Settings (USA + Canada)", False, True),
+    ("_custom_section",       "sec_custom",        "Custom Text",                          False, True),
+    ("_sports_section",       "sec_sports",        "Sports Ticker",                        False, True),
+    ("_sports_football",      "sec_sp_football",   "Leagues — Football",                   True,  True),
+    ("_sports_basketball",    "sec_sp_basketball", "Leagues — Basketball",                 True,  True),
+    ("_sports_baseball",      "sec_sp_baseball",   "Leagues — Baseball / Softball",        True,  True),
+    ("_sports_hockey",        "sec_sp_hockey",     "Leagues — Hockey",                     True,  True),
+    ("_sports_soccer_na",     "sec_sp_soccer_na",  "Leagues — Soccer: North America",      True,  True),
+    ("_sports_soccer_eu",     "sec_sp_soccer_eu",  "Leagues — Soccer: Europe (Big 5)",     True,  True),
+    ("_sports_soccer_eu2",    "sec_sp_soccer_eu2", "Leagues — Soccer: Europe (Other)",     True,  True),
+    ("_sports_soccer_uefa",   "sec_sp_soccer_uefa","Leagues — Soccer: UEFA",               True,  True),
+    ("_sports_soccer_intl",   "sec_sp_soccer_intl","Leagues — Soccer: International",      True,  True),
+    ("_sports_golf",          "sec_sp_golf",       "Leagues — Golf",                       True,  True),
+    ("_sports_motor",         "sec_sp_motor",      "Leagues — Motorsports",                True,  True),
+    ("_sports_combat",        "sec_sp_combat",     "Leagues — Combat Sports",              True,  True),
+    ("_sports_tennis",        "sec_sp_tennis",     "Leagues — Tennis",                     True,  True),
+    ("_sports_college_other", "sec_sp_college",    "Leagues — College & Other",            True,  True),
+    ("sports_favorites",      "sec_sp_display",    "Sports Ticker — Display & Target",     False, False),
+    ("_active_section",       "sec_active",        "Active Tickers (as of last plugin reload)", False, True),
+]
+
+
+def _apply_sections(fields):
+    """Group the flat settings list into collapsible sections per _SECTION_PLAN."""
+    plan = {start: (sid, label, collapsed, replace)
+            for start, sid, label, collapsed, replace in _SECTION_PLAN}
+    out, current = [], None
+    for f in fields:
+        fid = f.get("id")
+        if fid in plan:
+            sid, label, collapsed, replace = plan[fid]
+            current = sid
+            marker = {"id": sid, "type": "section", "label": label}
+            if collapsed:
+                marker["collapsed"] = True
+            out.append(marker)
+            if replace:
+                continue
+        if current and f.get("type") != "section":
+            f = {**f, "section": current}
+        out.append(f)
+    return out
+
+
 class Plugin:
     @property
     def fields(self):
@@ -2789,6 +2897,12 @@ class Plugin:
         except Exception as e:
             logger.error(f"ticker: _build_fields failed: {e}", exc_info=True)
             return [{"id": "_error", "type": "info", "label": f"Ticker error: {e}"}]
+
+    def get_fields(self, context=None):
+        """Dispatcharr 0.34+ discovery hook. Fields (channel/group pickers, active-ticker
+        list) are a snapshot taken at discovery/reload, not rebuilt on every page view --
+        Refresh Channel Data asks Dispatcharr to reload the plugin so the pickers update."""
+        return self.fields
 
     def __init__(self):
         global _scheduler_thread, _stop_event
@@ -2811,11 +2925,28 @@ class Plugin:
             )
             groups   = [{"value": str(g.id), "label": g.name}
                         for g in ChannelGroup.objects.filter(id__in=managed_group_ids).order_by("name")]
+            group_name_opts = [{"value": g["label"], "label": g["label"]} for g in groups]
             channels = [{"value": str(c.id), "label": c.name}
                         for c in Channel.objects.exclude(channel_group=None).order_by("name")]
         except Exception:
             groups = []
             channels = []
+            group_name_opts = []
+
+        _migrate_group_name_settings()
+        try:
+            _saved_for_opts = _get_settings()
+        except Exception:
+            _saved_for_opts = {}
+
+        def _group_opts(key):
+            """Options for a group-name multiselect. Dispatcharr (0.34+) rejects a save
+            if any selected value is missing from the options, so a saved name whose
+            group was since renamed/deleted (or was typed by hand in the old CSV field)
+            is kept as a flagged option instead of blocking every future save."""
+            known = {o["value"] for o in group_name_opts}
+            extra = [n for n in _as_name_list(_saved_for_opts.get(key)) if n not in known]
+            return group_name_opts + [{"value": n, "label": f"{n} (not found)"} for n in dict.fromkeys(extra)]
 
         try:
             mappings = _get_mappings()
@@ -2854,8 +2985,7 @@ class Plugin:
 
         active_label = (f"{len(mappings)} active ticker(s):\n" + "\n".join(ticker_lines)) if mappings else "No active tickers."
 
-        return [
-            {"id": "_settings_save_warn", "type": "info", "label": "⚠ SAVING SETTINGS: Dispatcharr only writes this form to disk when you run an Action, not when you change a field and just close this dialog. After changing anything on this Settings tab, go to Actions and click Save Settings (or any other action) to be sure the change actually took effect — otherwise it silently reverts next time this loads."},
+        fields = [
             # ── Now Playing ───────────────────────────────────────────────
             {"id": "_np_section",       "type": "info",   "label": "==========  NOW PLAYING  =========="},
             {"id": "np_target_type",    "type": "select", "label": "Apply To",
@@ -2863,9 +2993,9 @@ class Plugin:
             {"id": "_np_allchannels_warn", "type": "info", "label": "⚠ ALL CHANNELS WARNING: If you have other Ticker ticker types already active on specific channels or groups (e.g. EAS on news channels, Sports Ticker on a TV group), use Exclude Groups below to skip those groups. Channels already mapped to any ticker type are skipped automatically, but excluding groups avoids confusion and prevents unexpected results."},
             {"id": "_np_target_note",         "type": "info",   "label": "Fill in only the field that matches your Apply To selection above -- leave the others blank."},
             {"id": "np_channel_group_id",    "type": "select", "label": "Channel Group (Single Group)",             "options": groups},
-            {"id": "np_channel_group_names", "type": "text",   "label": "Group Names (Multiple Groups -- comma-separated)", "placeholder": "e.g. Entertainment, Sports, News"},
+            {"id": "np_channel_group_names", "type": "multiselect",   "label": "Group Names (select one or more)", "options": _group_opts("np_channel_group_names")},
             {"id": "np_channel_id",          "type": "select", "label": "Channel (Single Channel)",                 "options": channels},
-            {"id": "np_exclude_groups",      "type": "text",   "label": "Exclude Groups (optional) — comma-separated group names to skip, e.g. News, Sports, Entertainment", "placeholder": "e.g. News, Sports TV"},
+            {"id": "np_exclude_groups",      "type": "multiselect",   "label": "Exclude Groups (optional) — groups to skip", "options": _group_opts("np_exclude_groups")},
             {"id": "np_trigger_mode", "type": "select", "label": "Trigger Mode",
              "options": [
                  {"value": "on_demand", "label": "On-Demand (default) — overlay activates when a viewer tunes in, restores to passthrough when idle"},
@@ -2934,9 +3064,9 @@ class Plugin:
             {"id": "_eas_allchannels_warn", "type": "info", "label": "ℹ EAS CO-ARM: EAS can be enabled alongside any other ticker type (Now Playing, Custom Text, Sports). Channels with existing tickers will have EAS armed on top — they continue running normally and only switch to the EAS overlay when a real alert fires."},
             {"id": "_eas_target_note", "type": "info", "label": "Fill in only the field that matches your USA Apply To selection above — leave the others blank."},
             {"id": "eas_channel_group_id",    "type": "select", "label": "USA — Channel Group (Single Group)",              "options": groups},
-            {"id": "eas_channel_group_names", "type": "text",   "label": "USA — Group Names (Multiple Groups — comma-separated)", "placeholder": "e.g. Entertainment, Sports, News"},
+            {"id": "eas_channel_group_names", "type": "multiselect",   "label": "USA — Group Names (select one or more)", "options": _group_opts("eas_channel_group_names")},
             {"id": "eas_channel_id",          "type": "select", "label": "USA — Channel (Single Channel)",                  "options": channels},
-            {"id": "eas_exclude_groups",      "type": "text",   "label": "USA — Exclude Groups (optional)",                 "placeholder": "e.g. SiriusXM, Satellite Radio"},
+            {"id": "eas_exclude_groups",      "type": "multiselect",   "label": "USA — Exclude Groups (optional)", "options": _group_opts("eas_exclude_groups")},
             # ── Canada EC ──
             {"id": "_eas_ca_section", "type": "info", "label": "---------- Canada — Environment Canada Alerts ----------"},
             {"id": "_eas_ca_help", "type": "info",
@@ -2949,9 +3079,9 @@ class Plugin:
              "options": [{"value": "all", "label": "All Channels"}, {"value": "group", "label": "Channel Group"}, {"value": "groups", "label": "Multiple Groups (CSV)"}, {"value": "channel", "label": "Single Channel"}]},
             {"id": "_eas_ca_target_note", "type": "info", "label": "Fill in only the field that matches your Canada Apply To selection above — leave the others blank."},
             {"id": "eas_ca_channel_group_id",    "type": "select", "label": "Canada — Channel Group (Single Group)",              "options": groups},
-            {"id": "eas_ca_channel_group_names", "type": "text",   "label": "Canada — Group Names (Multiple Groups — comma-separated)", "placeholder": "e.g. News, Local"},
+            {"id": "eas_ca_channel_group_names", "type": "multiselect",   "label": "Canada — Group Names (select one or more)", "options": _group_opts("eas_ca_channel_group_names")},
             {"id": "eas_ca_channel_id",          "type": "select", "label": "Canada — Channel (Single Channel)",                  "options": channels},
-            {"id": "eas_ca_exclude_groups",      "type": "text",   "label": "Canada — Exclude Groups (optional)",                 "placeholder": "e.g. SiriusXM, Satellite Radio"},
+            {"id": "eas_ca_exclude_groups",      "type": "multiselect",   "label": "Canada — Exclude Groups (optional)", "options": _group_opts("eas_ca_exclude_groups")},
             {"id": "eas_ca_language", "type": "select", "label": "Canada — Alert Language",
              "options": [
                  {"value": "en",   "label": "English"},
@@ -2998,9 +3128,9 @@ class Plugin:
             {"id": "_custom_allchannels_warn", "type": "info", "label": "⚠ ALL CHANNELS WARNING: If you have other Ticker ticker types already active on specific channels or groups (e.g. Now Playing on satellite radio, EAS on news channels), use Exclude Groups below to skip those groups. Channels already mapped to any ticker type are skipped automatically, but excluding groups avoids confusion and prevents unexpected results."},
             {"id": "_custom_target_note",         "type": "info",   "label": "Fill in only the field that matches your Apply To selection above -- leave the others blank."},
             {"id": "custom_channel_group_id",    "type": "select", "label": "Channel Group (Single Group)",             "options": groups},
-            {"id": "custom_channel_group_names", "type": "text",   "label": "Group Names (Multiple Groups -- comma-separated)", "placeholder": "e.g. Entertainment, Sports, News"},
+            {"id": "custom_channel_group_names", "type": "multiselect",   "label": "Group Names (select one or more)", "options": _group_opts("custom_channel_group_names")},
             {"id": "custom_channel_id",          "type": "select", "label": "Channel (Single Channel)",                 "options": channels},
-            {"id": "custom_exclude_groups",      "type": "text",   "label": "Exclude Groups (optional) — comma-separated group names to skip, e.g. SiriusXM, News", "placeholder": "e.g. SiriusXM, News"},
+            {"id": "custom_exclude_groups",      "type": "multiselect",   "label": "Exclude Groups (optional) — groups to skip", "options": _group_opts("custom_exclude_groups")},
             {"id": "custom_trigger_mode", "type": "select", "label": "Trigger Mode",
              "options": [
                  {"value": "on_demand", "label": "On-Demand (default) — overlay activates when text is set, restores to passthrough when text is cleared"},
@@ -3133,14 +3263,15 @@ class Plugin:
             {"id": "_sports_allchannels_warn", "type": "info", "label": "⚠ ALL CHANNELS WARNING: If you have other Ticker ticker types already active on specific channels or groups (e.g. Now Playing on satellite radio, EAS on news channels), use Exclude Groups below to skip those groups. Channels already mapped to any ticker type are skipped automatically, but excluding groups avoids confusion and prevents unexpected results."},
             {"id": "_sports_target_note",         "type": "info",   "label": "Fill in only the field that matches your Apply To selection above -- leave the others blank."},
             {"id": "sports_channel_group_id",    "type": "select", "label": "Channel Group (Single Group)",             "options": groups},
-            {"id": "sports_channel_group_names", "type": "text",   "label": "Group Names (Multiple Groups -- comma-separated)", "placeholder": "e.g. Entertainment, Sports, News"},
+            {"id": "sports_channel_group_names", "type": "multiselect",   "label": "Group Names (select one or more)", "options": _group_opts("sports_channel_group_names")},
             {"id": "sports_channel_id",          "type": "select", "label": "Channel (Single Channel)",                 "options": channels},
-            {"id": "sports_exclude_groups",      "type": "text",   "label": "Exclude Groups (optional) — comma-separated group names to skip, e.g. SiriusXM, News", "placeholder": "e.g. SiriusXM, News"},
+            {"id": "sports_exclude_groups",      "type": "multiselect",   "label": "Exclude Groups (optional) — groups to skip", "options": _group_opts("sports_exclude_groups")},
             {"id": "sports_test_duration",       "type": "number", "label": "Test Ticker Duration (seconds) — how long the Test Sports Ticker action runs before auto-restoring (default 60)", "min": 10},
             # ── Active Tickers ────────────────────────────────────────────
             {"id": "_active_section", "type": "info", "label": "==========  ACTIVE TICKERS  =========="},
             {"id": "_ticker_list",    "type": "info", "label": active_label},
         ]
+        return _apply_sections(fields)
 
     def run(self, action, params, context):
         saved = _get_settings()
@@ -3192,7 +3323,12 @@ class Plugin:
         if not handler:
             return {"success": False, "message": f"Unknown action: {action}"}
         try:
-            return handler(params)
+            result = handler(params)
+            if action == "refresh_channels" and isinstance(result, dict) and result.get("success"):
+                # Settings pickers (channels/groups) are a discovery-time snapshot on 0.34+;
+                # have Dispatcharr reload the plugin so they reflect the current channel list.
+                result["_dispatcharr"] = {"refresh": "plugin"}
+            return result
         except Exception as e:
             logger.error(f"ticker: action {action} failed: {e}", exc_info=True)
             return {"success": False, "message": f"Error: {e}"}
@@ -5477,14 +5613,11 @@ class Plugin:
         exclude_ids = set()
         raw_exclude = params.get(f"{prefix}exclude_groups", "")
         if raw_exclude:
-            for name in [n.strip() for n in raw_exclude.split(",") if n.strip()]:
-                try:
-                    grp = ChannelGroup.objects.get(name__iexact=name)
+            for name in _as_name_list(raw_exclude):
+                for grp in _groups_named(name):
                     exclude_ids.update(
                         Channel.objects.filter(channel_group=grp).values_list("id", flat=True)
                     )
-                except ChannelGroup.DoesNotExist:
-                    pass
 
         def _apply_exclusions(channels):
             if not exclude_ids:
@@ -5506,22 +5639,19 @@ class Plugin:
 
         if target_type == "groups":
             raw = params.get(f"{prefix}channel_group_names", "")
-            names = [n.strip() for n in raw.split(",") if n.strip()]
+            names = _as_name_list(raw)
             if not names:
                 return _result([], "not_set")
             channels = []
             seen = set()
             any_found = False
             for name in names:
-                try:
-                    group = ChannelGroup.objects.get(name__iexact=name)
+                for group in _groups_named(name):
                     any_found = True
                     for ch in Channel.objects.filter(channel_group=group).order_by("name"):
                         if ch.id not in seen:
                             seen.add(ch.id)
                             channels.append(ch)
-                except ChannelGroup.DoesNotExist:
-                    pass
             return _result(_apply_exclusions(channels), None if any_found else "stale_groups")
 
         # single channel

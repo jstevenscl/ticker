@@ -1,4 +1,5 @@
 {
+  "manifest_version": 1,
   "name": "Ticker",
   "version": "0.5.06",
   "logo": "logo.png",
@@ -283,14 +284,6 @@
       "confirm": {
         "message": "This will restore original stream profiles and remove ticker data for ALL enabled channels. Continue?"
       }
-    },
-    {
-      "id": "save_settings",
-      "label": "Save Settings",
-      "description": "Forces Dispatcharr to persist whatever is currently in the Settings tab. Run this after changing any Settings field if you're not about to click another action — Dispatcharr doesn't save the form on its own until an action runs.",
-      "button_label": "Save",
-      "button_variant": "outline",
-      "button_color": "gray"
     },
     {
       "id": "clean_orphans",
