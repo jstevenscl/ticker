@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
-Build lib/channels.json from StellarTunerLog (primary) or Rebrowser CSV (fallback).
+Build lib/channels.json from StellarTunerLog (sole source of truth).
 
-StellarTunerLog fetches channel data directly from SiriusXM's API and is the
-authoritative source for Ticker. The Rebrowser public CSV is used as a fallback
-if STL is unreachable.
+StellarTunerLog fetches channel data directly from SiriusXM's API, checks it
+against the live SiriusXM lineup, and is the authoritative source for Ticker.
+The third-party Rebrowser CSV is used ONLY as an emergency fallback if STL is
+unreachable; it is never merged into an STL-built catalog (it lags and never
+deletes rows).
 
 Run manually:
   python scripts/build_channels_sxm.py
@@ -263,24 +265,15 @@ def main() -> None:
     stl = fetch_stl()
     channels = build_from_stl(stl, existing, aliases) if stl else {}
 
-    # Phase 2: Rebrowser — supplements sports, talk, news, and any channels STL doesn't cover
-    # Always runs — not a fallback. STL omits channels with no live song data.
-    rows = fetch_rebrowser()
-    if rows:
-        rebrowser_channels = build_from_rebrowser(rows, existing, aliases)
-        # Merge: add Rebrowser entries that aren't already covered by STL
-        stl_numbers = {v["sxm_number"] for v in channels.values() if v.get("sxm_number")}
-        added = 0
-        for key, entry in rebrowser_channels.items():
-            if entry.get("sxm_number") in stl_numbers:
-                continue  # STL already has this channel number with better data
-            if key not in channels:
-                channels[key] = entry
-                added += 1
-        print(f"  Rebrowser added {added} additional channels (sports, talk, news)")
-    elif not channels:
-        print("ERROR: both STL and Rebrowser failed — channels.json unchanged")
-        return
+    # Rebrowser is an emergency fallback only: used when STL returned nothing.
+    # When STL is healthy it is the sole source -- Rebrowser lags the real lineup.
+    if not channels:
+        rows = fetch_rebrowser()
+        if not rows:
+            print("ERROR: both STL and Rebrowser failed -- channels.json unchanged")
+            return
+        channels = build_from_rebrowser(rows, existing, aliases)
+        print(f"  STL unavailable: built {len(channels)} channels from Rebrowser fallback")
 
     with_nums = sum(1 for v in channels.values() if v.get("sxm_number") is not None)
     with_logo = sum(1 for v in channels.values() if v.get("logo_url"))
