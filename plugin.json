@@ -344,17 +344,6 @@
       "confirm": {
         "message": "This will restart the background polling thread. Active ticker data will resume within 15 seconds. Continue?"
       }
-    },
-    {
-      "id": "restart_dispatcharr",
-      "label": "Restart Dispatcharr",
-      "description": "Restarts the Dispatcharr container. Required after every install or update. The page will go offline for about 15 seconds — refresh after it comes back.",
-      "button_label": "Restart",
-      "button_variant": "filled",
-      "button_color": "red",
-      "confirm": {
-        "message": "This will send a graceful restart signal to Dispatcharr. The page will go offline briefly — refresh in about 15 seconds. Continue?"
-      }
     }
   ],
   "checksum": "0f04aa4309aed4ccb97b672c29c9fd353701ba78981067b85b93706a65c7fe10"

@@ -5,7 +5,6 @@ import logging
 import os
 import re
 import shutil
-import subprocess
 import threading
 import time
 import urllib.error
@@ -3316,7 +3315,6 @@ class Plugin:
             "check_channel_id_support": self._check_channel_id_support,
             "redis_diag":           self._redis_diag,
             "reload_poller":        self._reload_poller,
-            "restart_dispatcharr":  self._restart_dispatcharr,
         }
         if action.startswith("_section_"):
             return {"success": True, "message": ""}
@@ -5572,29 +5570,6 @@ class Plugin:
         _scheduler_thread.start()
         logger.info("ticker: poller thread reloaded via action")
         return {"success": True, "message": "Poller thread restarted. Live data will resume within 15 seconds."}
-
-    def _restart_dispatcharr(self, params):
-        import signal as _signal
-
-        def _do_restart():
-            time.sleep(2)
-            try:
-                result = subprocess.run(
-                    ["pgrep", "-of", "gunicorn"],
-                    capture_output=True, text=True
-                )
-                pid = int(result.stdout.strip())
-                logger.info(f"ticker: sending SIGHUP to gunicorn master PID {pid}")
-                os.kill(pid, _signal.SIGHUP)
-            except Exception as e:
-                logger.warning(f"ticker: gunicorn SIGHUP failed ({e}), falling back to PID 1")
-                try:
-                    os.kill(1, _signal.SIGHUP)
-                except Exception as e2:
-                    logger.error(f"ticker: restart failed: {e2}")
-
-        threading.Thread(target=_do_restart, daemon=True).start()
-        return {"success": True, "message": "Restart signal sent. Dispatcharr will reload in ~2 seconds.\n\nRefresh this page in about 15 seconds."}
 
     # ------------------------------------------------------------------ #
     # Helpers                                                              #

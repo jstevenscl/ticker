@@ -6,7 +6,7 @@
 
 **Q: Do I need to restart Dispatcharr after installing or updating Ticker?**
 
-Yes. Dispatcharr caches Python modules at startup — new plugin code is not active until you restart. After any install or update, go to **Ticker → Actions → Restart Dispatcharr**. The page will go offline for about 15 seconds, then come back with the new code loaded.
+No. Dispatcharr 0.34 and later loads new plugin code as soon as it is installed or updated. If an overlay seems to be running old behavior after an update, use the **Reload Plugin** button on the Ticker page.
 
 ---
 

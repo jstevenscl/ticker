@@ -23,11 +23,8 @@ Ticker is a plugin for [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)
 
 1. In Dispatcharr, go to **Plugins → Find Plugins**.
 2. Search for **Ticker** and click **Install**.
-3. When installation completes, go to **Ticker → Actions** and run **Restart Dispatcharr**.
-
-   > **This step is required every time you install or update Ticker.** Dispatcharr loads plugin code once at startup — without a restart, none of the new code is active.
-
-4. After the page reloads, navigate back to the Ticker plugin page and continue with the setup section below for the overlay type you want.
+3. Enable the plugin. Dispatcharr loads new plugin code as soon as it is installed or updated, so no restart is needed.
+4. Open the Ticker plugin page and continue with the setup section below for the overlay type you want.
 
 ---
 
@@ -662,7 +659,7 @@ Each section has its own button color so you can identify which overlay type an 
 | Blue | Custom Text |
 | Green | Sports Ticker |
 | Violet | Manage |
-| Red | Global destructive actions only — Disable All Tickers and Restart Dispatcharr |
+| Red | Global destructive actions only — Disable All Tickers |
 
 ### Satellite Radio Now Playing
 
@@ -724,7 +721,6 @@ Each section has its own button color so you can identify which overlay type an 
 |---|---|
 | View Active Tickers | Lists all channels that have a Ticker overlay registered, grouped by type. Shows which channels have active overlay profiles vs. passthrough. |
 | Refresh Channel Data | Re-fetches the live satellite radio channel/station catalog and repairs already-enabled channels that have no ticker.com match (no now-playing data ever appears for them). Also reloads the channel/group list for dropdowns in Settings. |
-| Save Settings | No-op action that exists purely to force Dispatcharr to persist the Settings tab. Dispatcharr only writes the Settings form to disk alongside an action run, not when a field is changed — if you're not about to click another action after changing a setting, click this one so the change actually sticks. See [Settings changes not saving](#settings-changes-not-saving). |
 | Disable All Tickers | Disables every active Ticker overlay across all channels. |
 | Clean Orphaned Profiles | Removes cloned stream profiles left behind when channels were deleted while a Ticker overlay was active. Also reaps shared profiles once no channel references them anymore. |
 | Migrate to Shared Profiles | On Dispatcharr v0.29.0+, moves already-enabled channels off their old per-channel cloned profile onto a shared one. Safe to run repeatedly. See [Upgrading an existing install to shared profiles](#upgrading-an-existing-install-to-shared-profiles). |
@@ -732,7 +728,6 @@ Each section has its own button color so you can identify which overlay type an 
 | Check Stream Profile Capabilities | Reports whether this Dispatcharr install supports the `{channelId}` token (v0.29.0+) and therefore which profile mode Ticker is using — shared or per-channel. |
 | Redis Diagnostics | Reports whether Redis is reachable and how many channels have active viewers detected. |
 | Reload Poller | Restarts background polling threads without restarting Dispatcharr. Use if overlays stop updating but streams are still live. |
-| Restart Dispatcharr | Restarts the Dispatcharr container. Required after every install or update. |
 
 ---
 
@@ -740,7 +735,7 @@ Each section has its own button color so you can identify which overlay type an 
 
 ### Overlay is not appearing
 
-1. Confirm you ran **Restart Dispatcharr** after installing or updating the plugin.
+1. Confirm the plugin is enabled, and use **Reload Plugin** on the Ticker page if it was just updated.
 2. Confirm the channel has a stream profile assigned in Dispatcharr (see [Before You Start](#before-you-start--universal-requirements)).
 3. If using **On-Demand** mode: confirm someone is actively watching the channel. The overlay only activates when a viewer is connected. Give it up to 15 seconds on first connect.
 4. If using **Active Games Only** or **Favorite Teams Only** for Sports: confirm there is a live qualifying game in progress. During off-hours, this is correct behavior — the channel will be on passthrough.
@@ -793,12 +788,12 @@ Run **Actions → Clean Orphaned Profiles**.
 
 ### Redis errors or zero active channels
 
-Run **Actions → Redis Diagnostics**. If Redis is unreachable, On-Demand and smart trigger modes will not detect viewers — Ticker falls back to polling all registered channels. Restart Dispatcharr to restart Redis if needed.
+Run **Actions → Redis Diagnostics**. If Redis is unreachable, On-Demand and smart trigger modes will not detect viewers — Ticker falls back to polling all registered channels.
 
 ### Plugin changes not taking effect after an update
 
-Run **Actions → Restart Dispatcharr**. Plugin code is cached at startup — a restart is always required after any update.
+Click **Reload Plugin** on the Ticker page. Dispatcharr 0.34+ loads new plugin code automatically, so a restart is not needed.
 
 ### Settings changes not saving
 
-Dispatcharr only writes the Settings tab to disk when you run an Action — not when you change a field and close the dialog. A toggle or dropdown you changed and then walked away from will silently revert to its previous saved value. After changing anything in Settings, run **Actions → Save Settings** (or any other action) to confirm the change actually persisted.
+Changes to the Settings form are saved when you click **Save** in the bar that appears at the bottom of the page. If you leave the page with unsaved changes, Dispatcharr will not store them.

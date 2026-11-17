@@ -124,11 +124,8 @@ Ticker was renamed from **Tickarr** in v0.5.00 — a full rebrand, not a fork, b
 
 1. Open Dispatcharr → **Plugins → Find Plugins**
 2. Search for **Ticker** and install
-3. After installation, go to **Ticker → Actions → Restart Dispatcharr**
-
-   > A restart is required after every install or update. Django caches plugin code at startup — without a restart, new code will not load.
-
-4. Configure your settings on the Ticker plugin page
+3. Enable the plugin. Dispatcharr loads new plugin code right away, so no restart is needed
+4. Configure your settings on the Ticker plugin page and click **Save**
 5. Run the appropriate enable action for the overlay type you want
 
 ---
@@ -151,7 +148,7 @@ Each section of the Actions tab has its own button color. Filled buttons activat
 | Blue | Custom Text |
 | Green | Sports Ticker |
 | Violet | Manage |
-| Red | Global destructive — Disable All Tickers and Restart Dispatcharr only |
+| Red | Global destructive — Disable All Tickers only |
 
 ---
 
