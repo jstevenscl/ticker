@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T20:11:17Z",
+  "generated_at": "2026-11-17T19:33:12Z",
   "manifest": {
     "slug": "ticker",
     "name": "Ticker",
@@ -7,18 +7,29 @@
     "author": "jstevenscl",
     "registry_url": "https://github.com/jstevenscl/ticker",
     "registry_name": "jstevenscl/ticker",
-    "last_updated": "2026-11-16T20:11:17Z",
+    "last_updated": "2026-11-17T19:33:12Z",
     "latest": {
-      "version": "0.5.06",
-      "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.06.zip",
-      "checksum_md5": "cf78c96f6d978f246fdf95ac01d152cc",
-      "checksum_sha256": "ae8b5fcd0996f63797e57f04821f2f30eba8b1ff1e89bae2ca4b22bdf7ecd84d",
-      "size": 2193840,
-      "last_updated": "2026-11-16T20:11:17Z",
-      "build_timestamp": "2026-11-16T20:11:17Z",
-      "latest_url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-latest.zip"
+      "version": "0.6.0",
+      "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.6.0.zip",
+      "checksum_md5": "b2f51f0fef6434bf36df22caa88502fe",
+      "checksum_sha256": "9039dbb87f55ccd181f6a1d53eccec4b4d9bcf573c84b2594259cbbf2515c2b7",
+      "size": 2195144,
+      "last_updated": "2026-11-17T19:33:12Z",
+      "build_timestamp": "2026-11-17T19:33:12Z",
+      "latest_url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-latest.zip",
+      "min_dispatcharr_version": "0.34.0"
     },
     "versions": [
+      {
+        "version": "0.6.0",
+        "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.6.0.zip",
+        "checksum_md5": "b2f51f0fef6434bf36df22caa88502fe",
+        "checksum_sha256": "9039dbb87f55ccd181f6a1d53eccec4b4d9bcf573c84b2594259cbbf2515c2b7",
+        "size": 2195144,
+        "last_updated": "2026-11-17T19:33:12Z",
+        "build_timestamp": "2026-11-17T19:33:12Z",
+        "min_dispatcharr_version": "0.34.0"
+      },
       {
         "version": "0.5.06",
         "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.5.06.zip",
