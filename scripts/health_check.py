@@ -38,7 +38,7 @@ EPG_MIN_CHANNEL_RATIO = 0.98      # of lineup channels that must appear in the E
 EPG_MIN_COVERED_NOW_RATIO = 0.98  # of EPG channels that must have a programme airing right now
 SPORTS_MAX_AGE_H = 24             # built every 4h; GitHub drops/delays cron runs, so allow ~5 misses
 SHOW_SCHEDULES_MAX_AGE_H = 72     # built daily; 72h = 2 missed runs
-SHOW_SCHEDULES_MIN_CHANNELS = 350 # normally ~400 (observed 393-408 since Sep); siriusxm.com scrape, no STL equivalent
+SHOW_SCHEDULES_MIN_CHANNELS = 300 # normally ~340 since 2026-11-16 (was ~400 before 62 play-by-play placeholders left the catalog); siriusxm.com scrape
 STL_URL = "https://stellartunerlog.com/channels.json"   # source of truth for the lineup
 STL_CHANGES_URL = "https://api.stellartunerlog.com/v1/lineup/changes"   # public, 14-day rolling change log
 FLAP_MIN_RENAMES = 3              # renames of one channel within the STL window that count as flapping
@@ -164,7 +164,7 @@ def check_show_schedules(now, problems, notes):
     if len(chans) < SHOW_SCHEDULES_MIN_CHANNELS:
         problems.append(
             f"**Show schedules cover only {len(chans)} channels** "
-            f"(normally ~400, floor {SHOW_SCHEDULES_MIN_CHANNELS}) -- scraper is likely broken")
+            f"(normally ~340, floor {SHOW_SCHEDULES_MIN_CHANNELS}) -- scraper is likely broken")
 
 
 def _norm(name):
@@ -191,7 +191,10 @@ def lineup_problems(stl, catalog, aliases, epg_ids):
         if ours is None:
             missing.append(f"{v['name']} (ch {v.get('channel_number')})")
             continue
-        if _norm(ours["name"]) != _norm(v["name"]):
+        # An alias that canonicalizes STL's spelling to our catalog name is intentional
+        # (it pins the channel id while STL flaps the name), not a stale cache.
+        stl_canonical = aliases.get(_norm(v["name"]), aliases.get(v["name"].lower(), v["name"]))
+        if _norm(ours["name"]) not in (_norm(v["name"]), _norm(stl_canonical)):
             renamed.append(f"{v['name']} -> ours: {ours['name']}")
         if ours.get("sxm_number") != v.get("channel_number"):
             renumbered.append(f"{v['name']}: STL {v.get('channel_number')} vs ours {ours.get('sxm_number')}")
@@ -211,6 +214,7 @@ def lineup_problems(stl, catalog, aliases, epg_ids):
     # Aliases are applied to Dispatcharr names *before* matching against live STL
     # names, so they must never redirect a live STL name to a different channel
     # (2026-11: 'message worship' -> The Message matched ch 78 instead of 79).
+    catalog_by_name = {_norm(c["name"]): c for c in catalog.values() if c.get("name")}
     live = {}
     for v in stl.values():
         live.setdefault(_norm(v["name"]), []).append(v)
@@ -218,6 +222,11 @@ def lineup_problems(stl, catalog, aliases, epg_ids):
     for key, target in aliases.items():
         k, t = live.get(_norm(key)), live.get(_norm(target))
         if k and not t:
+            # Fine when the target is our catalog name for that very same channel: the
+            # alias is pinning a stable name while STL's spelling changes under it.
+            ours = catalog_by_name.get(_norm(target))
+            if ours and str(ours.get("sxm_entity_id")) in {str(x["id"]) for x in k}:
+                continue
             bad.append(f"'{key}' is a live STL name but its target '{target}' is not (no match at all)")
         elif k and t and {x["id"] for x in k} != {x["id"] for x in t}:
             bad.append(f"'{key}' (ch {k[0].get('channel_number')}) points at a DIFFERENT live channel "
