@@ -5,6 +5,12 @@ name: Data Health Check
 # unnoticed for ~8 weeks), so this checks the PUBLISHED data and workflow
 # liveness, and opens a GitHub issue (-> email) when something is wrong.
 # One issue at a time: re-failures comment on it, recovery closes it.
+#
+# Debounce: a problem must show up on TWO consecutive checks (6h apart) before an
+# issue/email is sent. Most one-off findings are transient -- e.g. STL picks up a
+# lineup change hours before our daily channel-cache run does -- and clear by
+# themselves. The first sighting is only logged; the next run finds the
+# "Mark run unhealthy" step on the previous run (via the API) and escalates.
 
 on:
   schedule:
@@ -36,8 +42,34 @@ jobs:
           HEALTH_REPORT: ${{ runner.temp }}/health-report.md
         run: python scripts/health_check.py
 
-      - name: Open or update alert issue
+      # Marker only: the NEXT run looks for this step (conclusion=success) on this run.
+      - name: Mark run unhealthy
         if: steps.check.outcome == 'failure'
+        run: echo "health check found problems -- see the report above"
+
+      - name: Decide whether to alert
+        id: streak
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Escalate if a health-check issue is already open, or the previous
+          # completed run was also unhealthy.
+          OPEN=$(gh issue list --label health-check --state open --json number --jq 'length')
+          PREV=$(gh run list --workflow health-check.yml --status completed --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+          PREV_BAD=0
+          if [ -n "$PREV" ]; then
+            PREV_BAD=$(gh api "repos/${{ github.repository }}/actions/runs/${PREV}/jobs"               --jq '[.jobs[].steps[] | select(.name=="Mark run unhealthy" and .conclusion=="success")] | length')
+          fi
+          if [ "${OPEN:-0}" -gt 0 ] || [ "${PREV_BAD:-0}" -gt 0 ]; then
+            echo "alert=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "alert=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::First unhealthy check -- holding the alert one cycle in case it is transient."
+          fi
+
+      - name: Open or update alert issue
+        if: steps.check.outcome == 'failure' && steps.streak.outputs.alert == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -66,5 +98,5 @@ jobs:
           done
 
       - name: Fail the run if unhealthy
-        if: steps.check.outcome == 'failure'
+        if: steps.check.outcome == 'failure' && steps.streak.outputs.alert == 'true'
         run: exit 1
