@@ -2489,7 +2489,7 @@
     "name": "Soccer en Español",
     "description": "SiriusXM offers live Spanish language broadcasts of select soccer games.",
     "genre": "Other Play-by-Play",
-    "sxm_number": 1999,
+    "sxm_number": 838,
     "seasonal": null,
     "logo_url": "https://stellartunerlog.com/logos/9664.png",
     "sxm_logo_src": "",
@@ -3706,6 +3706,17 @@
     "sxm_entity_id": "9595",
     "lookaround_channel_id": "0b04fd91-ea6a-2c62-cb3b-a339e8f232d3"
   },
+  "fc bayern munich": {
+    "name": "FC Bayern Munich",
+    "description": "Hear every FC Bayern Munich match.",
+    "genre": "Other Play-by-Play",
+    "sxm_number": 839,
+    "seasonal": null,
+    "logo_url": "https://stellartunerlog.com/logos/9713.png",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9713",
+    "lookaround_channel_id": "37023203-b66c-46c0-cf8f-18fef94df820"
+  },
   "sports 988": {
     "name": "Sports 988",
     "description": "College Sports PXP & More",
@@ -4904,6 +4915,17 @@
     "sxm_logo_src": "",
     "sxm_entity_id": "9211",
     "lookaround_channel_id": "715bd147-bdc6-53ed-c990-7b348c83a7a0"
+  },
+  "outdoor channel": {
+    "name": "Outdoor Channel",
+    "description": "For more than three decades, Outdoor Channel has educated and entertained millions of American outdoor enthusiasts with world-class hunting, fishing, and shooting action. Outdoor Channel Radio enhances the legendary brand with premium podcasts and audio content like LIVE MLF bass fishing competition, Gun Stories with Joe Mantegna, The Michael Waddell Podcast, Guns & Ammo Buzz Podcast, Fly Fisherman's Loop to Loop Podcast, North American Whitetail, the popular series Wardens, and much more.",
+    "genre": "Sports Talk",
+    "sxm_number": 836,
+    "seasonal": null,
+    "logo_url": "https://stellartunerlog.com/logos/9712.png",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "9712",
+    "lookaround_channel_id": "977d425d-23cd-e70f-4cf3-0d5d2c24c643"
   },
   "toronto raptors": {
     "name": "Toronto Raptors",
