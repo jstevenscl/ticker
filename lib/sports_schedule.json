@@ -1,16 +1,6 @@
 {
-  "generated_at": "2026-11-19T17:51:35Z",
+  "generated_at": "2026-11-19T23:05:46Z",
   "events": [
-    {
-      "slug": "pga",
-      "title": "RSM Classic",
-      "description": "SiriusXM PGA Tour Radio · RSM Classic · Sea Island Golf Club",
-      "start_utc": "2026-11-19T14:00:00Z",
-      "end_utc": "2026-11-19T20:00:00Z",
-      "channels": [
-        "SiriusXM PGA Tour Radio"
-      ]
-    },
     {
       "slug": "nhl",
       "title": "Buffalo Sabres @ Washington Capitals",
@@ -476,6 +466,19 @@
     },
     {
       "slug": "soccer",
+      "title": "Louisville City FC @ Sacramento Republic FC",
+      "description": "SOCCER · Louisville City FC @ Sacramento Republic FC",
+      "start_utc": "2026-11-21T17:00:00Z",
+      "end_utc": "2026-11-21T19:00:00Z",
+      "channels": [
+        "Sacramento Republic FC",
+        "Louisville City FC",
+        "Satellite Radio Channel 247",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
       "title": "Arsenal @ Newcastle",
       "description": "SOCCER · Arsenal @ Newcastle",
       "start_utc": "2026-11-21T17:30:00Z",
@@ -727,6 +730,18 @@
         "Los Angeles Clippers",
         "Satellite Radio Channel 217",
         "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Kansas City Current @ Washington Spirit",
+      "description": "SOCCER · Kansas City Current @ Washington Spirit",
+      "start_utc": "2026-11-22T01:00:00Z",
+      "end_utc": "2026-11-22T02:30:00Z",
+      "channels": [
+        "Washington Spirit",
+        "Kansas City Current",
+        "SiriusXM FC"
       ]
     },
     {
@@ -1405,6 +1420,18 @@
       ]
     },
     {
+      "slug": "soccer",
+      "title": "Borussia Dortmund @ Arsenal",
+      "description": "SOCCER · Borussia Dortmund @ Arsenal",
+      "start_utc": "2026-11-24T20:00:00Z",
+      "end_utc": "2026-11-24T22:00:00Z",
+      "channels": [
+        "Arsenal",
+        "Borussia Dortmund",
+        "SiriusXM FC"
+      ]
+    },
+    {
       "slug": "nba",
       "title": "Detroit Pistons @ Orlando Magic",
       "description": "NBA · Detroit Pistons @ Orlando Magic",
@@ -1453,6 +1480,30 @@
         "Denver Nuggets",
         "Dallas Mavericks",
         "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Houston Dynamo @ San Jose Earthquakes",
+      "description": "SOCCER · Houston Dynamo @ San Jose Earthquakes",
+      "start_utc": "2026-11-25T03:00:00Z",
+      "end_utc": "2026-11-25T05:00:00Z",
+      "channels": [
+        "San Jose Earthquakes",
+        "Houston Dynamo",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Manchester United @ Sporting Lisbon",
+      "description": "SOCCER · Manchester United @ Sporting Lisbon",
+      "start_utc": "2026-11-25T20:00:00Z",
+      "end_utc": "2026-11-25T22:00:00Z",
+      "channels": [
+        "Sporting Lisbon",
+        "Manchester United",
+        "SiriusXM FC"
       ]
     },
     {
@@ -1951,6 +2002,18 @@
       ]
     },
     {
+      "slug": "soccer",
+      "title": "Chelsea @ Nottingham Forest",
+      "description": "SOCCER · Chelsea @ Nottingham Forest",
+      "start_utc": "2026-11-27T20:00:00Z",
+      "end_utc": "2026-11-27T22:00:00Z",
+      "channels": [
+        "Nottingham Forest",
+        "Chelsea",
+        "SiriusXM FC"
+      ]
+    },
+    {
       "slug": "nhl",
       "title": "Vegas Golden Knights @ San Jose Sharks",
       "description": "NHL · Vegas Golden Knights @ San Jose Sharks",
@@ -2108,6 +2171,19 @@
       ]
     },
     {
+      "slug": "soccer",
+      "title": "Inter Miami CF @ Columbus Crew SC",
+      "description": "SOCCER · Inter Miami CF @ Columbus Crew SC",
+      "start_utc": "2026-11-28T01:00:00Z",
+      "end_utc": "2026-11-28T03:00:00Z",
+      "channels": [
+        "Columbus Crew SC",
+        "Inter Miami CF",
+        "SiriusXM FC",
+        "Soccer en Español"
+      ]
+    },
+    {
       "slug": "nba",
       "title": "Memphis Grizzlies @ Minnesota Timberwolves",
       "description": "NBA · Memphis Grizzlies @ Minnesota Timberwolves",
@@ -2198,6 +2274,31 @@
       ]
     },
     {
+      "slug": "soccer",
+      "title": "Aston Villa @ Ipswich",
+      "description": "SOCCER · Aston Villa @ Ipswich",
+      "start_utc": "2026-11-28T17:30:00Z",
+      "end_utc": "2026-11-28T19:30:00Z",
+      "channels": [
+        "Ipswich",
+        "Aston Villa",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Chicago Fire @ Charlotte FC",
+      "description": "SOCCER · Chicago Fire @ Charlotte FC",
+      "start_utc": "2026-11-28T17:30:00Z",
+      "end_utc": "2026-11-28T19:30:00Z",
+      "channels": [
+        "Charlotte FC",
+        "Chicago Fire",
+        "Satellite Radio Channel 247",
+        "SiriusXM FC"
+      ]
+    },
+    {
       "slug": "f1",
       "title": "F-1 Qualifying",
       "description": "Formula 1 Racing and Analysis · F-1 Qualifying · Lusail International Circuit",
@@ -2206,6 +2307,18 @@
       "channels": [
         "Satellite Radio Channel 251",
         "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "San Jose Earthquakes @ Houston Dynamo",
+      "description": "SOCCER · San Jose Earthquakes @ Houston Dynamo",
+      "start_utc": "2026-11-28T19:30:00Z",
+      "end_utc": "2026-11-28T21:30:00Z",
+      "channels": [
+        "Houston Dynamo",
+        "San Jose Earthquakes",
+        "SiriusXM FC"
       ]
     },
     {
@@ -2219,6 +2332,18 @@
         "Montreal Canadiens",
         "NHL Network Radio",
         "SiriusXM NHL Network Radio"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "New England Revolution @ Philadelphia Union",
+      "description": "SOCCER · New England Revolution @ Philadelphia Union",
+      "start_utc": "2026-11-28T21:30:00Z",
+      "end_utc": "2026-11-28T23:30:00Z",
+      "channels": [
+        "Philadelphia Union",
+        "New England Revolution",
+        "SiriusXM FC"
       ]
     },
     {
@@ -2403,6 +2528,18 @@
       ]
     },
     {
+      "slug": "soccer",
+      "title": "St. Louis City SC @ LAFC",
+      "description": "SOCCER · St. Louis City SC @ LAFC",
+      "start_utc": "2026-11-29T01:30:00Z",
+      "end_utc": "2026-11-29T03:30:00Z",
+      "channels": [
+        "LAFC",
+        "St. Louis City SC",
+        "SiriusXM FC"
+      ]
+    },
+    {
       "slug": "nhl",
       "title": "Anaheim Ducks @ Los Angeles Kings",
       "description": "NHL · Anaheim Ducks @ Los Angeles Kings",
@@ -2442,6 +2579,42 @@
       ]
     },
     {
+      "slug": "soccer",
+      "title": "FC Dallas @ Portland Timbers",
+      "description": "SOCCER · FC Dallas @ Portland Timbers",
+      "start_utc": "2026-11-29T03:30:00Z",
+      "end_utc": "2026-11-29T05:30:00Z",
+      "channels": [
+        "Portland Timbers",
+        "FC Dallas",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Liverpool @ Everton",
+      "description": "SOCCER · Liverpool @ Everton",
+      "start_utc": "2026-11-29T12:00:00Z",
+      "end_utc": "2026-11-29T14:00:00Z",
+      "channels": [
+        "Everton",
+        "Liverpool",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Tottenham @ Sunderland",
+      "description": "SOCCER · Tottenham @ Sunderland",
+      "start_utc": "2026-11-29T14:05:00Z",
+      "end_utc": "2026-11-29T16:05:00Z",
+      "channels": [
+        "Sunderland",
+        "Tottenham",
+        "SiriusXM FC"
+      ]
+    },
+    {
       "slug": "f1",
       "title": "Qatar Grand Prix",
       "description": "Formula 1 Racing and Analysis · Qatar Grand Prix · Lusail International Circuit",
@@ -2450,6 +2623,18 @@
       "channels": [
         "Satellite Radio Channel 251",
         "Formula 1 Racing and Analysis"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Manchester City @ Arsenal",
+      "description": "SOCCER · Manchester City @ Arsenal",
+      "start_utc": "2026-11-29T16:30:00Z",
+      "end_utc": "2026-11-29T18:30:00Z",
+      "channels": [
+        "Arsenal",
+        "Manchester City",
+        "SiriusXM FC"
       ]
     },
     {
@@ -2551,6 +2736,19 @@
     },
     {
       "slug": "nba",
+      "title": "Miami Heat @ Cleveland Cavaliers",
+      "description": "NBA · Miami Heat @ Cleveland Cavaliers",
+      "start_utc": "2026-11-29T20:30:00Z",
+      "end_utc": "2026-11-29T23:30:00Z",
+      "channels": [
+        "Cleveland Cavaliers",
+        "Miami Heat",
+        "NHL/NBA Play-by-Play 219",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nba",
       "title": "Los Angeles Lakers @ Memphis Grizzlies",
       "description": "NBA · Los Angeles Lakers @ Memphis Grizzlies",
       "start_utc": "2026-11-29T21:00:00Z",
@@ -2645,32 +2843,6 @@
     },
     {
       "slug": "nba",
-      "title": "Denver Nuggets @ Toronto Raptors",
-      "description": "NBA · Denver Nuggets @ Toronto Raptors",
-      "start_utc": "2026-11-29T23:00:00Z",
-      "end_utc": "2026-11-30T02:00:00Z",
-      "channels": [
-        "Toronto Raptors",
-        "Denver Nuggets",
-        "Canada Talks",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Orlando Magic @ Detroit Pistons",
-      "description": "NBA · Orlando Magic @ Detroit Pistons",
-      "start_utc": "2026-11-29T23:00:00Z",
-      "end_utc": "2026-11-30T02:00:00Z",
-      "channels": [
-        "Detroit Pistons",
-        "Orlando Magic",
-        "NHL/NBA Play-by-Play 220",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nba",
       "title": "Atlanta Hawks @ New York Knicks",
       "description": "NBA · Atlanta Hawks @ New York Knicks",
       "start_utc": "2026-11-29T23:00:00Z",
@@ -2697,14 +2869,27 @@
     },
     {
       "slug": "nba",
-      "title": "Miami Heat @ Cleveland Cavaliers",
-      "description": "NBA · Miami Heat @ Cleveland Cavaliers",
+      "title": "Orlando Magic @ Detroit Pistons",
+      "description": "NBA · Orlando Magic @ Detroit Pistons",
       "start_utc": "2026-11-29T23:00:00Z",
       "end_utc": "2026-11-30T02:00:00Z",
       "channels": [
-        "Cleveland Cavaliers",
-        "Miami Heat",
-        "NHL/NBA Play-by-Play 219",
+        "Detroit Pistons",
+        "Orlando Magic",
+        "NHL/NBA Play-by-Play 220",
+        "SiriusXM NBA Radio"
+      ]
+    },
+    {
+      "slug": "nba",
+      "title": "Denver Nuggets @ Toronto Raptors",
+      "description": "NBA · Denver Nuggets @ Toronto Raptors",
+      "start_utc": "2026-11-29T23:00:00Z",
+      "end_utc": "2026-11-30T02:00:00Z",
+      "channels": [
+        "Toronto Raptors",
+        "Denver Nuggets",
+        "Canada Talks",
         "SiriusXM NBA Radio"
       ]
     },
