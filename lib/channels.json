@@ -8358,5 +8358,16 @@
     "sxm_logo_src": "",
     "sxm_entity_id": "d44dff6d-e83a-e77f-ea51-86d1da4f14f2",
     "lookaround_channel_id": "d44dff6d-e83a-e77f-ea51-86d1da4f14f2"
+  },
+  "higher sound": {
+    "name": "Higher Sound",
+    "description": "",
+    "genre": "New Age & Ambient",
+    "sxm_number": 1328,
+    "seasonal": null,
+    "logo_url": "",
+    "sxm_logo_src": "",
+    "sxm_entity_id": "72f00637-0b66-0ec7-632b-8d9ed22517b7",
+    "lookaround_channel_id": "72f00637-0b66-0ec7-632b-8d9ed22517b7"
   }
 }
