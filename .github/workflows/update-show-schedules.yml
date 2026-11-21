@@ -18,6 +18,9 @@ concurrency:
 
 jobs:
   update-show-schedules:
+    # Public repo only -- ticker-dev must not run its own copy of the schedule
+    # (duplicate commits, duplicate failure emails). Same guard as health-check.yml.
+    if: github.repository == 'jstevenscl/ticker'
     runs-on: ubuntu-latest
     permissions:
       contents: write
