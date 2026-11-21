@@ -1,16 +1,6 @@
 {
-  "generated_at": "2026-11-20T17:00:48Z",
+  "generated_at": "2026-11-21T01:35:14Z",
   "events": [
-    {
-      "slug": "pga",
-      "title": "RSM Classic",
-      "description": "SiriusXM PGA Tour Radio · RSM Classic · Sea Island Golf Club",
-      "start_utc": "2026-11-20T14:00:00Z",
-      "end_utc": "2026-11-20T20:00:00Z",
-      "channels": [
-        "SiriusXM PGA Tour Radio"
-      ]
-    },
     {
       "slug": "nba",
       "title": "Charlotte Hornets @ Atlanta Hawks",
@@ -396,7 +386,7 @@
       "channels": [
         "Toronto Maple Leafs",
         "Columbus Blue Jackets",
-        "NFL Play-by-Play 226",
+        "NHL Network Radio",
         "SiriusXM NHL Network Radio"
       ]
     },
