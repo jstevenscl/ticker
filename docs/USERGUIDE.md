@@ -28,6 +28,25 @@ Ticker is a plugin for [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)
 3. Enable the plugin. Dispatcharr loads new plugin code as soon as it is installed or updated, so no restart is needed.
 4. Open the Ticker plugin page and continue with the setup section below for the overlay type you want.
 
+### Updating Ticker
+
+Go to **Plugins → My Plugins → Check for Updates**, then click **Update** on Ticker. Dispatcharr loads the new code as soon as the update finishes, so a restart is normally not needed.
+
+**Exception — updating from 0.6.0 (or earlier) to 0.6.01 or later.** Starting with 0.6.01, Ticker keeps its data in Dispatcharr's per-plugin data directory (see [Where Ticker keeps its data](#where-ticker-keeps-its-data)). Ticker moves your existing data across automatically the first time the new version starts, and channels that already have an overlay keep working while it does. The older version's background thread keeps running until Dispatcharr is restarted, so **restart Dispatcharr once after this update** to finish the move. When it comes back up, Ticker repoints its stream profiles to the new location; a channel that is being watched at that moment restarts once, the same brief restart Ticker already does whenever it changes a channel's stream profile.
+
+### Where Ticker keeps its data
+
+Ticker stores your channel configuration, its caches and the small text files that FFmpeg reads for each overlay in Dispatcharr's **per-plugin data directory**. For a normal install from **Find Plugins** that is `/data/plugins/_data/ticker/`. Dispatcharr keeps this directory when Ticker is updated, so it survives updates.
+
+Before 0.6.01 this data lived in a `ticker_data` folder next to the plugin (`/data/plugins/ticker_data/`). When 0.6.01 first starts it:
+
+1. **Copies** everything from the old folder into the new data directory. Nothing is overwritten and nothing is deleted at this point.
+2. Replaces the old folder with a **link** to the new one (the original is kept as `ticker_data.premigration`), so anything still using the old path keeps working until you restart Dispatcharr.
+3. After the restart, **repoints** Ticker's stream profiles (the `textfile=` paths inside them) to the new location.
+
+You don't need to do anything for this beyond restarting Dispatcharr once. If you want to re-run or clean up the move, use **Actions → Migrate Storage to Plugin Data Directory**. It copies anything still missing, repoints any stream profile that still uses the old path, checks that nothing refers to the old location any more, and only then deletes the old folder (and the link and `.premigration` backup). If a check fails it leaves the old folder alone and tells you why.
+
+> Installs done with **Install Plugin** (uploading a ZIP) rather than from Find Plugins get a data directory named after the plugin folder (for example `_data/ticker-0_6_01`), so a ZIP install of a newer version starts in a new directory. Ticker automatically carries the data over from the previous version's directory.
 
 ### Using the Ticker page
 
@@ -657,7 +676,7 @@ Actions are listed in the left column of the Ticker page in this order: **Now Pl
 <table>
 <tr>
 <td><img src="screenshots/plugin-page.jpg" alt="The Ticker plugin page: actions on the left, collapsible settings sections on the right" width="420"></td>
-<td><img src="screenshots/actions-manage.jpg" alt="Manage actions, including Migrate to Shared Profiles and Check Stream Profile Capabilities" width="420"></td>
+<td><img src="screenshots/actions-manage.jpg" alt="Manage actions, including Migrate Storage, Migrate to Shared Profiles and Check Stream Profile Capabilities" width="420"></td>
 </tr>
 </table>
 
@@ -737,6 +756,7 @@ Each section has its own button color so you can identify which overlay type an 
 | Refresh Channel Data | Re-fetches the live satellite radio channel/station catalog and repairs already-enabled channels that have no ticker.com match (no now-playing data ever appears for them). Also reloads the channel/group list for dropdowns in Settings. |
 | Disable All Tickers | Disables every active Ticker overlay across all channels. |
 | Clean Orphaned Profiles | Removes cloned stream profiles left behind when channels were deleted while a Ticker overlay was active. Also reaps shared profiles once no channel references them anymore. |
+| Migrate Storage to Plugin Data Directory | Finishes or retries the move of Ticker's data from the old `ticker_data` folder to Dispatcharr's per-plugin data directory, repoints Ticker's stream profiles, and removes the old folder once everything checks out. Happens automatically on update; use this to retry or clean up. Safe to run repeatedly. See [Where Ticker keeps its data](#where-ticker-keeps-its-data). |
 | Migrate to Shared Profiles | Moves already-enabled channels off their old per-channel cloned profile onto a shared one. Safe to run repeatedly. See [Upgrading an existing install to shared profiles](#upgrading-an-existing-install-to-shared-profiles). |
 | Migrate from Tickarr | One-time upgrade helper for anyone coming from the pre-v0.5.00 "Tickarr" plugin. Requires Tickarr to still be installed alongside Ticker. See [Upgrading from the old Tickarr plugin](#upgrading-from-the-old-tickarr-plugin). |
 | Check Stream Profile Capabilities | Reports whether this Dispatcharr install supports the `{channelId}` token and therefore which profile mode Ticker is using — shared or per-channel. |
@@ -806,7 +826,7 @@ Run **Actions → Redis Diagnostics**. If Redis is unreachable, On-Demand and sm
 
 ### Plugin changes not taking effect after an update
 
-Click **Reload Plugin** on the Ticker page. Dispatcharr 0.34+ loads new plugin code automatically, so a restart is not needed.
+Click **Reload Plugin** on the Ticker page. Dispatcharr 0.34+ loads new plugin code automatically, so a restart is normally not needed. The exception is updating from 0.6.0 or earlier to 0.6.01+: restart Dispatcharr once to finish moving Ticker's data (see [Where Ticker keeps its data](#where-ticker-keeps-its-data)). If overlays still look stale afterwards, run **Actions → Migrate Storage to Plugin Data Directory**.
 
 ### A channel or group is missing from a list
 

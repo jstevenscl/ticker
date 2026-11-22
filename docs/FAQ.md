@@ -18,7 +18,9 @@ No. Updating keeps your saved settings and any tickers that are already running.
 
 **Q: Do I need to restart Dispatcharr after installing or updating Ticker?**
 
-No. Dispatcharr 0.34 and later loads new plugin code as soon as it is installed or updated. If an overlay seems to be running old behavior after an update, use the **Reload Plugin** button on the Ticker page.
+Usually not. Dispatcharr 0.34 and later loads new plugin code as soon as it is installed or updated. If an overlay seems to be running old behavior after an update, use the **Reload Plugin** button on the Ticker page.
+
+**One exception: updating from Ticker 0.6.0 (or earlier) to 0.6.01 or later.** That update moves Ticker's data into Dispatcharr's per-plugin data directory. It happens automatically and running streams keep playing, but the last step (pointing Ticker's stream profiles at the new location) only completes once Dispatcharr is restarted, because the older version's background thread keeps running until then. Restart Dispatcharr once after that update. See [Where Ticker keeps its data](USERGUIDE.md#where-ticker-keeps-its-data).
 
 ---
 

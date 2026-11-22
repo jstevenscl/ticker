@@ -27,7 +27,7 @@ Dispatcharr 0.34 introduced the plugin format Ticker 0.6 is built on, so 0.6 can
 <table>
 <tr>
 <td><img src="docs/screenshots/plugin-page.jpg" alt="The Ticker plugin page: actions on the left, collapsible settings sections on the right" width="420"></td>
-<td><img src="docs/screenshots/actions-manage.jpg" alt="Manage actions, including Migrate to Shared Profiles" width="420"></td>
+<td><img src="docs/screenshots/actions-manage.jpg" alt="Manage actions, including Migrate Storage and Migrate to Shared Profiles" width="420"></td>
 </tr>
 <tr>
 <td><img src="docs/screenshots/shared-profile-detail.jpg" alt="A shared stream profile using the {channelId} token" width="420"></td>
@@ -141,6 +141,10 @@ Ticker was renamed from **Tickarr** in v0.5.00 — a full rebrand, not a fork, b
 3. Enable the plugin. Dispatcharr loads new plugin code right away, so no restart is needed
 4. Configure your settings on the Ticker plugin page and click **Save**
 5. Run the appropriate enable action for the overlay type you want
+
+### Updating
+
+Use **Plugins → My Plugins → Check for Updates**, then **Update** on Ticker. Dispatcharr loads the new code right away. Starting with **0.6.01**, Ticker keeps its data (channel configuration, caches and the overlay text files) in Dispatcharr's own per-plugin data directory instead of a `ticker_data` folder next to the plugin. If you're updating from 0.6.0 or earlier, Ticker moves your existing data across automatically and running streams keep playing. **Restart Dispatcharr once after the update** to finish the move (Ticker's stream profiles are repointed to the new location when it comes back up). See [Where Ticker keeps its data](docs/USERGUIDE.md#where-ticker-keeps-its-data) in the User Guide.
 
 ---
 
