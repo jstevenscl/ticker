@@ -15,20 +15,37 @@ import json, re, sys, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-VERSION_RE = re.compile(r"^\d+\.\d+\.(0|0[1-9]|[1-9]\d+)(-[0-9A-Za-z.]+)?$")
+VERSION_RE = re.compile(r"^\d+\.\d+\.(0\d?|[1-9]\d+)(-[0-9A-Za-z.]+)?$")
 
 
 def check_version(v, what="version"):
-    """Ticker versions are #.#.## (two-digit patch: 0.5.06, 0.6.01); the only exception is a
-    patch of zero, written as a single 0 (0.6.0). Reject anything else, e.g. 0.6.1."""
+    """Ticker versions are #.#.## (two-digit patch: 0.5.06, 0.6.01, and 0.7.00 for a new
+    minor's first release). A bare zero patch (0.6.0) is accepted for history. Anything else,
+    e.g. 0.6.1, is rejected. NOTE: Dispatcharr and the Plugins registry compare versions
+    numerically, so 0.6.00 == 0.6.0; see check_not_duplicate()."""
     if not VERSION_RE.match(v):
         sys.exit(f"ERROR: {what} '{v}' is not in Ticker's #.#.## format "
-                 f"(two-digit patch such as 0.6.01; a zero patch is a single 0 as in 0.6.0, never 00).")
+                 f"(two-digit patch such as 0.6.01 or 0.7.00; never a single non-zero digit like 0.6.1).")
+    return v
+
+
+def _numeric(v):
+    return tuple(int(x) for x in v.split("-")[0].split("."))
+
+
+def check_not_duplicate(v, released):
+    """Reject a version numerically equal to a different, already-released string. 0.6.00 and
+    0.6.0 compare equal, so users on 0.6.0 would never be offered 0.6.00 and the registry's
+    version-increase check would refuse it."""
+    for other in released:
+        if other != v and "-" not in other and "-" not in v and _numeric(other) == _numeric(v):
+            sys.exit(f"ERROR: version '{v}' is numerically equal to released '{other}'. "
+                     f"Dispatcharr and the registry compare numerically, so it would never show as an update.")
     return v
 
 
 def next_patch(base):
-    """0.6.0 -> 0.6.01, 0.5.06 -> 0.5.07 (two-digit patch; only a zero patch is a single 0)."""
+    """0.6.0 / 0.6.00 -> 0.6.01, 0.5.06 -> 0.5.07 (always a two-digit patch)."""
     major, minor, patch = base.split(".")
     return f"{major}.{minor}.{int(patch) + 1:02d}"
 
