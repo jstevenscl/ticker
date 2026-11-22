@@ -65,8 +65,8 @@ def _prior_storage_sources():
         pass
     if os.path.isdir(_LEGACY_DATA_DIR):
         srcs.append(_LEGACY_DATA_DIR)
-    here = os.path.abspath(_DATA_DIR)
-    srcs = [p for p in srcs if os.path.abspath(p) != here]
+    here = os.path.realpath(_DATA_DIR)
+    srcs = [p for p in srcs if os.path.realpath(p) != here]
 
     def _age(p):
         try:
@@ -119,7 +119,42 @@ def _copy_prior_storage(force=False):
     if not os.path.exists(marker):
         _write_storage_marker({"from": sources, "at": time.time(), "profiles_refreshed": False})
     logger.info(f"ticker: prior storage copied from {sources} to {dst} ({copied} file(s))")
+    if _LEGACY_DATA_DIR in sources:
+        _bridge_legacy_storage()
     return copied
+
+
+def _bridge_legacy_storage():
+    """Replace the legacy `ticker_data` directory with a symlink to the current data dir.
+
+    A previous plugin version can keep running after an in-place upgrade (Dispatcharr only
+    stops it in one worker; long-lived workers never reload plugin code). That old poller
+    keeps writing overlay text to the legacy path and old stream profiles keep reading it, so
+    without a bridge the old and new code would disagree about where the files live. The
+    original directory is kept as `ticker_data.premigration`. Best effort: any failure just
+    leaves the legacy directory as it was.
+    """
+    legacy = _LEGACY_DATA_DIR
+    try:
+        if os.path.islink(legacy) or not os.path.isdir(legacy):
+            return False
+        if os.path.realpath(legacy) == os.path.realpath(_DATA_DIR):
+            return False
+        bak = legacy + ".premigration"
+        if os.path.exists(bak):
+            return False
+        os.rename(legacy, bak)
+        try:
+            os.symlink(_DATA_DIR, legacy, target_is_directory=True)
+        except OSError:
+            if not os.path.exists(legacy):
+                os.rename(bak, legacy)   # put it back; never leave the path missing
+            raise
+        logger.info(f"ticker: {legacy} now links to {_DATA_DIR} (original kept as {bak})")
+        return True
+    except OSError as e:
+        logger.warning(f"ticker: could not bridge legacy storage path ({e}); continuing without it")
+        return False
 
 
 def _read_storage_marker():
@@ -2950,14 +2985,16 @@ def _try_acquire_poller_lock():
 
 
 def _plugin_enabled():
-    """True unless Dispatcharr's PluginConfig says this plugin is disabled. Fails open
-    (True) on any lookup error so a DB hiccup never silently kills the poller."""
+    """True only if Dispatcharr's PluginConfig says this plugin is enabled. A missing row
+    means the plugin was uninstalled/replaced, so a leftover poller in a long-lived worker
+    (Celery/daphne never reload plugin code) must stand down. Fails open (True) on any
+    lookup error so a DB hiccup never silently kills the poller."""
     try:
         from apps.plugins.models import PluginConfig
         from django.db import close_old_connections
         close_old_connections()
         cfg = PluginConfig.objects.filter(key=_PLUGIN_KEY).first()
-        return True if cfg is None else bool(cfg.enabled)
+        return False if cfg is None else bool(cfg.enabled)
     except Exception:
         return True
 
@@ -5562,12 +5599,17 @@ class Plugin:
                     and not os.path.exists(MAPPINGS_FILE)):
                 return {"success": False, "message": "\n".join(lines + [
                     "Old directory kept -- mappings.json is missing from the new location."])}
-            if os.path.isdir(_LEGACY_DATA_DIR):
+            for old_path in (_LEGACY_DATA_DIR, _LEGACY_DATA_DIR + ".premigration"):
+                if not (os.path.islink(old_path) or os.path.isdir(old_path)):
+                    continue
                 try:
-                    shutil.rmtree(_LEGACY_DATA_DIR)
-                    lines.append(f"Removed the old directory ({_LEGACY_DATA_DIR}).")
+                    if os.path.islink(old_path):
+                        os.unlink(old_path)
+                    else:
+                        shutil.rmtree(old_path)
+                    lines.append(f"Removed the old directory ({old_path}).")
                 except OSError as e:
-                    lines.append(f"Could not remove the old directory automatically ({e}) -- safe to delete by hand.")
+                    lines.append(f"Could not remove {old_path} automatically ({e}) -- safe to delete by hand.")
             lines.append(f"Ticker now stores its data in {_DATA_DIR}.")
             return {"success": True, "message": "\n".join(lines)}
         except Exception as e:
