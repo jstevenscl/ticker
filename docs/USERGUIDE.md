@@ -791,6 +791,10 @@ Run **Actions → Reload Poller**. If still stale after 30 seconds, disable and 
 
 If the channel is on an auto-synced M3U playlist, check whether its channel group has a default **Stream Profile** configured on the M3U account side — see [Auto-synced channels can silently revert Ticker's overlay profile](#before-you-start--universal-requirements). Dispatcharr's periodic M3U sync reasserts that default profile on every refresh, overwriting Ticker's cloned profile with no error message. Clear the group's Stream Profile override to fix it.
 
+### A channel is skipped with "already has a Ticker profile" or "old Tickarr overlay profile"
+
+The channel's stream profile is itself one of Ticker's overlay profiles (named `Ticker — …` or, from before the rename, `Tickarr — …`), so Ticker will not build a new overlay on top of it — doing that would copy the old overlay's file paths and the stream would fail to start. If the message says **Ticker profile**, run the matching **Disable** action first. If it says **old Tickarr overlay profile**, run **Actions → Migrate from Tickarr**, or open the channel in Dispatcharr and assign its real stream profile (the one without the `Tickarr —` prefix), then re-run the enable action.
+
 ### "No games scheduled" in the sports ticker
 
 This is not an error. The ESPN API has no live or recently finished games for the leagues you selected right now. The ticker will show scores automatically when games start. Confirm your league toggles are set to leagues that are currently in season.

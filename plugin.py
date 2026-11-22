@@ -637,6 +637,23 @@ def _config_sig(*values):
     return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:10]
 
 
+def _overlay_skip_reason(profile, ticker_hint="run Disable Ticker first"):
+    """If `profile` is itself a Ticker/Tickarr overlay profile, return the reason a channel
+    sitting on it must not be used as an overlay base; otherwise None.
+
+    Using an overlay profile as the 'original' base would clone an overlay on top of an
+    overlay -- and for a leftover Tickarr profile, bake dead tickarr_data text-file paths into
+    the clone, so FFmpeg fails with 'Cannot read file' and the stream never starts.
+    """
+    name = getattr(profile, "name", "") or ""
+    if name.startswith(LEGACY_PROFILE_PREFIX):
+        return ("is still assigned an old Tickarr overlay profile — run Migrate from Tickarr, or "
+                "assign the channel's real stream profile in Channels, then re-run")
+    if name.startswith(PROFILE_PREFIX) or " [shared:" in name:
+        return f"already has a Ticker profile — {ticker_hint}"
+    return None
+
+
 def _get_or_create_shared_profile(overlay_type, original_profile, channel_name, config_sig, build_filter_fn, post_process_fn=None):
     """Get-or-create ONE StreamProfile shared by every channel with the same
     (overlay_type, base/original profile, filter-affecting settings) — only used when
@@ -3734,8 +3751,9 @@ class Plugin:
                 if not (original_profile.parameters or "").strip():
                     skipped.append(f"{channel.name} (stream profile is Proxy or Redirect — assign an FFmpeg profile to enable this ticker)")
                     continue
-                if original_profile.name.startswith(PROFILE_PREFIX):
-                    skipped.append(f"{channel.name} (already has a Ticker profile — run Disable Ticker first)")
+                _overlay_reason = _overlay_skip_reason(original_profile, "run Disable Ticker first")
+                if _overlay_reason:
+                    skipped.append(f"{channel.name} ({_overlay_reason})")
                     continue
 
                 # Strip any station-number prefix Sort may have already added — otherwise
@@ -3846,8 +3864,9 @@ class Plugin:
                 if not (original_profile.parameters or "").strip():
                     skipped.append(f"{channel.name} (stream profile is Proxy or Redirect — assign an FFmpeg profile to enable this ticker)")
                     continue
-                if original_profile.name.startswith(PROFILE_PREFIX):
-                    skipped.append(f"{channel.name} (already has a Ticker profile — run Disable Ticker first)")
+                _overlay_reason = _overlay_skip_reason(original_profile, "run Disable Ticker first")
+                if _overlay_reason:
+                    skipped.append(f"{channel.name} ({_overlay_reason})")
                     continue
 
                 removed_flags = []
@@ -4033,8 +4052,9 @@ class Plugin:
                 if not (original_profile.parameters or "").strip():
                     skipped.append(f"{channel.name} (stream profile is Proxy or Redirect — assign an FFmpeg profile to enable this ticker)")
                     continue
-                if original_profile.name.startswith(PROFILE_PREFIX):
-                    skipped.append(f"{channel.name} (already has a Ticker profile — run Disable Ticker first)")
+                _overlay_reason = _overlay_skip_reason(original_profile, "run Disable Ticker first")
+                if _overlay_reason:
+                    skipped.append(f"{channel.name} ({_overlay_reason})")
                     continue
 
                 removed_flags = []
@@ -4276,8 +4296,9 @@ class Plugin:
                 if not (original_profile.parameters or "").strip():
                     skipped.append(f"{channel.name} (stream profile is Proxy or Redirect — assign an FFmpeg profile to enable this ticker)")
                     continue
-                if original_profile.name.startswith(PROFILE_PREFIX):
-                    skipped.append(f"{channel.name} (already has a Ticker profile — disable first)")
+                _overlay_reason = _overlay_skip_reason(original_profile, "disable first")
+                if _overlay_reason:
+                    skipped.append(f"{channel.name} ({_overlay_reason})")
                     continue
                 _eas_clear(channel.id)
                 mappings[cid] = {
@@ -4463,8 +4484,9 @@ class Plugin:
                 if not (original_profile.parameters or "").strip():
                     skipped.append(f"{channel.name} (stream profile is Proxy or Redirect — assign an FFmpeg profile to enable this ticker)")
                     continue
-                if original_profile.name.startswith(PROFILE_PREFIX):
-                    skipped.append(f"{channel.name} (already has a Ticker profile — disable first)")
+                _overlay_reason = _overlay_skip_reason(original_profile, "disable first")
+                if _overlay_reason:
+                    skipped.append(f"{channel.name} ({_overlay_reason})")
                     continue
                 mappings[cid] = {
                     "original_profile_id": original_profile.id,

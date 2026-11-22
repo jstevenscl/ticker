@@ -30,6 +30,12 @@ Usually not. Dispatcharr 0.34 and later loads new plugin code as soon as it is i
 
 ---
 
+**Q: A channel was skipped with "already has a Ticker profile" or "old Tickarr overlay profile". What does this mean?**
+
+The channel's stream profile is already one of Ticker's overlay profiles (`Ticker — …`, or `Tickarr — …` from before the rename). Ticker won't stack a new overlay on top of it, because the copy would point at overlay files that may no longer exist and the stream would fail to start. Run the matching **Disable** action, or for the Tickarr case run **Actions → Migrate from Tickarr** (or assign the channel's real stream profile in Dispatcharr), then enable again. See [Troubleshooting](USERGUIDE.md#a-channel-is-skipped-with-already-has-a-ticker-profile-or-old-tickarr-overlay-profile).
+
+---
+
 **Q: A channel was skipped with "stream profile is Proxy or Redirect". What does this mean?**
 
 Ticker injects overlays by adding FFmpeg filter parameters to the channel's cloned stream profile. **Proxy** and **Redirect** profiles do not go through FFmpeg — they either pass the stream through Dispatcharr's internal proxy or redirect the client straight to the source URL. There is no FFmpeg process to inject a drawtext filter into, so Ticker cannot add an overlay to these channels.
