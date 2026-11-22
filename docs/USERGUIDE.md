@@ -28,6 +28,13 @@ Ticker is a plugin for [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr)
 3. Enable the plugin. Dispatcharr loads new plugin code as soon as it is installed or updated, so no restart is needed.
 4. Open the Ticker plugin page and continue with the setup section below for the overlay type you want.
 
+> **Permissions Dispatcharr asks you to confirm.** Before you enable Ticker (and again on an update that adds a permission), Dispatcharr lists what the plugin uses and asks you to confirm. Ticker declares three:
+> - **Access external network services** — it fetches satellite radio now-playing data and the channel catalog, sports scores, and NWS / Environment Canada alerts.
+> - **Write outside plugin storage** — Ticker's data lives in its own Dispatcharr data directory, but during upgrades it also tidies up the old `ticker_data` folder next to the plugin (and Tickarr's leftover data, if you migrate from Tickarr).
+> - **Use live proxy internals** — it uses Dispatcharr's live-stream proxy to see when a channel is being watched and to restart a stream when it switches a channel's stream profile.
+>
+> Ticker has always done these things; declaring them just lets Dispatcharr show you. They are not enforced on Dispatcharr 0.34.
+
 ### Updating Ticker
 
 Go to **Plugins → My Plugins → Check for Updates**, then click **Update** on Ticker. Dispatcharr loads the new code as soon as the update finishes, so a restart is normally not needed.

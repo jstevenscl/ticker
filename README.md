@@ -146,6 +146,8 @@ Ticker was renamed from **Tickarr** in v0.5.00 — a full rebrand, not a fork, b
 
 Use **Plugins → My Plugins → Check for Updates**, then **Update** on Ticker. Dispatcharr loads the new code right away. Starting with **0.6.01**, Ticker keeps its data (channel configuration, caches and the overlay text files) in Dispatcharr's own per-plugin data directory instead of a `ticker_data` folder next to the plugin. If you're updating from 0.6.0 or earlier, Ticker moves your existing data across automatically and running streams keep playing. **Restart Dispatcharr once after the update** to finish the move (Ticker's stream profiles are repointed to the new location when it comes back up). See [Where Ticker keeps its data](docs/USERGUIDE.md#where-ticker-keeps-its-data) in the User Guide.
 
+Dispatcharr will also ask you to confirm Ticker's permissions the first time you enable or update to 0.6.01: access to external network services, writing outside plugin storage, and use of the live-stream proxy. Ticker has always used these; 0.6.01 just declares them (see [Installation](docs/USERGUIDE.md#installation)).
+
 ---
 
 ## Quick Start

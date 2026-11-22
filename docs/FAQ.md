@@ -16,6 +16,12 @@ No. Updating keeps your saved settings and any tickers that are already running.
 
 ---
 
+**Q: Why does Dispatcharr ask me to confirm permissions when I enable or update Ticker?**
+
+Since 0.6.01 Ticker declares what it uses so Dispatcharr can show you: access to external network services (satellite radio, sports and weather data), writing outside plugin storage (cleaning up the old `ticker_data` folder during the upgrade), and use of the live-stream proxy (to detect viewers and restart a stream when it switches a stream profile). Ticker has always done these things; the prompt just makes them visible. See [Installation](USERGUIDE.md#installation) in the User Guide.
+
+---
+
 **Q: Do I need to restart Dispatcharr after installing or updating Ticker?**
 
 Usually not. Dispatcharr 0.34 and later loads new plugin code as soon as it is installed or updated. If an overlay seems to be running old behavior after an update, use the **Reload Plugin** button on the Ticker page.
