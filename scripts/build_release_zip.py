@@ -18,6 +18,7 @@ It does NOT commit, push, tag or publish anything.
 """
 import hashlib
 import json
+import re
 import shutil
 import sys
 import zipfile
@@ -32,13 +33,31 @@ ROOT_FILES = ["ca_city_names.json", "eas_tone.wav", "eas_tone_ca.wav", "logo.png
 LIB_FILES = ["channels.json", "channel_aliases.json"]
 
 
+VERSION_RE = re.compile(r"^\d+\.\d+\.(0|0[1-9]|[1-9]\d+)(-[0-9A-Za-z.]+)?$")
+
+
+def check_version(v, what="version"):
+    """Ticker versions are #.#.## (two-digit patch: 0.5.06, 0.6.01); the only exception is a
+    patch of zero, written as a single 0 (0.6.0). Reject anything else, e.g. 0.6.1."""
+    if not VERSION_RE.match(v):
+        sys.exit(f"ERROR: {what} '{v}' is not in Ticker's #.#.## format "
+                 f"(two-digit patch such as 0.6.01; a zero patch is a single 0 as in 0.6.0, never 00).")
+    return v
+
+
+def next_patch(base):
+    """0.6.0 -> 0.6.01, 0.5.06 -> 0.5.07 (two-digit patch; only a zero patch is a single 0)."""
+    major, minor, patch = base.split(".")
+    return f"{major}.{minor}.{int(patch) + 1:02d}"
+
+
 def dump(obj):
     return json.dumps(obj, indent=2, ensure_ascii=False)
 
 
 def main():
     plugin = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))
-    version = plugin["version"]
+    version = check_version(plugin["version"], "plugin.json version")
     min_app = plugin.get("min_dispatcharr_version", "")
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 

@@ -11,10 +11,27 @@ Mirrors the release layout (8 flat files: lib/channels.json + lib/channel_aliase
 copied to the zip root next to plugin.py) with the version rewritten to a prerelease so
 the dev copy installs alongside the real one. Does NOT touch the repo.
 """
-import json, sys, zipfile
+import json, re, sys, zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
+VERSION_RE = re.compile(r"^\d+\.\d+\.(0|0[1-9]|[1-9]\d+)(-[0-9A-Za-z.]+)?$")
+
+
+def check_version(v, what="version"):
+    """Ticker versions are #.#.## (two-digit patch: 0.5.06, 0.6.01); the only exception is a
+    patch of zero, written as a single 0 (0.6.0). Reject anything else, e.g. 0.6.1."""
+    if not VERSION_RE.match(v):
+        sys.exit(f"ERROR: {what} '{v}' is not in Ticker's #.#.## format "
+                 f"(two-digit patch such as 0.6.01; a zero patch is a single 0 as in 0.6.0, never 00).")
+    return v
+
+
+def next_patch(base):
+    """0.6.0 -> 0.6.01, 0.5.06 -> 0.5.07 (two-digit patch; only a zero patch is a single 0)."""
+    major, minor, patch = base.split(".")
+    return f"{major}.{minor}.{int(patch) + 1:02d}"
+
 FILES = ["ca_city_names.json", "eas_tone.wav", "eas_tone_ca.wav", "logo.png", "plugin.py"]
 LIB = ["channels.json", "channel_aliases.json"]
 
@@ -30,11 +47,10 @@ def main():
     out_dir = Path(args[1]) if len(args) > 1 else ROOT
     manifest = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))
     base = manifest["version"].split("-")[0]
-    parts = base.split(".")
-    parts[-1] = str(int(parts[-1]) + 1).zfill(len(parts[-1]))   # next patch, keep zero-padding (0.5.06 -> 0.5.07)
-    version = f"{'.'.join(parts)}-dev.{suffix}"
+    version = f"{next_patch(base)}-dev.{suffix}"    # next patch in #.#.## form (0.6.0 -> 0.6.01-dev.x)
     if "--version" in opts:
         version = opts["--version"]          # exact version (e.g. for documentation screenshots)
+    check_version(version, "dev build version")
     manifest["version"] = version
     if "--manifest" in opts:
         manifest["manifest_version"] = int(opts["--manifest"])
