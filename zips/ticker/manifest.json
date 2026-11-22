@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T19:33:12Z",
+  "generated_at": "2026-11-22T07:15:44Z",
   "manifest": {
     "slug": "ticker",
     "name": "Ticker",
@@ -7,19 +7,29 @@
     "author": "jstevenscl",
     "registry_url": "https://github.com/jstevenscl/ticker",
     "registry_name": "jstevenscl/ticker",
-    "last_updated": "2026-11-17T19:33:12Z",
+    "last_updated": "2026-11-22T07:15:44Z",
     "latest": {
-      "version": "0.6.0",
-      "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.6.0.zip",
-      "checksum_md5": "b2f51f0fef6434bf36df22caa88502fe",
-      "checksum_sha256": "9039dbb87f55ccd181f6a1d53eccec4b4d9bcf573c84b2594259cbbf2515c2b7",
-      "size": 2195144,
-      "last_updated": "2026-11-17T19:33:12Z",
-      "build_timestamp": "2026-11-17T19:33:12Z",
+      "version": "0.6.01",
+      "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.6.01.zip",
+      "checksum_md5": "60f579a448e55f0c8e5a7d7d4b252177",
+      "checksum_sha256": "7d9d73f8d1b3a33f6b0eae22965a4defac7fead808ad08d44db33841825c72be",
+      "size": 2201217,
+      "last_updated": "2026-11-22T07:15:44Z",
+      "build_timestamp": "2026-11-22T07:15:44Z",
       "latest_url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-latest.zip",
       "min_dispatcharr_version": "0.34.0"
     },
     "versions": [
+      {
+        "version": "0.6.01",
+        "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.6.01.zip",
+        "checksum_md5": "60f579a448e55f0c8e5a7d7d4b252177",
+        "checksum_sha256": "7d9d73f8d1b3a33f6b0eae22965a4defac7fead808ad08d44db33841825c72be",
+        "size": 2201217,
+        "last_updated": "2026-11-22T07:15:44Z",
+        "build_timestamp": "2026-11-22T07:15:44Z",
+        "min_dispatcharr_version": "0.34.0"
+      },
       {
         "version": "0.6.0",
         "url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-0.6.0.zip",

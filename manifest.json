@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T19:33:12Z",
+  "generated_at": "2026-11-22T07:15:44Z",
   "manifest": {
     "registry_url": "https://github.com/jstevenscl/ticker",
     "registry_name": "jstevenscl/ticker",
@@ -11,12 +11,12 @@
         "description": "Dynamic text overlays for IPTV channels — Satellite Radio Now Playing, Sports Ticker, Custom Text, EAS Weather Alerts",
         "manifest_url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/manifest.json",
         "author": "jstevenscl",
-        "last_updated": "2026-11-17T19:33:12Z",
-        "latest_version": "0.6.0",
-        "latest_md5": "b2f51f0fef6434bf36df22caa88502fe",
-        "latest_sha256": "9039dbb87f55ccd181f6a1d53eccec4b4d9bcf573c84b2594259cbbf2515c2b7",
+        "last_updated": "2026-11-22T07:15:44Z",
+        "latest_version": "0.6.01",
+        "latest_md5": "60f579a448e55f0c8e5a7d7d4b252177",
+        "latest_sha256": "7d9d73f8d1b3a33f6b0eae22965a4defac7fead808ad08d44db33841825c72be",
         "latest_url": "https://raw.githubusercontent.com/jstevenscl/ticker/master/zips/ticker/ticker-latest.zip",
-        "latest_size": 2195144,
+        "latest_size": 2201217,
         "min_dispatcharr_version": "0.34.0"
       }
     ]
