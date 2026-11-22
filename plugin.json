@@ -298,6 +298,17 @@
       }
     },
     {
+      "id": "migrate_storage",
+      "label": "Migrate Storage to Plugin Data Directory",
+      "description": "Ticker now keeps its data in Dispatcharr's per-plugin data directory instead of a ticker_data folder next to the plugin. This happens automatically on upgrade; use this to retry or to finish cleanup. It copies anything still missing, repoints Ticker's stream profiles to the new location, and only then deletes the old folder. Safe to run repeatedly.",
+      "button_label": "Migrate",
+      "button_variant": "outline",
+      "button_color": "violet",
+      "confirm": {
+        "message": "This repoints Ticker's stream profiles to the new storage location and removes the old ticker_data folder once everything checks out. Any channel currently streaming with an overlay will briefly restart. Continue?"
+      }
+    },
+    {
       "id": "migrate_shared_profiles",
       "label": "Migrate to Shared Profiles",
       "description": "Moves already-enabled channels off their old per-channel cloned stream profile onto a shared one, now that this Dispatcharr install supports the {channelId} token. Safe to run repeatedly — channels already on a shared profile are skipped. EAS/EAS-CA migrate automatically on their next alert and are not touched here.",

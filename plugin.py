@@ -20,10 +20,224 @@ _PLUGIN_DIR        = os.path.dirname(os.path.abspath(__file__))
 _PLUGIN_KEY        = os.path.basename(_PLUGIN_DIR)   # e.g. "ticker" or "ticker_0_2_00_dev"
 # Always use a fixed data directory name regardless of versioned install dir
 _PLUGINS_DIR       = os.path.dirname(_PLUGIN_DIR)
-_DATA_DIR          = os.path.join(_PLUGINS_DIR, "ticker_data")
+# Storage: Dispatcharr's context["data_dir"] (a version-stable directory owned by the
+# plugin) is the real home for mutable state. It is only handed to us at call time (not at
+# import), so these start out pointing at the pre-0.6.1 location -- a sibling "ticker_data"
+# directory -- and are re-bound by _init_storage() the first time a context arrives
+# (get_fields / run / stop). Everything below reads them at call time, never at import.
+_LEGACY_DATA_DIR   = os.path.join(_PLUGINS_DIR, "ticker_data")
+_DATA_DIR          = _LEGACY_DATA_DIR
 TICKER_DIR         = os.path.join(_DATA_DIR, "tickers")
 MAPPINGS_FILE      = os.path.join(_DATA_DIR, "mappings.json")
 CHANNEL_CACHE_FILE = os.path.join(_DATA_DIR, "channel_cache.json")
+
+_STORAGE_MARKER = ".storage_migrated.json"
+_storage_lock   = threading.Lock()
+_storage_ready  = threading.Event()
+
+
+def _set_data_dir(path):
+    """Re-bind every storage path to `path`. Only ever called from _init_storage()."""
+    global _DATA_DIR, TICKER_DIR, MAPPINGS_FILE, CHANNEL_CACHE_FILE, STATION_CACHE_FILE
+    _DATA_DIR          = path
+    TICKER_DIR         = os.path.join(path, "tickers")
+    MAPPINGS_FILE      = os.path.join(path, "mappings.json")
+    CHANNEL_CACHE_FILE = os.path.join(path, "channel_cache.json")
+    STATION_CACHE_FILE = os.path.join(path, "station_cache.json")
+
+
+_PRIOR_DATA_NAME_RE = re.compile(r"^ticker(-.*)?$")   # NOT ticker_agent / tickarr_data
+
+
+def _prior_storage_sources():
+    """Existing Ticker storage roots other than the current one, freshest first: the legacy
+    sibling `ticker_data` directory plus any other `_data/ticker*` directory (a ZIP-imported
+    version gets its own versioned data dir, so a newer build must be able to pick up where
+    the previous one left off)."""
+    srcs = []
+    try:
+        root = os.path.join(_PLUGINS_DIR, "_data")
+        for name in os.listdir(root):
+            path = os.path.join(root, name)
+            if os.path.isdir(path) and _PRIOR_DATA_NAME_RE.match(name):
+                srcs.append(path)
+    except OSError:
+        pass
+    if os.path.isdir(_LEGACY_DATA_DIR):
+        srcs.append(_LEGACY_DATA_DIR)
+    here = os.path.abspath(_DATA_DIR)
+    srcs = [p for p in srcs if os.path.abspath(p) != here]
+
+    def _age(p):
+        try:
+            return os.path.getmtime(os.path.join(p, "mappings.json"))
+        except OSError:
+            return 0.0
+    return sorted(srcs, key=_age, reverse=True)
+
+
+def _copy_prior_storage(force=False):
+    """Copy prior Ticker storage (see _prior_storage_sources) into the current data dir.
+
+    Freshest source first; never overwrites a file already present in the destination and
+    never deletes anything in a source, so it is safe to run from several worker processes
+    at once and safe to re-run. Returns the number of files copied, or None if there was
+    nothing to do (no prior storage, or already migrated and not `force`).
+    """
+    dst = _DATA_DIR
+    marker = os.path.join(dst, _STORAGE_MARKER)
+    if os.path.exists(marker) and not force:
+        return None
+    sources = _prior_storage_sources()
+    if not sources:
+        return None
+    copied = 0
+    for src in sources:
+        for root, _dirs, files in os.walk(src):
+            rel = os.path.relpath(root, src)
+            out_dir = dst if rel == "." else os.path.join(dst, rel)
+            os.makedirs(out_dir, exist_ok=True)
+            for name in files:
+                if name == _STORAGE_MARKER:
+                    continue
+                target = os.path.join(out_dir, name)
+                if os.path.exists(target):
+                    continue
+                # Unique temp name per call: the plugin module can be loaded under more than
+                # one alias in a process, so two copies of this code may run concurrently.
+                tmp = f"{target}.tmp.{os.getpid()}.{threading.get_ident()}.{os.urandom(3).hex()}"
+                try:
+                    shutil.copy2(os.path.join(root, name), tmp)
+                    os.replace(tmp, target)
+                    copied += 1
+                except OSError as e:
+                    logger.warning(f"ticker: could not copy {name} into {out_dir} ({e}); another worker may have done it")
+                    try:
+                        os.remove(tmp)
+                    except OSError:
+                        pass
+    if not os.path.exists(marker):
+        _write_storage_marker({"from": sources, "at": time.time(), "profiles_refreshed": False})
+    logger.info(f"ticker: prior storage copied from {sources} to {dst} ({copied} file(s))")
+    return copied
+
+
+def _read_storage_marker():
+    try:
+        with open(os.path.join(_DATA_DIR, _STORAGE_MARKER), encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+
+def _write_storage_marker(data):
+    path = os.path.join(_DATA_DIR, _STORAGE_MARKER)
+    tmp = f"{path}.tmp.{os.getpid()}"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(data, f)
+    os.replace(tmp, path)
+
+
+def _init_storage(context):
+    """Adopt Dispatcharr's context["data_dir"] as the storage root (idempotent, thread-safe).
+
+    First adoption on an upgraded install copies the legacy `ticker_data` contents across;
+    the stream profiles that still point at the old path are rewritten afterwards by
+    _finish_storage_migration() (needs the DB, so it runs from the single poller owner or
+    the Migrate Storage action rather than from every discovering process).
+    Falls back to the legacy location if no usable data_dir is provided.
+    """
+    dd = context.get("data_dir") if isinstance(context, dict) else None
+    if not dd:
+        return False
+    dd = os.path.abspath(dd)
+    with _storage_lock:
+        if dd != _DATA_DIR:
+            try:
+                os.makedirs(dd, exist_ok=True)
+            except OSError as e:
+                logger.error(f"ticker: cannot create data_dir {dd} ({e}) -- staying on {_DATA_DIR}")
+                _storage_ready.set()
+                return False
+            _set_data_dir(dd)
+            logger.info(f"ticker: storage root is now {dd}")
+            try:
+                _copy_prior_storage()
+            except Exception as e:
+                logger.error(f"ticker: legacy storage copy failed: {e}", exc_info=True)
+        _storage_ready.set()
+    return True
+
+
+def _channel_is_live(channel_uuid):
+    """True if the live proxy currently has this channel running (has a metadata hash)."""
+    try:
+        from apps.proxy.live_proxy.redis_keys import RedisKeys
+        from apps.channels.models import RedisClient
+        return bool(RedisClient.get_client().exists(RedisKeys.channel_metadata(str(channel_uuid))))
+    except Exception:
+        return False
+
+
+_TEXTFILE_ROOT_RE = re.compile(r"(/[^\s:'\"]*?)/tickers/(?=(?:channel|eas)_)")
+
+
+def _is_prior_storage_root(root):
+    return root.endswith("/ticker_data") or re.search(r"/_data/ticker(-[^/]*)?$", root) is not None
+
+
+def _repoint_storage_params(params):
+    """Rewrite any prior Ticker storage root inside a profile's FFmpeg parameters to the
+    current one. Leaves other roots (e.g. an old Tickarr install) and unrelated paths alone."""
+    new_root = _DATA_DIR.replace("\\", "/").rstrip("/")
+
+    def _sub(m):
+        root = m.group(1)
+        if root == new_root or not _is_prior_storage_root(root):
+            return m.group(0)
+        return f"{new_root}/tickers/"
+    return _TEXTFILE_ROOT_RE.sub(_sub, params or "")
+
+
+def _refresh_storage_profiles(restart=True):
+    """Repoint every stream profile that still reads text files from a prior storage root.
+
+    Shared, per-channel and EAS profiles all embed TICKER_DIR in their drawtext
+    `textfile=` arguments, so rewriting the root repoints them. Channels currently
+    streaming through a changed profile are restarted so FFmpeg reopens the new files.
+    Returns (changed_profile_ids, restarted_channel_names).
+    """
+    from core.models import StreamProfile
+    from apps.channels.models import Channel
+    changed = []
+    for p in StreamProfile.objects.filter(parameters__contains="/tickers/"):
+        new_params = _repoint_storage_params(p.parameters)
+        if new_params != p.parameters:
+            p.parameters = new_params
+            p.save(update_fields=["parameters"])
+            changed.append(p.id)
+    restarted = []
+    if restart and changed:
+        for ch in Channel.objects.filter(stream_profile_id__in=changed):
+            if _channel_is_live(ch.uuid):
+                _restart_channel_stream_async(ch, "Storage")
+                restarted.append(ch.name)
+    if changed:
+        logger.info(f"ticker: repointed {len(changed)} stream profile(s) to {_DATA_DIR}; "
+                    f"restarting {len(restarted)} live channel(s)")
+    return changed, restarted
+
+
+def _finish_storage_migration(force=False):
+    """Second half of the storage migration (needs the DB): repoint stream profiles once."""
+    marker = _read_storage_marker()
+    if not marker or (marker.get("profiles_refreshed") and not force):
+        return None
+    result = _refresh_storage_profiles()
+    marker["profiles_refreshed"] = True
+    marker["profiles_refreshed_at"] = time.time()
+    _write_storage_marker(marker)
+    return result
 
 # ---------------------------------------------------------------------------
 # FFmpeg / StreamProfile helpers
@@ -2735,14 +2949,39 @@ def _try_acquire_poller_lock():
         return True
 
 
+def _plugin_enabled():
+    """True unless Dispatcharr's PluginConfig says this plugin is disabled. Fails open
+    (True) on any lookup error so a DB hiccup never silently kills the poller."""
+    try:
+        from apps.plugins.models import PluginConfig
+        from django.db import close_old_connections
+        close_old_connections()
+        cfg = PluginConfig.objects.filter(key=_PLUGIN_KEY).first()
+        return True if cfg is None else bool(cfg.enabled)
+    except Exception:
+        return True
+
+
 def _renew_poller_lock(stop_event):
     """Keeps this worker's ownership alive. If the owning worker dies, the key
-    expires and another worker acquires it on its next attempt (see caller)."""
+    expires and another worker acquires it on its next attempt (see caller).
+    If this plugin gets disabled (Dispatcharr only runs stop() in the one worker that
+    served the request, so pollers in every other worker keep running), release the lock
+    and stop the poller so a newer version -- or nobody -- can take over cleanly."""
     try:
         from apps.channels.models import RedisClient
         rc = RedisClient.get_client()
         token = str(os.getpid())
         while not stop_event.wait(timeout=_POLLER_LOCK_TTL / 3):
+            if not _plugin_enabled():
+                try:
+                    if (rc.get(_POLLER_LOCK_KEY) or b"").decode() == token:
+                        rc.delete(_POLLER_LOCK_KEY)
+                except Exception:
+                    pass
+                logger.info(f"ticker: plugin disabled -- poller on PID {os.getpid()} stopping")
+                stop_event.set()
+                return
             try:
                 rc.set(_POLLER_LOCK_KEY, token, xx=True, ex=_POLLER_LOCK_TTL)
             except Exception:
@@ -2752,10 +2991,31 @@ def _renew_poller_lock(stop_event):
 
 
 def _poll_loop(stop_event):
-    if not _try_acquire_poller_lock():
-        logger.info(f"ticker: poller not started on PID {os.getpid()} — already owned by another worker")
-        return
+    # Standby: if another worker (or a previous plugin version's poller that is still winding
+    # down after an upgrade/reload) holds the lock, wait and retry instead of exiting for good.
+    # The lock has a short TTL, so a dead or replaced owner is taken over within seconds.
+    # Only an ENABLED plugin may take the lock, so a disabled/replaced version can never win it.
+    announced = False
+    while not (_plugin_enabled() and _try_acquire_poller_lock()):
+        if not announced:
+            logger.info(f"ticker: poller on PID {os.getpid()} standing by — lock owned by another worker or plugin disabled")
+            announced = True
+        if stop_event.wait(timeout=_POLLER_LOCK_TTL / 3):
+            return
     logger.info(f"ticker: poller lock acquired by PID {os.getpid()}")
+    # Wait for a context (and with it Dispatcharr's data_dir) before touching any files. If
+    # none arrives, adopt the conventional location when it already exists rather than
+    # silently writing to the legacy path while the other workers use the new one.
+    if not _storage_ready.wait(timeout=30):
+        conv = os.path.join(_PLUGINS_DIR, "_data", _PLUGIN_KEY)
+        if os.path.isdir(conv):
+            _init_storage({"data_dir": conv})
+        else:
+            logger.warning("ticker: no data_dir context after 30s -- using legacy storage location")
+    try:
+        _finish_storage_migration()
+    except Exception as e:
+        logger.error(f"ticker: storage migration (profile repoint) failed: {e}", exc_info=True)
     renew_t = threading.Thread(target=_renew_poller_lock, args=(stop_event,), daemon=True)
     renew_t.start()
 
@@ -2958,6 +3218,7 @@ class Plugin:
         """Dispatcharr 0.34+ discovery hook. Fields (channel/group pickers, active-ticker
         list) are a snapshot taken at discovery/reload, not rebuilt on every page view --
         Refresh Channel Data asks Dispatcharr to reload the plugin so the pickers update."""
+        _init_storage(context)
         return self.fields
 
     def __init__(self):
@@ -3331,6 +3592,7 @@ class Plugin:
         return _apply_sections(_collapse_league_toggles(fields))
 
     def run(self, action, params, context):
+        _init_storage(context)
         saved = _get_settings()
         base = {k: v for k, v in saved.items() if k not in ("channel_mappings", "channel_cache")}
         if params:
@@ -3368,6 +3630,7 @@ class Plugin:
             "fill_sort_logos":      self._fill_sort_logos,
             "clean_orphans":        self._clean_orphans,
             "migrate_shared_profiles": self._migrate_shared_profiles,
+            "migrate_storage":      self._migrate_storage,
             "migrate_from_tickarr":  self._migrate_from_tickarr,
             "check_channel_id_support": self._check_channel_id_support,
             "redis_diag":           self._redis_diag,
@@ -3391,6 +3654,7 @@ class Plugin:
 
     def stop(self, context):
         global _stop_event, _scheduler_thread
+        _init_storage(context)
         _stop_event.set()
         if _scheduler_thread:
             _scheduler_thread.join(timeout=5)
@@ -5245,7 +5509,7 @@ class Plugin:
         for p in StreamProfile.objects.all():
             if p.id in seen_ids or p.id in active_ticker_ids:
                 continue
-            if "ticker_data" in (p.parameters or ""):
+            if "ticker_data" in (p.parameters or "") or _DATA_DIR in (p.parameters or ""):
                 orphans.append(p)
 
         if not orphans:
@@ -5258,6 +5522,57 @@ class Plugin:
             except Exception as e:
                 logger.warning(f"ticker: could not delete profile {profile.name}: {e}")
         return {"success": True, "message": f"Deleted {len(deleted)} orphaned profile(s):\n" + "\n".join(f"  - {n}" for n in deleted)}
+
+    def _migrate_storage(self, params):
+        """Finish (or retry) the move from the legacy sibling `ticker_data` directory to
+        Dispatcharr's per-plugin data_dir. Normally this happens automatically the first
+        time 0.6.1+ starts; this action is the manual retry/cleanup path.
+
+        Copies anything still missing, repoints every stream profile that still carries the
+        old path (restarting channels that are live on one), verifies nothing still refers
+        to the old location, and only then removes the old directory. If any check fails
+        the old directory is left untouched so the action is safe to fix and re-run.
+        """
+        if os.path.abspath(_DATA_DIR) == os.path.abspath(_LEGACY_DATA_DIR):
+            return {"success": False, "message": (
+                "Storage is still using the legacy location -- Dispatcharr did not provide a "
+                "data_dir. Try Reload Plugin and run this again.")}
+        lines = []
+        try:
+            copied = _copy_prior_storage(force=True)
+            lines.append(f"Copied {copied} file(s) from the old location." if copied is not None
+                         else "No old ticker_data directory found -- nothing to copy.")
+            changed, restarted = _refresh_storage_profiles()
+            lines.append(f"Repointed {len(changed)} stream profile(s) to the new location.")
+            if restarted:
+                lines.append("Restarted live channel(s): " + ", ".join(restarted))
+            marker = _read_storage_marker() or {"from": _LEGACY_DATA_DIR, "at": time.time()}
+            marker["profiles_refreshed"] = True
+            marker["profiles_refreshed_at"] = time.time()
+            _write_storage_marker(marker)
+
+            from core.models import StreamProfile
+            stale = [p.name for p in StreamProfile.objects.filter(parameters__contains="/tickers/")
+                     if _repoint_storage_params(p.parameters) != p.parameters]
+            if stale:
+                return {"success": False, "message": "\n".join(lines + [
+                    "Old directory kept -- these stream profiles still reference it:"] + [f"  - {n}" for n in stale])}
+            if (os.path.isdir(_LEGACY_DATA_DIR)
+                    and os.path.exists(os.path.join(_LEGACY_DATA_DIR, "mappings.json"))
+                    and not os.path.exists(MAPPINGS_FILE)):
+                return {"success": False, "message": "\n".join(lines + [
+                    "Old directory kept -- mappings.json is missing from the new location."])}
+            if os.path.isdir(_LEGACY_DATA_DIR):
+                try:
+                    shutil.rmtree(_LEGACY_DATA_DIR)
+                    lines.append(f"Removed the old directory ({_LEGACY_DATA_DIR}).")
+                except OSError as e:
+                    lines.append(f"Could not remove the old directory automatically ({e}) -- safe to delete by hand.")
+            lines.append(f"Ticker now stores its data in {_DATA_DIR}.")
+            return {"success": True, "message": "\n".join(lines)}
+        except Exception as e:
+            logger.error(f"ticker: migrate_storage failed: {e}", exc_info=True)
+            return {"success": False, "message": "\n".join(lines + [f"Error: {e}. The old directory was left in place."])}
 
     def _migrate_shared_profiles(self, params):
         """Move already-enabled channels off their legacy per-channel cloned profile onto a
