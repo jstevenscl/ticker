@@ -1,18 +1,6 @@
 {
-  "generated_at": "2026-11-22T07:00:40Z",
+  "generated_at": "2026-11-22T16:21:42Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Brighton @ Hull City",
-      "description": "SOCCER · Brighton @ Hull City",
-      "start_utc": "2026-11-22T14:00:00Z",
-      "end_utc": "2026-11-22T16:00:00Z",
-      "channels": [
-        "Hull City",
-        "Brighton",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "pga",
       "title": "RSM Classic",
