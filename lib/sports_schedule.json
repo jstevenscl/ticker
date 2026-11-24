@@ -1,18 +1,6 @@
 {
-  "generated_at": "2026-11-23T14:49:57Z",
+  "generated_at": "2026-11-24T02:56:19Z",
   "events": [
-    {
-      "slug": "soccer",
-      "title": "Everton @ Brentford",
-      "description": "SOCCER · Everton @ Brentford",
-      "start_utc": "2026-11-23T20:00:00Z",
-      "end_utc": "2026-11-23T22:00:00Z",
-      "channels": [
-        "Brentford",
-        "Everton",
-        "SiriusXM FC"
-      ]
-    },
     {
       "slug": "nba",
       "title": "Portland Trail Blazers @ Philadelphia 76ers",
@@ -1116,18 +1104,6 @@
     },
     {
       "slug": "soccer",
-      "title": "Aston Villa @ Ipswich",
-      "description": "SOCCER · Aston Villa @ Ipswich",
-      "start_utc": "2026-11-28T17:30:00Z",
-      "end_utc": "2026-11-28T19:30:00Z",
-      "channels": [
-        "Ipswich",
-        "Aston Villa",
-        "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "soccer",
       "title": "Chicago Fire @ Charlotte FC",
       "description": "SOCCER · Chicago Fire @ Charlotte FC",
       "start_utc": "2026-11-28T17:30:00Z",
@@ -1136,6 +1112,18 @@
         "Charlotte FC",
         "Chicago Fire",
         "Satellite Radio Channel 247",
+        "SiriusXM FC"
+      ]
+    },
+    {
+      "slug": "soccer",
+      "title": "Aston Villa @ Ipswich",
+      "description": "SOCCER · Aston Villa @ Ipswich",
+      "start_utc": "2026-11-28T17:30:00Z",
+      "end_utc": "2026-11-28T19:30:00Z",
+      "channels": [
+        "Ipswich",
+        "Aston Villa",
         "SiriusXM FC"
       ]
     },
