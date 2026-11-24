@@ -1,253 +1,6 @@
 {
-  "generated_at": "2026-11-24T02:56:19Z",
+  "generated_at": "2026-11-24T14:57:06Z",
   "events": [
-    {
-      "slug": "nba",
-      "title": "Portland Trail Blazers @ Philadelphia 76ers",
-      "description": "NBA · Portland Trail Blazers @ Philadelphia 76ers",
-      "start_utc": "2026-11-24T00:00:00Z",
-      "end_utc": "2026-11-24T03:00:00Z",
-      "channels": [
-        "Philadelphia 76ers",
-        "Portland Trail Blazers",
-        "Satellite Radio Channel 218",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Memphis Grizzlies @ Charlotte Hornets",
-      "description": "NBA · Memphis Grizzlies @ Charlotte Hornets",
-      "start_utc": "2026-11-24T00:00:00Z",
-      "end_utc": "2026-11-24T03:00:00Z",
-      "channels": [
-        "Charlotte Hornets",
-        "Memphis Grizzlies",
-        "Satellite Radio Channel 217",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Columbus Blue Jackets @ New Jersey Devils",
-      "description": "NHL · Columbus Blue Jackets @ New Jersey Devils",
-      "start_utc": "2026-11-24T00:00:00Z",
-      "end_utc": "2026-11-24T03:00:00Z",
-      "channels": [
-        "New Jersey Devils",
-        "Columbus Blue Jackets",
-        "NHL/NBA Play-by-Play 223",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Milwaukee Bucks @ Toronto Raptors",
-      "description": "NBA · Milwaukee Bucks @ Toronto Raptors",
-      "start_utc": "2026-11-24T00:30:00Z",
-      "end_utc": "2026-11-24T03:30:00Z",
-      "channels": [
-        "Toronto Raptors",
-        "Milwaukee Bucks",
-        "Canada Talks",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Oklahoma City Thunder @ Indiana Pacers",
-      "description": "NBA · Oklahoma City Thunder @ Indiana Pacers",
-      "start_utc": "2026-11-24T00:30:00Z",
-      "end_utc": "2026-11-24T03:30:00Z",
-      "channels": [
-        "Indiana Pacers",
-        "Oklahoma City Thunder",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Brooklyn Nets @ Minnesota Timberwolves",
-      "description": "NBA · Brooklyn Nets @ Minnesota Timberwolves",
-      "start_utc": "2026-11-24T00:30:00Z",
-      "end_utc": "2026-11-24T03:30:00Z",
-      "channels": [
-        "Minnesota Timberwolves",
-        "Brooklyn Nets",
-        "NHL/NBA Play-by-Play 219",
-        "WFAN New York",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Los Angeles Kings @ Montreal Canadiens",
-      "description": "NHL · Los Angeles Kings @ Montreal Canadiens",
-      "start_utc": "2026-11-24T00:30:00Z",
-      "end_utc": "2026-11-24T03:30:00Z",
-      "channels": [
-        "Montreal Canadiens",
-        "Los Angeles Kings",
-        "NHL/NBA Play-by-Play 224",
-        "KSPN Los Angeles",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Calgary Flames @ Ottawa Senators",
-      "description": "NHL · Calgary Flames @ Ottawa Senators",
-      "start_utc": "2026-11-24T00:30:00Z",
-      "end_utc": "2026-11-24T03:30:00Z",
-      "channels": [
-        "Ottawa Senators",
-        "Calgary Flames",
-        "NFL Play-by-Play 225",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Utah Mammoth @ Winnipeg Jets",
-      "description": "NHL · Utah Mammoth @ Winnipeg Jets",
-      "start_utc": "2026-11-24T00:30:00Z",
-      "end_utc": "2026-11-24T03:30:00Z",
-      "channels": [
-        "Winnipeg Jets",
-        "Utah Mammoth",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Toronto Maple Leafs @ New York Islanders",
-      "description": "NHL · Toronto Maple Leafs @ New York Islanders",
-      "start_utc": "2026-11-24T00:30:00Z",
-      "end_utc": "2026-11-24T03:30:00Z",
-      "channels": [
-        "New York Islanders",
-        "Toronto Maple Leafs",
-        "NFL Play-by-Play 226",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Phoenix Suns @ New Orleans Pelicans",
-      "description": "NBA · Phoenix Suns @ New Orleans Pelicans",
-      "start_utc": "2026-11-24T01:00:00Z",
-      "end_utc": "2026-11-24T04:00:00Z",
-      "channels": [
-        "New Orleans Pelicans",
-        "Phoenix Suns",
-        "NHL/NBA Play-by-Play 221",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Cleveland Cavaliers @ Chicago Bulls",
-      "description": "NBA · Cleveland Cavaliers @ Chicago Bulls",
-      "start_utc": "2026-11-24T01:00:00Z",
-      "end_utc": "2026-11-24T04:00:00Z",
-      "channels": [
-        "Chicago Bulls",
-        "Cleveland Cavaliers",
-        "NHL/NBA Play-by-Play 220",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "soccer",
-      "title": "LAFC @ St. Louis City SC",
-      "description": "SOCCER · LAFC @ St. Louis City SC",
-      "start_utc": "2026-11-24T01:00:00Z",
-      "end_utc": "2026-11-24T03:00:00Z",
-      "channels": [
-        "St. Louis City SC",
-        "LAFC",
-        "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Cincinnati Bengals @ Washington Commanders",
-      "description": "NFL · Cincinnati Bengals @ Washington Commanders",
-      "start_utc": "2026-11-24T01:15:00Z",
-      "end_utc": "2026-11-24T05:15:00Z",
-      "channels": [
-        "Washington Commanders",
-        "Cincinnati Bengals",
-        "NCAA Play-by-Play 192",
-        "NCAA Play-by-Play 193",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Los Angeles Clippers @ Houston Rockets",
-      "description": "NBA · Los Angeles Clippers @ Houston Rockets",
-      "start_utc": "2026-11-24T01:30:00Z",
-      "end_utc": "2026-11-24T04:30:00Z",
-      "channels": [
-        "Houston Rockets",
-        "Los Angeles Clippers",
-        "NHL/NBA Play-by-Play 222",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Anaheim Ducks @ Seattle Kraken",
-      "description": "NHL · Anaheim Ducks @ Seattle Kraken",
-      "start_utc": "2026-11-24T02:40:00Z",
-      "end_utc": "2026-11-24T05:40:00Z",
-      "channels": [
-        "Seattle Kraken",
-        "Anaheim Ducks",
-        "NFL Play-by-Play 227",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "Utah Jazz @ Los Angeles Lakers",
-      "description": "NBA · Utah Jazz @ Los Angeles Lakers",
-      "start_utc": "2026-11-24T03:00:00Z",
-      "end_utc": "2026-11-24T06:00:00Z",
-      "channels": [
-        "Los Angeles Lakers",
-        "Utah Jazz",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "San Antonio Spurs @ Sacramento Kings",
-      "description": "NBA · San Antonio Spurs @ Sacramento Kings",
-      "start_utc": "2026-11-24T03:00:00Z",
-      "end_utc": "2026-11-24T06:00:00Z",
-      "channels": [
-        "Sacramento Kings",
-        "San Antonio Spurs",
-        "Satellite Radio Channel 217",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Minnesota Wild @ San Jose Sharks",
-      "description": "NHL · Minnesota Wild @ San Jose Sharks",
-      "start_utc": "2026-11-24T03:00:00Z",
-      "end_utc": "2026-11-24T06:00:00Z",
-      "channels": [
-        "San Jose Sharks",
-        "Minnesota Wild",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
     {
       "slug": "soccer",
       "title": "Borussia Dortmund @ Arsenal",
@@ -284,19 +37,6 @@
         "Boston Celtics",
         "Satellite Radio Channel 217",
         "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Vegas Golden Knights @ Edmonton Oilers",
-      "description": "NHL · Vegas Golden Knights @ Edmonton Oilers",
-      "start_utc": "2026-11-25T01:00:00Z",
-      "end_utc": "2026-11-25T04:00:00Z",
-      "channels": [
-        "Edmonton Oilers",
-        "Vegas Golden Knights",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -362,110 +102,6 @@
       ]
     },
     {
-      "slug": "nhl",
-      "title": "Winnipeg Jets @ Boston Bruins",
-      "description": "NHL · Winnipeg Jets @ Boston Bruins",
-      "start_utc": "2026-11-26T00:00:00Z",
-      "end_utc": "2026-11-26T03:00:00Z",
-      "channels": [
-        "Boston Bruins",
-        "Winnipeg Jets",
-        "NHL/NBA Play-by-Play 223",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "New York Rangers @ Buffalo Sabres",
-      "description": "NHL · New York Rangers @ Buffalo Sabres",
-      "start_utc": "2026-11-26T00:00:00Z",
-      "end_utc": "2026-11-26T03:00:00Z",
-      "channels": [
-        "Buffalo Sabres",
-        "New York Rangers",
-        "NHL/NBA Play-by-Play 224",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "New Jersey Devils @ Columbus Blue Jackets",
-      "description": "NHL · New Jersey Devils @ Columbus Blue Jackets",
-      "start_utc": "2026-11-26T00:00:00Z",
-      "end_utc": "2026-11-26T03:00:00Z",
-      "channels": [
-        "Columbus Blue Jackets",
-        "New Jersey Devils",
-        "Satellite Radio Channel 248",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Ottawa Senators @ Florida Panthers",
-      "description": "NHL · Ottawa Senators @ Florida Panthers",
-      "start_utc": "2026-11-26T00:00:00Z",
-      "end_utc": "2026-11-26T03:00:00Z",
-      "channels": [
-        "Florida Panthers",
-        "Ottawa Senators",
-        "NFL Play-by-Play 225",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "St. Louis Blues @ New York Islanders",
-      "description": "NHL · St. Louis Blues @ New York Islanders",
-      "start_utc": "2026-11-26T00:00:00Z",
-      "end_utc": "2026-11-26T03:00:00Z",
-      "channels": [
-        "New York Islanders",
-        "St. Louis Blues",
-        "NFL Play-by-Play 226",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Calgary Flames @ Pittsburgh Penguins",
-      "description": "NHL · Calgary Flames @ Pittsburgh Penguins",
-      "start_utc": "2026-11-26T00:00:00Z",
-      "end_utc": "2026-11-26T03:00:00Z",
-      "channels": [
-        "Pittsburgh Penguins",
-        "Calgary Flames",
-        "NFL Play-by-Play 227",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Carolina Hurricanes @ Tampa Bay Lightning",
-      "description": "NHL · Carolina Hurricanes @ Tampa Bay Lightning",
-      "start_utc": "2026-11-26T00:00:00Z",
-      "end_utc": "2026-11-26T03:00:00Z",
-      "channels": [
-        "Tampa Bay Lightning",
-        "Carolina Hurricanes",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Philadelphia Flyers @ Washington Capitals",
-      "description": "NHL · Philadelphia Flyers @ Washington Capitals",
-      "start_utc": "2026-11-26T00:00:00Z",
-      "end_utc": "2026-11-26T03:00:00Z",
-      "channels": [
-        "Washington Capitals",
-        "Philadelphia Flyers",
-        "Satellite Radio Channel 247",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
       "slug": "nba",
       "title": "Minnesota Timberwolves @ Oklahoma City Thunder",
       "description": "NBA · Minnesota Timberwolves @ Oklahoma City Thunder",
@@ -488,19 +124,6 @@
         "New York Knicks",
         "Cleveland Cavaliers",
         "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Vancouver Canucks @ Detroit Red Wings",
-      "description": "NHL · Vancouver Canucks @ Detroit Red Wings",
-      "start_utc": "2026-11-26T00:30:00Z",
-      "end_utc": "2026-11-26T03:30:00Z",
-      "channels": [
-        "Detroit Red Wings",
-        "Vancouver Canucks",
-        "Satellite Radio Channel 249",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -531,32 +154,6 @@
       ]
     },
     {
-      "slug": "nhl",
-      "title": "Nashville Predators @ Dallas Stars",
-      "description": "NHL · Nashville Predators @ Dallas Stars",
-      "start_utc": "2026-11-26T01:00:00Z",
-      "end_utc": "2026-11-26T04:00:00Z",
-      "channels": [
-        "Dallas Stars",
-        "Nashville Predators",
-        "Satellite Radio Channel 250",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Utah Mammoth @ Minnesota Wild",
-      "description": "NHL · Utah Mammoth @ Minnesota Wild",
-      "start_utc": "2026-11-26T01:00:00Z",
-      "end_utc": "2026-11-26T04:00:00Z",
-      "channels": [
-        "Minnesota Wild",
-        "Utah Mammoth",
-        "Satellite Radio Channel 251",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
       "slug": "nfl",
       "title": "Green Bay Packers @ Los Angeles Rams",
       "description": "NFL · Green Bay Packers @ Los Angeles Rams",
@@ -584,29 +181,15 @@
       ]
     },
     {
-      "slug": "nhl",
-      "title": "Montreal Canadiens @ Colorado Avalanche",
-      "description": "NHL · Montreal Canadiens @ Colorado Avalanche",
-      "start_utc": "2026-11-26T02:30:00Z",
-      "end_utc": "2026-11-26T05:30:00Z",
+      "slug": "nba",
+      "title": "San Antonio Spurs @ Portland Trail Blazers",
+      "description": "NBA · San Antonio Spurs @ Portland Trail Blazers",
+      "start_utc": "2026-11-26T03:00:00Z",
+      "end_utc": "2026-11-26T06:00:00Z",
       "channels": [
-        "Colorado Avalanche",
-        "Montreal Canadiens",
-        "NHL/NBA Play-by-Play 224",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Chicago Blackhawks @ Seattle Kraken",
-      "description": "NHL · Chicago Blackhawks @ Seattle Kraken",
-      "start_utc": "2026-11-26T02:40:00Z",
-      "end_utc": "2026-11-26T05:40:00Z",
-      "channels": [
-        "Seattle Kraken",
-        "Chicago Blackhawks",
-        "NHL/NBA Play-by-Play 223",
-        "SiriusXM NHL Network Radio"
+        "Portland Trail Blazers",
+        "San Antonio Spurs",
+        "SiriusXM NBA Radio"
       ]
     },
     {
@@ -620,31 +203,6 @@
         "Sacramento Kings",
         "Satellite Radio Channel 217",
         "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nba",
-      "title": "San Antonio Spurs @ Portland Trail Blazers",
-      "description": "NBA · San Antonio Spurs @ Portland Trail Blazers",
-      "start_utc": "2026-11-26T03:00:00Z",
-      "end_utc": "2026-11-26T06:00:00Z",
-      "channels": [
-        "Portland Trail Blazers",
-        "San Antonio Spurs",
-        "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "San Jose Sharks @ Anaheim Ducks",
-      "description": "NHL · San Jose Sharks @ Anaheim Ducks",
-      "start_utc": "2026-11-26T03:00:00Z",
-      "end_utc": "2026-11-26T06:00:00Z",
-      "channels": [
-        "Anaheim Ducks",
-        "San Jose Sharks",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -712,111 +270,6 @@
       ]
     },
     {
-      "slug": "nhl",
-      "title": "Toronto Maple Leafs @ Boston Bruins",
-      "description": "NHL · Toronto Maple Leafs @ Boston Bruins",
-      "start_utc": "2026-11-27T18:00:00Z",
-      "end_utc": "2026-11-27T21:00:00Z",
-      "channels": [
-        "Boston Bruins",
-        "Toronto Maple Leafs",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Calgary Flames @ New Jersey Devils",
-      "description": "NHL · Calgary Flames @ New Jersey Devils",
-      "start_utc": "2026-11-27T18:00:00Z",
-      "end_utc": "2026-11-27T21:00:00Z",
-      "channels": [
-        "New Jersey Devils",
-        "Calgary Flames",
-        "NHL/NBA Play-by-Play 223",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Utah Mammoth @ Nashville Predators",
-      "description": "NHL · Utah Mammoth @ Nashville Predators",
-      "start_utc": "2026-11-27T18:00:00Z",
-      "end_utc": "2026-11-27T21:00:00Z",
-      "channels": [
-        "Nashville Predators",
-        "Utah Mammoth",
-        "NHL/NBA Play-by-Play 224",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Dallas Stars @ St. Louis Blues",
-      "description": "NHL · Dallas Stars @ St. Louis Blues",
-      "start_utc": "2026-11-27T19:00:00Z",
-      "end_utc": "2026-11-27T22:00:00Z",
-      "channels": [
-        "St. Louis Blues",
-        "Dallas Stars",
-        "NFL Play-by-Play 225",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Vancouver Canucks @ Philadelphia Flyers",
-      "description": "NHL · Vancouver Canucks @ Philadelphia Flyers",
-      "start_utc": "2026-11-27T20:00:00Z",
-      "end_utc": "2026-11-27T23:00:00Z",
-      "channels": [
-        "Philadelphia Flyers",
-        "Vancouver Canucks",
-        "NFL Play-by-Play 227",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Florida Panthers @ Washington Capitals",
-      "description": "NHL · Florida Panthers @ Washington Capitals",
-      "start_utc": "2026-11-27T20:00:00Z",
-      "end_utc": "2026-11-27T23:00:00Z",
-      "channels": [
-        "Washington Capitals",
-        "Florida Panthers",
-        "Satellite Radio Channel 247",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Detroit Red Wings @ Columbus Blue Jackets",
-      "description": "NHL · Detroit Red Wings @ Columbus Blue Jackets",
-      "start_utc": "2026-11-27T20:00:00Z",
-      "end_utc": "2026-11-27T23:00:00Z",
-      "channels": [
-        "Columbus Blue Jackets",
-        "Detroit Red Wings",
-        "Satellite Radio Channel 248",
-        "WXYT Detroit",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Ottawa Senators @ Tampa Bay Lightning",
-      "description": "NHL · Ottawa Senators @ Tampa Bay Lightning",
-      "start_utc": "2026-11-27T20:00:00Z",
-      "end_utc": "2026-11-27T23:00:00Z",
-      "channels": [
-        "Tampa Bay Lightning",
-        "Ottawa Senators",
-        "NFL Play-by-Play 226",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
       "slug": "nfl",
       "title": "Denver Broncos @ Pittsburgh Steelers",
       "description": "NFL · Denver Broncos @ Pittsburgh Steelers",
@@ -840,59 +293,6 @@
         "Nottingham Forest",
         "Chelsea",
         "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Colorado Avalanche @ Minnesota Wild",
-      "description": "NHL · Colorado Avalanche @ Minnesota Wild",
-      "start_utc": "2026-11-27T21:00:00Z",
-      "end_utc": "2026-11-28T00:00:00Z",
-      "channels": [
-        "Minnesota Wild",
-        "Colorado Avalanche",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Vegas Golden Knights @ San Jose Sharks",
-      "description": "NHL · Vegas Golden Knights @ San Jose Sharks",
-      "start_utc": "2026-11-27T21:00:00Z",
-      "end_utc": "2026-11-28T00:00:00Z",
-      "channels": [
-        "San Jose Sharks",
-        "Vegas Golden Knights",
-        "NHL/NBA Play-by-Play 224",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Los Angeles Kings @ Anaheim Ducks",
-      "description": "NHL · Los Angeles Kings @ Anaheim Ducks",
-      "start_utc": "2026-11-27T21:00:00Z",
-      "end_utc": "2026-11-28T00:00:00Z",
-      "channels": [
-        "Anaheim Ducks",
-        "Los Angeles Kings",
-        "NHL/NBA Play-by-Play 223",
-        "KSPN Los Angeles",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "New York Rangers @ Chicago Blackhawks",
-      "description": "NHL · New York Rangers @ Chicago Blackhawks",
-      "start_utc": "2026-11-27T22:30:00Z",
-      "end_utc": "2026-11-28T01:30:00Z",
-      "channels": [
-        "Chicago Blackhawks",
-        "New York Rangers",
-        "NFL Play-by-Play 225",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -948,19 +348,6 @@
       ]
     },
     {
-      "slug": "nhl",
-      "title": "Winnipeg Jets @ New York Islanders",
-      "description": "NHL · Winnipeg Jets @ New York Islanders",
-      "start_utc": "2026-11-28T00:30:00Z",
-      "end_utc": "2026-11-28T03:30:00Z",
-      "channels": [
-        "New York Islanders",
-        "Winnipeg Jets",
-        "NHL/NBA Play-by-Play 223",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
       "slug": "nba",
       "title": "Atlanta Hawks @ Boston Celtics",
       "description": "NBA · Atlanta Hawks @ Boston Celtics",
@@ -971,32 +358,6 @@
         "Atlanta Hawks",
         "NHL/NBA Play-by-Play 219",
         "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Pittsburgh Penguins @ Buffalo Sabres",
-      "description": "NHL · Pittsburgh Penguins @ Buffalo Sabres",
-      "start_utc": "2026-11-28T01:00:00Z",
-      "end_utc": "2026-11-28T04:00:00Z",
-      "channels": [
-        "Buffalo Sabres",
-        "Pittsburgh Penguins",
-        "NHL/NBA Play-by-Play 224",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Seattle Kraken @ Edmonton Oilers",
-      "description": "NHL · Seattle Kraken @ Edmonton Oilers",
-      "start_utc": "2026-11-28T01:00:00Z",
-      "end_utc": "2026-11-28T04:00:00Z",
-      "channels": [
-        "Edmonton Oilers",
-        "Seattle Kraken",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -1151,19 +512,6 @@
       ]
     },
     {
-      "slug": "nhl",
-      "title": "Montreal Canadiens @ Vegas Golden Knights",
-      "description": "NHL · Montreal Canadiens @ Vegas Golden Knights",
-      "start_utc": "2026-11-28T21:00:00Z",
-      "end_utc": "2026-11-29T00:00:00Z",
-      "channels": [
-        "Vegas Golden Knights",
-        "Montreal Canadiens",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
       "slug": "soccer",
       "title": "New England Revolution @ Philadelphia Union",
       "description": "SOCCER · New England Revolution @ Philadelphia Union",
@@ -1202,110 +550,6 @@
       ]
     },
     {
-      "slug": "nhl",
-      "title": "Tampa Bay Lightning @ Florida Panthers",
-      "description": "NHL · Tampa Bay Lightning @ Florida Panthers",
-      "start_utc": "2026-11-28T23:00:00Z",
-      "end_utc": "2026-11-29T02:00:00Z",
-      "channels": [
-        "Florida Panthers",
-        "Tampa Bay Lightning",
-        "NHL/NBA Play-by-Play 223",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Winnipeg Jets @ New Jersey Devils",
-      "description": "NHL · Winnipeg Jets @ New Jersey Devils",
-      "start_utc": "2026-11-29T00:00:00Z",
-      "end_utc": "2026-11-29T03:00:00Z",
-      "channels": [
-        "New Jersey Devils",
-        "Winnipeg Jets",
-        "NFL Play-by-Play 225",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Calgary Flames @ New York Rangers",
-      "description": "NHL · Calgary Flames @ New York Rangers",
-      "start_utc": "2026-11-29T00:00:00Z",
-      "end_utc": "2026-11-29T03:00:00Z",
-      "channels": [
-        "New York Rangers",
-        "Calgary Flames",
-        "NFL Play-by-Play 226",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Nashville Predators @ Detroit Red Wings",
-      "description": "NHL · Nashville Predators @ Detroit Red Wings",
-      "start_utc": "2026-11-29T00:00:00Z",
-      "end_utc": "2026-11-29T03:00:00Z",
-      "channels": [
-        "Detroit Red Wings",
-        "Nashville Predators",
-        "NHL/NBA Play-by-Play 224",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Washington Capitals @ St. Louis Blues",
-      "description": "NHL · Washington Capitals @ St. Louis Blues",
-      "start_utc": "2026-11-29T00:00:00Z",
-      "end_utc": "2026-11-29T03:00:00Z",
-      "channels": [
-        "St. Louis Blues",
-        "Washington Capitals",
-        "Satellite Radio Channel 247",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Toronto Maple Leafs @ Pittsburgh Penguins",
-      "description": "NHL · Toronto Maple Leafs @ Pittsburgh Penguins",
-      "start_utc": "2026-11-29T00:00:00Z",
-      "end_utc": "2026-11-29T03:00:00Z",
-      "channels": [
-        "Pittsburgh Penguins",
-        "Toronto Maple Leafs",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Ottawa Senators @ Carolina Hurricanes",
-      "description": "NHL · Ottawa Senators @ Carolina Hurricanes",
-      "start_utc": "2026-11-29T00:00:00Z",
-      "end_utc": "2026-11-29T03:00:00Z",
-      "channels": [
-        "Carolina Hurricanes",
-        "Ottawa Senators",
-        "NFL Play-by-Play 227",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "New York Islanders @ Philadelphia Flyers",
-      "description": "NHL · New York Islanders @ Philadelphia Flyers",
-      "start_utc": "2026-11-29T00:30:00Z",
-      "end_utc": "2026-11-29T03:30:00Z",
-      "channels": [
-        "Philadelphia Flyers",
-        "New York Islanders",
-        "Satellite Radio Channel 248",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
       "slug": "nba",
       "title": "Oklahoma City Thunder @ Milwaukee Bucks",
       "description": "NBA · Oklahoma City Thunder @ Milwaukee Bucks",
@@ -1332,19 +576,6 @@
       ]
     },
     {
-      "slug": "nhl",
-      "title": "Utah Mammoth @ Dallas Stars",
-      "description": "NHL · Utah Mammoth @ Dallas Stars",
-      "start_utc": "2026-11-29T01:00:00Z",
-      "end_utc": "2026-11-29T04:00:00Z",
-      "channels": [
-        "Dallas Stars",
-        "Utah Mammoth",
-        "Satellite Radio Channel 249",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
       "slug": "nba",
       "title": "Philadelphia 76ers @ Houston Rockets",
       "description": "NBA · Philadelphia 76ers @ Houston Rockets",
@@ -1366,45 +597,6 @@
         "LAFC",
         "St. Louis City SC",
         "SiriusXM FC"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Anaheim Ducks @ Los Angeles Kings",
-      "description": "NHL · Anaheim Ducks @ Los Angeles Kings",
-      "start_utc": "2026-11-29T02:00:00Z",
-      "end_utc": "2026-11-29T05:00:00Z",
-      "channels": [
-        "Los Angeles Kings",
-        "Anaheim Ducks",
-        "Satellite Radio Channel 250",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "San Jose Sharks @ Colorado Avalanche",
-      "description": "NHL · San Jose Sharks @ Colorado Avalanche",
-      "start_utc": "2026-11-29T02:00:00Z",
-      "end_utc": "2026-11-29T05:00:00Z",
-      "channels": [
-        "Colorado Avalanche",
-        "San Jose Sharks",
-        "NHL/NBA Play-by-Play 223",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Edmonton Oilers @ Seattle Kraken",
-      "description": "NHL · Edmonton Oilers @ Seattle Kraken",
-      "start_utc": "2026-11-29T03:00:00Z",
-      "end_utc": "2026-11-29T06:00:00Z",
-      "channels": [
-        "Seattle Kraken",
-        "Edmonton Oilers",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -1468,15 +660,15 @@
     },
     {
       "slug": "nfl",
-      "title": "New York Giants @ Indianapolis Colts",
-      "description": "NFL · New York Giants @ Indianapolis Colts",
+      "title": "Atlanta Falcons @ Minnesota Vikings",
+      "description": "NFL · Atlanta Falcons @ Minnesota Vikings",
       "start_utc": "2026-11-29T18:00:00Z",
       "end_utc": "2026-11-29T22:00:00Z",
       "channels": [
-        "Indianapolis Colts",
-        "New York Giants",
-        "NCAA Play-by-Play 194",
-        "Satellite Radio Channel 263",
+        "Minnesota Vikings",
+        "Atlanta Falcons",
+        "NCAA Play-by-Play 197",
+        "Satellite Radio Channel 266",
         "SiriusXM NFL Radio"
       ]
     },
@@ -1496,6 +688,20 @@
     },
     {
       "slug": "nfl",
+      "title": "New York Giants @ Indianapolis Colts",
+      "description": "NFL · New York Giants @ Indianapolis Colts",
+      "start_utc": "2026-11-29T18:00:00Z",
+      "end_utc": "2026-11-29T22:00:00Z",
+      "channels": [
+        "Indianapolis Colts",
+        "New York Giants",
+        "NCAA Play-by-Play 194",
+        "Satellite Radio Channel 263",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
       "title": "Baltimore Ravens @ Houston Texans",
       "description": "NFL · Baltimore Ravens @ Houston Texans",
       "start_utc": "2026-11-29T18:00:00Z",
@@ -1505,20 +711,6 @@
         "Baltimore Ravens",
         "NCAA Play-by-Play 195",
         "Satellite Radio Channel 264",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Atlanta Falcons @ Minnesota Vikings",
-      "description": "NFL · Atlanta Falcons @ Minnesota Vikings",
-      "start_utc": "2026-11-29T18:00:00Z",
-      "end_utc": "2026-11-29T22:00:00Z",
-      "channels": [
-        "Minnesota Vikings",
-        "Atlanta Falcons",
-        "NCAA Play-by-Play 197",
-        "Satellite Radio Channel 266",
         "SiriusXM NFL Radio"
       ]
     },
@@ -1548,19 +740,6 @@
         "NCAA Play-by-Play 196",
         "Satellite Radio Channel 265",
         "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Minnesota Wild @ Chicago Blackhawks",
-      "description": "NHL · Minnesota Wild @ Chicago Blackhawks",
-      "start_utc": "2026-11-29T19:00:00Z",
-      "end_utc": "2026-11-29T22:00:00Z",
-      "channels": [
-        "Chicago Blackhawks",
-        "Minnesota Wild",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -1618,20 +797,6 @@
     },
     {
       "slug": "nfl",
-      "title": "Seattle Seahawks @ San Francisco 49ers",
-      "description": "NFL · Seattle Seahawks @ San Francisco 49ers",
-      "start_utc": "2026-11-29T21:25:00Z",
-      "end_utc": "2026-11-30T01:25:00Z",
-      "channels": [
-        "San Francisco 49ers",
-        "Seattle Seahawks",
-        "NCAA Play-by-Play 193",
-        "Satellite Radio Channel 262",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
       "title": "Washington Commanders @ Arizona Cardinals",
       "description": "NFL · Washington Commanders @ Arizona Cardinals",
       "start_utc": "2026-11-29T21:25:00Z",
@@ -1641,6 +806,20 @@
         "Washington Commanders",
         "NCAA Play-by-Play 192",
         "Satellite Radio Channel 261",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Seattle Seahawks @ San Francisco 49ers",
+      "description": "NFL · Seattle Seahawks @ San Francisco 49ers",
+      "start_utc": "2026-11-29T21:25:00Z",
+      "end_utc": "2026-11-30T01:25:00Z",
+      "channels": [
+        "San Francisco 49ers",
+        "Seattle Seahawks",
+        "NCAA Play-by-Play 193",
+        "Satellite Radio Channel 262",
         "SiriusXM NFL Radio"
       ]
     },
@@ -1655,19 +834,6 @@
         "Phoenix Suns",
         "Satellite Radio Channel 218",
         "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Vancouver Canucks @ Boston Bruins",
-      "description": "NHL · Vancouver Canucks @ Boston Bruins",
-      "start_utc": "2026-11-29T22:00:00Z",
-      "end_utc": "2026-11-30T01:00:00Z",
-      "channels": [
-        "Boston Bruins",
-        "Vancouver Canucks",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -1762,19 +928,6 @@
       ]
     },
     {
-      "slug": "nhl",
-      "title": "Ottawa Senators @ Nashville Predators",
-      "description": "NHL · Ottawa Senators @ Nashville Predators",
-      "start_utc": "2026-11-30T18:00:00Z",
-      "end_utc": "2026-11-30T21:00:00Z",
-      "channels": [
-        "Nashville Predators",
-        "Ottawa Senators",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
       "slug": "nba",
       "title": "Washington Wizards @ Charlotte Hornets",
       "description": "NBA · Washington Wizards @ Charlotte Hornets",
@@ -1797,32 +950,6 @@
         "Detroit Pistons",
         "Denver Nuggets",
         "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Carolina Hurricanes @ New York Rangers",
-      "description": "NHL · Carolina Hurricanes @ New York Rangers",
-      "start_utc": "2026-12-01T00:00:00Z",
-      "end_utc": "2026-12-01T03:00:00Z",
-      "channels": [
-        "New York Rangers",
-        "Carolina Hurricanes",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Columbus Blue Jackets @ Pittsburgh Penguins",
-      "description": "NHL · Columbus Blue Jackets @ Pittsburgh Penguins",
-      "start_utc": "2026-12-01T00:00:00Z",
-      "end_utc": "2026-12-01T03:00:00Z",
-      "channels": [
-        "Pittsburgh Penguins",
-        "Columbus Blue Jackets",
-        "NHL/NBA Play-by-Play 223",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -1850,32 +977,6 @@
         "Oklahoma City Thunder",
         "Satellite Radio Channel 218",
         "SiriusXM NBA Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Philadelphia Flyers @ Toronto Maple Leafs",
-      "description": "NHL · Philadelphia Flyers @ Toronto Maple Leafs",
-      "start_utc": "2026-12-01T00:30:00Z",
-      "end_utc": "2026-12-01T03:30:00Z",
-      "channels": [
-        "Toronto Maple Leafs",
-        "Philadelphia Flyers",
-        "NHL/NBA Play-by-Play 224",
-        "SiriusXM NHL Network Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Chicago Blackhawks @ Winnipeg Jets",
-      "description": "NHL · Chicago Blackhawks @ Winnipeg Jets",
-      "start_utc": "2026-12-01T00:30:00Z",
-      "end_utc": "2026-12-01T03:30:00Z",
-      "channels": [
-        "Winnipeg Jets",
-        "Chicago Blackhawks",
-        "Canada Talks",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
@@ -1916,19 +1017,6 @@
         "NCAA Play-by-Play 192",
         "NCAA Play-by-Play 193",
         "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nhl",
-      "title": "Montreal Canadiens @ Utah Mammoth",
-      "description": "NHL · Montreal Canadiens @ Utah Mammoth",
-      "start_utc": "2026-12-01T02:30:00Z",
-      "end_utc": "2026-12-01T05:30:00Z",
-      "channels": [
-        "Utah Mammoth",
-        "Montreal Canadiens",
-        "NHL Network Radio",
-        "SiriusXM NHL Network Radio"
       ]
     },
     {
