@@ -1,34 +1,6 @@
 {
-  "generated_at": "2026-11-27T00:39:22Z",
+  "generated_at": "2026-11-27T13:57:38Z",
   "events": [
-    {
-      "slug": "nfl",
-      "title": "Philadelphia Eagles @ Dallas Cowboys",
-      "description": "NFL · Philadelphia Eagles @ Dallas Cowboys",
-      "start_utc": "2026-11-26T21:30:00Z",
-      "end_utc": "2026-11-27T01:30:00Z",
-      "channels": [
-        "Dallas Cowboys",
-        "Philadelphia Eagles",
-        "NCAA Play-by-Play 196",
-        "NCAA Play-by-Play 195",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Kansas City Chiefs @ Buffalo Bills",
-      "description": "NFL · Kansas City Chiefs @ Buffalo Bills",
-      "start_utc": "2026-11-27T01:20:00Z",
-      "end_utc": "2026-11-27T05:20:00Z",
-      "channels": [
-        "Buffalo Bills",
-        "Kansas City Chiefs",
-        "NCAA Play-by-Play 192",
-        "NCAA Play-by-Play 193",
-        "SiriusXM NFL Radio"
-      ]
-    },
     {
       "slug": "f1",
       "title": "F-1 Practice 1",
@@ -873,6 +845,20 @@
     },
     {
       "slug": "nfl",
+      "title": "New York Jets @ Miami Dolphins",
+      "description": "NFL · New York Jets @ Miami Dolphins",
+      "start_utc": "2026-11-29T18:00:00Z",
+      "end_utc": "2026-11-29T22:00:00Z",
+      "channels": [
+        "Miami Dolphins",
+        "New York Jets",
+        "NCAA Play-by-Play 196",
+        "Satellite Radio Channel 265",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
       "title": "Tennessee Titans @ Jacksonville Jaguars",
       "description": "NFL · Tennessee Titans @ Jacksonville Jaguars",
       "start_utc": "2026-11-29T18:00:00Z",
@@ -910,20 +896,6 @@
         "New Orleans Saints",
         "NCAA Play-by-Play 192",
         "Satellite Radio Channel 261",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "New York Jets @ Miami Dolphins",
-      "description": "NFL · New York Jets @ Miami Dolphins",
-      "start_utc": "2026-11-29T18:00:00Z",
-      "end_utc": "2026-11-29T22:00:00Z",
-      "channels": [
-        "Miami Dolphins",
-        "New York Jets",
-        "NCAA Play-by-Play 196",
-        "Satellite Radio Channel 265",
         "SiriusXM NFL Radio"
       ]
     },
