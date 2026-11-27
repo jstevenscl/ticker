@@ -1,20 +1,6 @@
 {
-  "generated_at": "2026-11-26T13:59:01Z",
+  "generated_at": "2026-11-27T00:39:22Z",
   "events": [
-    {
-      "slug": "nfl",
-      "title": "Chicago Bears @ Detroit Lions",
-      "description": "NFL · Chicago Bears @ Detroit Lions",
-      "start_utc": "2026-11-26T18:00:00Z",
-      "end_utc": "2026-11-26T22:00:00Z",
-      "channels": [
-        "Detroit Lions",
-        "Chicago Bears",
-        "NCAA Play-by-Play 192",
-        "NCAA Play-by-Play 193",
-        "SiriusXM NFL Radio"
-      ]
-    },
     {
       "slug": "nfl",
       "title": "Philadelphia Eagles @ Dallas Cowboys",
@@ -859,6 +845,20 @@
     },
     {
       "slug": "nfl",
+      "title": "Baltimore Ravens @ Houston Texans",
+      "description": "NFL · Baltimore Ravens @ Houston Texans",
+      "start_utc": "2026-11-29T18:00:00Z",
+      "end_utc": "2026-11-29T22:00:00Z",
+      "channels": [
+        "Houston Texans",
+        "Baltimore Ravens",
+        "NCAA Play-by-Play 195",
+        "Satellite Radio Channel 264",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
       "title": "New York Giants @ Indianapolis Colts",
       "description": "NFL · New York Giants @ Indianapolis Colts",
       "start_utc": "2026-11-29T18:00:00Z",
@@ -887,15 +887,15 @@
     },
     {
       "slug": "nfl",
-      "title": "Baltimore Ravens @ Houston Texans",
-      "description": "NFL · Baltimore Ravens @ Houston Texans",
+      "title": "Atlanta Falcons @ Minnesota Vikings",
+      "description": "NFL · Atlanta Falcons @ Minnesota Vikings",
       "start_utc": "2026-11-29T18:00:00Z",
       "end_utc": "2026-11-29T22:00:00Z",
       "channels": [
-        "Houston Texans",
-        "Baltimore Ravens",
-        "NCAA Play-by-Play 195",
-        "Satellite Radio Channel 264",
+        "Minnesota Vikings",
+        "Atlanta Falcons",
+        "NCAA Play-by-Play 197",
+        "Satellite Radio Channel 266",
         "SiriusXM NFL Radio"
       ]
     },
@@ -910,20 +910,6 @@
         "New Orleans Saints",
         "NCAA Play-by-Play 192",
         "Satellite Radio Channel 261",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Atlanta Falcons @ Minnesota Vikings",
-      "description": "NFL · Atlanta Falcons @ Minnesota Vikings",
-      "start_utc": "2026-11-29T18:00:00Z",
-      "end_utc": "2026-11-29T22:00:00Z",
-      "channels": [
-        "Minnesota Vikings",
-        "Atlanta Falcons",
-        "NCAA Play-by-Play 197",
-        "Satellite Radio Channel 266",
         "SiriusXM NFL Radio"
       ]
     },
@@ -1009,20 +995,6 @@
     },
     {
       "slug": "nfl",
-      "title": "Seattle Seahawks @ San Francisco 49ers",
-      "description": "NFL · Seattle Seahawks @ San Francisco 49ers",
-      "start_utc": "2026-11-29T21:25:00Z",
-      "end_utc": "2026-11-30T01:25:00Z",
-      "channels": [
-        "San Francisco 49ers",
-        "Seattle Seahawks",
-        "NCAA Play-by-Play 193",
-        "Satellite Radio Channel 262",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
       "title": "Washington Commanders @ Arizona Cardinals",
       "description": "NFL · Washington Commanders @ Arizona Cardinals",
       "start_utc": "2026-11-29T21:25:00Z",
@@ -1032,6 +1004,20 @@
         "Washington Commanders",
         "NCAA Play-by-Play 192",
         "Satellite Radio Channel 261",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Seattle Seahawks @ San Francisco 49ers",
+      "description": "NFL · Seattle Seahawks @ San Francisco 49ers",
+      "start_utc": "2026-11-29T21:25:00Z",
+      "end_utc": "2026-11-30T01:25:00Z",
+      "channels": [
+        "San Francisco 49ers",
+        "Seattle Seahawks",
+        "NCAA Play-by-Play 193",
+        "Satellite Radio Channel 262",
         "SiriusXM NFL Radio"
       ]
     },
@@ -2368,15 +2354,15 @@
     },
     {
       "slug": "nfl",
-      "title": "Washington Commanders @ Tennessee Titans",
-      "description": "NFL · Washington Commanders @ Tennessee Titans",
+      "title": "Green Bay Packers @ New Orleans Saints",
+      "description": "NFL · Green Bay Packers @ New Orleans Saints",
       "start_utc": "2026-12-06T18:00:00Z",
       "end_utc": "2026-12-06T22:00:00Z",
       "channels": [
-        "Tennessee Titans",
-        "Washington Commanders",
-        "NCAA Play-by-Play 198",
-        "Satellite Radio Channel 267",
+        "New Orleans Saints",
+        "Green Bay Packers",
+        "NCAA Play-by-Play 194",
+        "Satellite Radio Channel 263",
         "SiriusXM NFL Radio"
       ]
     },
@@ -2396,34 +2382,6 @@
     },
     {
       "slug": "nfl",
-      "title": "Green Bay Packers @ New Orleans Saints",
-      "description": "NFL · Green Bay Packers @ New Orleans Saints",
-      "start_utc": "2026-12-06T18:00:00Z",
-      "end_utc": "2026-12-06T22:00:00Z",
-      "channels": [
-        "New Orleans Saints",
-        "Green Bay Packers",
-        "NCAA Play-by-Play 194",
-        "Satellite Radio Channel 263",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
-      "title": "Cincinnati Bengals @ Cleveland Browns",
-      "description": "NFL · Cincinnati Bengals @ Cleveland Browns",
-      "start_utc": "2026-12-06T18:00:00Z",
-      "end_utc": "2026-12-06T22:00:00Z",
-      "channels": [
-        "Cleveland Browns",
-        "Cincinnati Bengals",
-        "NCAA Play-by-Play 193",
-        "Satellite Radio Channel 262",
-        "SiriusXM NFL Radio"
-      ]
-    },
-    {
-      "slug": "nfl",
       "title": "Los Angeles Chargers @ Tampa Bay Buccaneers",
       "description": "NFL · Los Angeles Chargers @ Tampa Bay Buccaneers",
       "start_utc": "2026-12-06T18:00:00Z",
@@ -2433,6 +2391,20 @@
         "Los Angeles Chargers",
         "NCAA Play-by-Play 197",
         "Satellite Radio Channel 266",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Washington Commanders @ Tennessee Titans",
+      "description": "NFL · Washington Commanders @ Tennessee Titans",
+      "start_utc": "2026-12-06T18:00:00Z",
+      "end_utc": "2026-12-06T22:00:00Z",
+      "channels": [
+        "Tennessee Titans",
+        "Washington Commanders",
+        "NCAA Play-by-Play 198",
+        "Satellite Radio Channel 267",
         "SiriusXM NFL Radio"
       ]
     },
@@ -2461,6 +2433,20 @@
         "Jacksonville Jaguars",
         "NCAA Play-by-Play 195",
         "Satellite Radio Channel 264",
+        "SiriusXM NFL Radio"
+      ]
+    },
+    {
+      "slug": "nfl",
+      "title": "Cincinnati Bengals @ Cleveland Browns",
+      "description": "NFL · Cincinnati Bengals @ Cleveland Browns",
+      "start_utc": "2026-12-06T18:00:00Z",
+      "end_utc": "2026-12-06T22:00:00Z",
+      "channels": [
+        "Cleveland Browns",
+        "Cincinnati Bengals",
+        "NCAA Play-by-Play 193",
+        "Satellite Radio Channel 262",
         "SiriusXM NFL Radio"
       ]
     },
